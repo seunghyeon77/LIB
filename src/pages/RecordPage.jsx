@@ -1,18 +1,22 @@
 import Header from "../components/Header";
-import RecordPageForm from "../components/RecordPageForm";
+import RecordPageForm from "../components/Record/RecordPageForm";
 import styled from "styled-components";
 
-const PageMargin = styled.div`
-  height: 100vh;
-  margin: 0 20rem;
-`
 export default function RecordPage() {
   return (
-    <div className="MainPage">
+    <Page>
       <Header />
-      <PageMargin>
+      <Body>
         <RecordPageForm />
-      </PageMargin>
-    </div>
+      </Body>
+    </Page>
   );
 }
+
+const Page = styled.div`
+  width: 100%;
+  height: 110vh;
+`;
+const Body = styled.body`
+  margin: 4rem 30rem;
+`;

@@ -3,59 +3,6 @@ import { SlMagnifier } from "react-icons/sl";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const HeaderAll = styled.header`
-  width: 100%;
-  height: 6rem;
-  border-bottom: 0.06rem solid;
-  background-color: #ffffff;
-`;
-const HeaderNav = styled.nav`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-`;
-const HeaderLogo = styled.div`
-  width: 6rem;
-  height: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  color: #000000;
-  cursor: pointer;
-`;
-const Search = styled.div`
-  display: flex;
-  align-items: center;
-`
-const Input = styled.input`
-  width: 26.25rem;
-  height: 2.5rem;
-  border: 1.4px solid #4eac27;
-  border-radius: 7px;
-  margin: 0;
-  &::placeholder {
-    padding-left: 1rem;
-    font-size: 1rem;
-  }
-`;
-const HeaderUrls = styled.div`
-  margin: 0 4rem;
-  display: flex;
-  justify-content: center;
-`;
-const HeaderUrl = styled.div`
-  padding: 0 1.2rem;
-  color: #000000;
-  cursor: pointer;
-  &:hover {
-    color: #4e4d4d;
-  }
-`;
-
 export default function Header() {
   return (
     <HeaderAll>
@@ -100,3 +47,56 @@ export default function Header() {
     </HeaderAll>
   );
 }
+
+const HeaderAll = styled.header`
+  width: 100%;
+  height: 6rem;
+  border-bottom: 0.06rem solid;
+  background-color: #ffffff;
+`;
+const HeaderNav = styled.nav`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+`;
+const HeaderLogo = styled.div`
+  width: 6rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #000000;
+  cursor: pointer;
+`;
+const Search = styled.div`
+  display: flex;
+  align-items: center;
+`
+const Input = styled.input`
+  width: 26.25rem;
+  height: 2.5rem;
+  border: 1.4px solid #4eac27;
+  border-radius: 7px;
+  margin: 0;
+  padding: 0  1rem;
+  &::placeholder {
+    font-size: 1rem;
+  }
+`;
+const HeaderUrls = styled.div`
+  margin: 0 5rem;
+  display: flex;
+  justify-content: center;
+`;
+const HeaderUrl = styled.div`
+  padding: 0 1.2rem;
+  color: #000000;
+  cursor: pointer;
+  &:hover {
+    color: #4e4d4d;
+  }
+`;
