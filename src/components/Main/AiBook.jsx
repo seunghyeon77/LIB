@@ -4,13 +4,16 @@ import styled from "styled-components";
 export default function AiBook() {
   return (
     <AiBookCompo>
-      <AiBookText>기록의 서재님을 위한 맞춤 추천</AiBookText>
+      <AiBookText>
+        <Img src="src\imgs\로봇_아이콘-removebg-preview.png" />
+        기록의 서재님을 위한 AI 맞춤 추천
+      </AiBookText>
       <Link to={"/log_in"}>
-          <AiBookImg>
-            <AiBookImgOverlay>
-              <AiBookImgText>로그인 후 이용가능합니다.</AiBookImgText>
-            </AiBookImgOverlay>
-          </AiBookImg>
+        <AiBookImg>
+          <AiBookImgOverlay>
+            <AiBookImgText>로그인 후 이용가능합니다.</AiBookImgText>
+          </AiBookImgOverlay>
+        </AiBookImg>
       </Link>
     </AiBookCompo>
   );
@@ -22,8 +25,13 @@ const AiBookCompo = styled.div`
 `;
 const AiBookText = styled.h3`
   display: flex;
+  align-items: center;
   margin: 1rem 2rem;
   font-size: 1.1rem;
+`;
+const Img = styled.img`
+  width: 2.5rem;
+  height: 2rem;
 `;
 const AiBookImg = styled.div`
   height: 100%;
@@ -32,14 +40,15 @@ const AiBookImg = styled.div`
   background-size: cover;
   border-radius: 7px;
 `;
-const AiBookImgOverlay = styled.div` // img 안에 따로 div을 넣어서 투명도를 관리
+const AiBookImgOverlay = styled.div`
+  // img 안에 따로 div을 넣어서 투명도를 관리
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.6); 
+  background-color: rgba(255, 255, 255, 0.6);
 `;
 const AiBookImgText = styled.span`
-  font-size: 1.2rem; 
+  font-size: 1.2rem;
   color: #000000;
 `;

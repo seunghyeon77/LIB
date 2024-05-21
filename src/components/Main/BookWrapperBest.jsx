@@ -4,7 +4,10 @@ import CarouselBest from "../carousel/CarouselBest";
 export default function BookWrapperBest() {
   return (
     <Book>
-      <BestSellerText>베스트 셀러</BestSellerText>
+      <BestSellerText>
+        <Img src="src\imgs\책_아이콘-removebg-preview.png" />
+        베스트 셀러
+      </BestSellerText>
       <BookInfos>
         <CarouselBest />
       </BookInfos>
@@ -15,7 +18,16 @@ export default function BookWrapperBest() {
 const Book = styled.div`
   margin: 8rem 0;
 `;
-
+const BestSellerText = styled.h3`
+  display: flex;
+  align-items: center;
+  margin: 1rem 2rem;
+  font-size: 1.1rem;
+  `;
+const Img = styled.img`
+  width: 2.5rem;
+  height: 2rem;
+`;
 const BookInfos = styled.div`
   display: flex;
   align-items: center;
@@ -23,8 +35,4 @@ const BookInfos = styled.div`
   width: 100%;
   background-color: #ffffff;
   border-radius: 7px;
-`;
-const BestSellerText = styled.h3`
-  margin: 1rem 2rem;
-  font-size: 1.1rem;
 `;
