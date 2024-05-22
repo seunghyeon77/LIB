@@ -12,7 +12,7 @@ export default function Header() {
             <GiBookCover
               style={{
                 fontSize: "1.2rem",
-                color: "#4EAC27",
+                color: "#539165",
               }}
             />
             기록의 서재

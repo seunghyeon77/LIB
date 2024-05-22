@@ -18,8 +18,8 @@ export default function Record() {
         </InfoContent>
       </RecordInfo>
       <Buttons>
-        <Button>삭제</Button>
-        <Button style={{ color: "#539165 " }}>수정</Button>
+        <Button style={{ color: "#E86A33 " }}>삭제</Button>
+        <Button>수정</Button>
       </Buttons>
     </RecordDiv>
   );
@@ -55,7 +55,7 @@ const Buttons = styled.form`
 const Button = styled.button`
   margin: 0.7rem 1rem;
   border: none;
-  background-color: #ffffff;
+  background: none;
   font-size: 1rem;
   cursor: pointer;
 `;

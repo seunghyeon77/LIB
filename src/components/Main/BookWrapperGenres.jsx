@@ -41,9 +41,9 @@ const Book = styled.div`
     margin: 0 3rem 1.3rem;
     font-size: 1.1rem;
     border: none;
-    background-color: #F0F0F0;
+    background: none;
     cursor: pointer;
     &:hover {
-      color: #2c3ee0;
+      color: #E86A33;
     }
   `

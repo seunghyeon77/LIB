@@ -30,12 +30,12 @@ const AiBookText = styled.h3`
   font-size: 1.1rem;
 `;
 const Img = styled.img`
-  width: 2.5rem;
-  height: 2rem;
+  width: 2rem;
+  height: 1.5rem;
 `;
 const AiBookImg = styled.div`
   height: 100%;
-  background-image: url("https://th.bing.com/th/id/OIP.6qqfH_scgmFJ06FokmyHVgHaE7?w=271&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7");
+  background-image: url("src/imgs/AI 도서관 사진.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 7px;
