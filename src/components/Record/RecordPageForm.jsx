@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export default function RecordPageForm() {
+  const imgUrl = "src/imgs/icon_star_gray-removebg-preview.png";
   return (
     <form>
       <InputForms>
@@ -12,7 +13,26 @@ export default function RecordPageForm() {
           <InputText type="text" placeholder="제목을 입력하세요" />
           <InputText type="text" placeholder="지은이를 입력하세요" />
           <InputText type="text" placeholder="장르를 입력하세요" />
-          <p>별점</p>
+          <StarsWrapper>
+            <span>별점</span>
+            <Stars>
+              <StarButton>
+                <img src={imgUrl} alt="Star"/>
+              </StarButton>
+              <StarButton>
+                <img src={imgUrl} alt="Star" />
+              </StarButton>
+              <StarButton>
+                <img src={imgUrl} alt="Star" />
+              </StarButton>
+              <StarButton>
+                <img src={imgUrl} alt="Star" />
+              </StarButton>
+              <StarButton>
+                <img src={imgUrl} alt="Star" />
+              </StarButton>
+            </Stars>
+          </StarsWrapper>
         </InputTexts>
       </InputForms>
       <Textareas>
@@ -34,7 +54,12 @@ const InputForms = styled.div`
 const AddFile = styled.div`
   width: 9rem;
   height: 12rem;
+  padding-top: 1rem;
   background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `;
 const AddFileText = styled.label`
   opacity: 0.6;
@@ -54,6 +79,20 @@ const InputText = styled.input`
   border: 1px solid #888888;
   border-radius: 7px;
 `;
+const StarsWrapper = styled.div`
+  margin: 0.7rem;
+  display: flex;
+  align-items: center;
+`;
+const Stars = styled.div`
+  margin: 0 0.5rem;
+`;
+const StarButton = styled.button`
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+`
 const Textareas = styled.div`
   display: flex;
   flex-direction: column;
@@ -83,9 +122,9 @@ const ButtonDel = styled.button`
 const ButtonRec = styled.button`
   margin: 1.2rem 1rem;
   padding: 0.5rem 1rem;
-  border: 1px solid #4eac27;
+  border: 1px solid;
   border-radius: 7px;
-  background-color: #4eac27;
+  background-color: #539165;
   color: #ffffff;
   cursor: pointer;
 `;
