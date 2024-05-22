@@ -7,13 +7,15 @@ export default function CarouselBest() {
   const settings = {
     dots: true,
     infinite: true,
+    arrows: true,
     speed: 800,
     slidesToShow: 5,
     slidesToScroll: 5,
+    touchMove: false,
   };
   return (
     <BookCarousel>
-      <Slider {...settings}>
+      <SlickSlider {...settings}>
         <SlickItem>
           <BookInfoImg // 책 정보들을 가져와야 됌
             src="https://image.yes24.com/goods/112013526/XL"
@@ -214,7 +216,7 @@ export default function CarouselBest() {
             <BookWriter>프리드니히 니체 | 철학 </BookWriter>
           </BookInfoText>
         </SlickItem>
-      </Slider>
+      </SlickSlider>
     </BookCarousel>
   );
 }
@@ -244,4 +246,18 @@ const BookWriter = styled.span`
 `;
 const SlickItem = styled.div`
   padding: 1.5rem;
+`;
+const SlickSlider = styled(Slider)`
+  .slick-prev:before, .slick-next:before {
+    //height: 
+    color: black;
+    font-size: 40px;
+    line-height: 5px;
+  }
+  .slick-prev:before {
+    content: "‹"
+  }
+  .slick-next:before {
+    content: "›"
+  }
 `;
