@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { GoStar } from "react-icons/go";
 
 export default function RecordPageForm() {
   const imgUrl = "src/imgs/icon_star_gray-removebg-preview.png";
@@ -17,19 +18,19 @@ export default function RecordPageForm() {
             <span>별점</span>
             <Stars>
               <StarButton>
-                <img src={imgUrl} alt="Star"/>
+                <GoStar />
               </StarButton>
               <StarButton>
-                <img src={imgUrl} alt="Star" />
+                <GoStar />
               </StarButton>
               <StarButton>
-                <img src={imgUrl} alt="Star" />
+                <GoStar />
               </StarButton>
               <StarButton>
-                <img src={imgUrl} alt="Star" />
+                <GoStar />
               </StarButton>
               <StarButton>
-                <img src={imgUrl} alt="Star" />
+                <GoStar />
               </StarButton>
             </Stars>
           </StarsWrapper>
@@ -88,11 +89,16 @@ const Stars = styled.div`
   margin: 0 0.5rem;
 `;
 const StarButton = styled.button`
+  width: 25px;
+  height: 25px;
   padding: 0;
   background: none;
   border: none;
   cursor: pointer;
-`
+  &:hover {
+    color: #4eac27;
+  }
+`;
 const Textareas = styled.div`
   display: flex;
   flex-direction: column;
