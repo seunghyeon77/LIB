@@ -1,13 +1,15 @@
-import Header from "../components/Header";
 import styled from "styled-components";
 import RecordWrapper from "../components/MyRecord/RecordWrapper";
+import ProgressWrapper from "../components/MyRecord/ProgressWrapper";
+import MyStudyWrapper from "../components/MyRecord/MyStudyWrapper";
 
 export default function MyRecordPage() {
   return (
     <Page>
-      <Header />
       <Body>
         <RecordWrapper />
+        <ProgressWrapper />
+        <MyStudyWrapper />
       </Body>
     </Page>
   );
@@ -15,9 +17,9 @@ export default function MyRecordPage() {
 
 const Page = styled.div`
   width: 100%;  
-  height: 180vh;
+  height: 220vh;
   background-color: #F1F1F1;
 `
 const Body = styled.body`
-  margin: 4rem 20rem;
+  padding: 4rem 20rem;
 `

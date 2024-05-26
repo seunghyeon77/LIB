@@ -1,50 +1,53 @@
 import { GiBookCover } from "react-icons/gi";
 import { SlMagnifier } from "react-icons/sl";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 export default function Header() {
   return (
-    <HeaderAll>
-      <HeaderNav>
-        <Link to={"/"}>
-          <HeaderLogo>
-            <GiBookCover
+    <div>
+      <HeaderAll>
+        <HeaderNav>
+          <Link to={"/"}>
+            <HeaderLogo>
+              <GiBookCover
+                style={{
+                  fontSize: "1.2rem",
+                  color: "#539165",
+                }}
+              />
+              기록의 서재
+            </HeaderLogo>
+          </Link>
+          <HeaderUrls>
+            <Link to={"/my-record"}>
+              <HeaderUrl>나의 기록</HeaderUrl>
+            </Link>
+            <Link to={"/record"}>
+              <HeaderUrl>기록하기</HeaderUrl>
+            </Link>
+          </HeaderUrls>
+          <Search>
+            <Input type="text" placeholder="검색어를 입력하세요" />
+            <SlMagnifier
               style={{
                 fontSize: "1.2rem",
-                color: "#539165",
+                marginLeft: "-2.2rem", 
               }}
             />
-            기록의 서재
-          </HeaderLogo>
-        </Link>
-        <HeaderUrls>
-          <Link to={"/my-record"}>
-            <HeaderUrl>나의 기록</HeaderUrl>
-          </Link>
-          <Link to={"/record"}>
-            <HeaderUrl>기록하기</HeaderUrl>
-          </Link>
-        </HeaderUrls>
-        <Search>
-          <Input type="text" placeholder="검색어를 입력하세요" />
-          <SlMagnifier
-            style={{
-              fontSize: "1.2rem",
-              marginLeft: "-2.2rem", 
-            }}
-          />
-        </Search>
-        <HeaderUrls>
-          <Link to={"/log-in"}>
-            <HeaderUrl>로그인</HeaderUrl>
-          </Link>
-          <Link to={"/sign-up"}>
-            <HeaderUrl>회원가입</HeaderUrl>
-          </Link>
-        </HeaderUrls>
-      </HeaderNav>
-    </HeaderAll>
+          </Search>
+          <HeaderUrls>
+            <Link to={"/log-in"}>
+              <HeaderUrl>로그인</HeaderUrl>
+            </Link>
+            <Link to={"/sign-up"}>
+              <HeaderUrl>회원가입</HeaderUrl>
+            </Link>
+          </HeaderUrls>
+        </HeaderNav>
+      </HeaderAll>
+      <Outlet />
+    </div>
   );
 }
 

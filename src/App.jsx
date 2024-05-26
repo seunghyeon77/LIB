@@ -6,12 +6,17 @@ import BookDetailPage from "./pages/BookDetailPage";
 import MyPage from "./pages/MyPage";
 import LogInPage from "./pages/LogInPage";
 import SignUpPage from "./pages/SignUpPage";
+import Header from "./components/Header";
 
 const router = createBrowserRouter([
   {
     path:"/",
-    element: <MainPage />,
+    element: <Header />,
     children: [
+      {
+        path:"/",
+        element: <MainPage />
+      },
       {
         path:"record",
         element: <RecordPage />
