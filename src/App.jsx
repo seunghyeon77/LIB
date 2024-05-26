@@ -1,10 +1,48 @@
-import RouteCompos from "./route/RouteCompos";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MainPage from "./pages/MainPage";
+import RecordPage from "./pages/RecordPage";
+import MyRecordPage from "./pages/MyRecordPage";
+import BookDetailPage from "./pages/BookDetailPage";
+import MyPage from "./pages/MyPage";
+import LogInPage from "./pages/LogInPage";
+import SignUpPage from "./pages/SignUpPage";
+
+const router = createBrowserRouter([
+  {
+    path:"/",
+    element: <MainPage />,
+    children: [
+      {
+        path:"record",
+        element: <RecordPage />
+      },
+      {
+        path:"my-record",
+        element: <MyRecordPage />
+      },
+      {
+        path:"book-detail-page",
+        element: <BookDetailPage />
+      },
+      {
+        path:"my-page",
+        element: <MyPage />
+      }
+    ]
+  },
+  {
+    path: "log-in",
+    element: <LogInPage />
+  },
+  {
+    path: "sign-up",
+    element: <SignUpPage />
+  }
+])
 
 function App() {
   return (
-    <div className="App">
-      <RouteCompos />
-    </div>
+  <RouterProvider router={router} />
   );
 }
 
