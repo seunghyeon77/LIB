@@ -19,7 +19,7 @@ export default function Header() {
           </HeaderLogo>
         </Link>
         <HeaderUrls>
-          <Link to={"/my_record"}>
+          <Link to={"/my-record"}>
             <HeaderUrl>나의 기록</HeaderUrl>
           </Link>
           <Link to={"/record"}>
@@ -36,10 +36,10 @@ export default function Header() {
           />
         </Search>
         <HeaderUrls>
-          <Link to={"/log_in"}>
+          <Link to={"/log-in"}>
             <HeaderUrl>로그인</HeaderUrl>
           </Link>
-          <Link to={"/sign_up"}>
+          <Link to={"/sign-up"}>
             <HeaderUrl>회원가입</HeaderUrl>
           </Link>
         </HeaderUrls>
