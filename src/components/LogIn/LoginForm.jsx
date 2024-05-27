@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import {
+  LoginForm,
+  LoginFormButton,
+  LoginFormContent,
+  LoginFormDiv,
+  LoginFormInput,
+  LoginFormTitle,
+  LoginFormTitles,
+} from "../../styles/Login/LoginForm";
 
 export default function LoginForms() {
   return (
@@ -29,42 +37,3 @@ export default function LoginForms() {
     </LoginFormDiv>
   );
 }
-const LoginFormDiv = styled.div`
-  width: 28rem;
-  height: 40rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-const LoginFormTitles = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`;
-const LoginFormTitle = styled.h3`
-  font-size: 1.5rem;
-`;
-const LoginFormContent = styled.span`
-  font-size: 1.3rem;
-  margin: 1.2rem 0;
-`;
-const LoginForm = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-const LoginFormInput = styled.input`
-  margin: 0.5rem 0;
-  padding: 1rem 1.5rem;
-  font-size: 1rem;
-  border: 1px solid #d1d1d1;
-  border-radius: 7px;
-`;
-const LoginFormButton = styled.button`
-  margin: 0.5rem 0;
-  padding: 1rem 1.5rem;
-  font-size: 1rem;
-  background-color: #539165;
-  color: #ffffff;
-  border: 1px solid #d1d1d1;
-  border-radius: 7px;
-`;
