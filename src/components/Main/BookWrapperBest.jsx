@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import CarouselBest from "../carousel/CarouselBest";
+import { Book, BookInfos } from "../../styles/Main/BookStyle";
 
 export default function BookWrapperBest() {
   return (
@@ -14,10 +15,6 @@ export default function BookWrapperBest() {
     </Book>
   );
 }
-
-const Book = styled.div`
-  margin: 8rem 0;
-`;
 const BestSellerText = styled.h3`
   display: flex;
   align-items: center;
@@ -27,12 +24,4 @@ const BestSellerText = styled.h3`
 const Img = styled.img`
   width: 2.5rem;
   height: 2rem;
-`;
-const BookInfos = styled.div`
-  display: flex;
-  align-items: center;
-  height: 25rem;
-  width: 100%;
-  background-color: #ffffff;
-  border-radius: 7px;
 `;
