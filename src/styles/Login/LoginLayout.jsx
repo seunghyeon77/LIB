@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 export const LoginPageDiv = styled.div`
   display: flex;
   overflow: hidden;
