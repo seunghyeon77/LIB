@@ -1,7 +1,7 @@
-import styled from "styled-components";
 import AiBook from "../components/Main/AiBook";
 import BookWrapperBest from "../components/Main/BookWrapperBest";
 import BookWrapperGenres from "../components/Main/BookWrapperGenres";
+import { Body, Page } from "../styles/PageLayout";
 
 export default function MainPage() {
   return (
@@ -14,13 +14,3 @@ export default function MainPage() {
     </Page>
   );
 }
-
-const Page = styled.div`
-  width: 100%;
-  height: 190vh;
-  background-color: #f1f1f1;
-`;
-const Body = styled.body`
-  // 모든 페이지 기본 margin
-  padding: 4rem 20rem;
-`;
