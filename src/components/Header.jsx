@@ -1,4 +1,3 @@
-import { GiBookCover } from "react-icons/gi";
 import { SlMagnifier } from "react-icons/sl";
 import styled from "styled-components";
 import { Link, Outlet } from "react-router-dom";
@@ -10,13 +9,7 @@ export default function Header() {
         <HeaderNav>
           <Link to={"/"}>
             <HeaderLogo>
-              <GiBookCover
-                style={{
-                  fontSize: "1.2rem",
-                  color: "#539165",
-                }}
-              />
-              기록의 서재
+              <img src="public\기록의_서재_로고-removebg-preview.png" alt="logo" style={{width: '100%', height: '100%'}}/>
             </HeaderLogo>
           </Link>
           <HeaderUrls>
@@ -66,8 +59,8 @@ const HeaderNav = styled.nav`
   font-size: 1rem;
 `;
 const HeaderLogo = styled.div`
-  width: 6rem;
-  height: 3rem;
+  width: 11rem;
+  height: 4.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
