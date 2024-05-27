@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import RecordWrapper from "../components/MyRecord/RecordWrapper";
 import ProgressWrapper from "../components/MyRecord/ProgressWrapper";
 import MyStudyWrapper from "../components/MyRecord/MyStudyWrapper";
