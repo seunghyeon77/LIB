@@ -16,7 +16,8 @@ const RecordProgress = styled.h3`
   font-size: 1.1rem;
 `;
 const ProgressWrapperDiv = styled.div`
-  width: 100%;
-  height: 20rem;
+  width: 1050px; // 100%
+  height: 320px; // 46rem
   background-color: #ffffff;
+  border-radius: 7px;
 `;
