@@ -9,3 +9,9 @@ export const Body = styled.body`
   // 모든 페이지 기본 margin
   padding: 4rem 20rem;
 `;
+// 기본 플렉스 중앙 정렬
+export const FlexCenter = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`

@@ -2,6 +2,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
+import { BookInfoImg, BookInfoText, BookTitle, BookWriter, SlickItem } from "../../styles/Main/BookStyle";
 
 export default function CarouselBest() {
   const settings = {
@@ -222,42 +223,21 @@ export default function CarouselBest() {
 }
 
 const BookCarousel = styled.div`
-   width: 90%;
-   margin: 0 auto;
-`
-const BookInfoImg = styled.img`
-  width: 9rem;
-  height: 13rem;
+  width: 90%;
+  margin: 0 auto;
 `;
 
-const BookInfoText = styled.div`
-  display: flex;
-  flex-flow: nowrap column;
-`;
-
-const BookTitle = styled.span`
-  font-size: 1.2rem;
-  margin: 0.7rem 0;
-`;
-
-const BookWriter = styled.span`
-  font-size: 0.8rem;
-  opacity: 0.5;
-`;
-const SlickItem = styled.div`
-  padding: 1.5rem;
-`;
 const SlickSlider = styled(Slider)`
-  .slick-prev:before, .slick-next:before {
-    //height: 
+  .slick-prev:before,
+  .slick-next:before {
     color: black;
     font-size: 40px;
     line-height: 5px;
   }
   .slick-prev:before {
-    content: "‹"
+    content: "‹";
   }
   .slick-next:before {
-    content: "›"
+    content: "›";
   }
 `;

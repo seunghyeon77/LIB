@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { GoStar } from "react-icons/go";
 
 export default function RecordPageForm() {
-  const imgUrl = "src/imgs/icon_star_gray-removebg-preview.png";
   return (
     <form>
       <InputForms>
@@ -39,8 +38,20 @@ export default function RecordPageForm() {
       <Textareas>
         <Textarea />
         <Buttons>
-          <ButtonDel>취소하기</ButtonDel>
-          <ButtonRec>기록하기</ButtonRec>
+          <Button
+            style={{ border: "1px solid #888888", backgroundColor: "#ffffff" }}
+          >
+            취소하기
+          </Button>
+          <Button
+            style={{
+              border: "1px solid",
+              backgroundColor: "#539165",
+              color: "#ffffff",
+            }}
+          >
+            기록하기
+          </Button>
         </Buttons>
       </Textareas>
     </form>
@@ -116,21 +127,10 @@ const Textarea = styled.textarea`
 const Buttons = styled.div`
   display: flex;
   justify-content: flex-end;
-`;
-const ButtonDel = styled.button`
+`
+const Button = styled.button`
   margin: 1.2rem 1rem;
   padding: 0.5rem 1rem;
-  border: 1px solid #888888;
   border-radius: 7px;
-  background-color: #ffffff;
   cursor: pointer;
-`;
-const ButtonRec = styled.button`
-  margin: 1.2rem 1rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid;
-  border-radius: 7px;
-  background-color: #539165;
-  color: #ffffff;
-  cursor: pointer;
-`;
+`

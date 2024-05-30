@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Img, TitleText } from "../../styles/Main/BookStyle";
 
 export default function AiBook() {
   return (
     <AiBookCompo>
-      <AiBookText>
+      <TitleText>
         <Img src="public\로봇_아이콘-removebg-preview.png" />
         기록의 서재님을 위한 AI 맞춤 추천
-      </AiBookText>
-      <Link to={"/log_in"}>
+      </TitleText>
+      <Link to={"/log-in"}>
         <AiBookImg>
           <AiBookImgOverlay>
             <AiBookImgText>로그인 후 이용가능합니다.</AiBookImgText>
@@ -22,16 +23,6 @@ export default function AiBook() {
 const AiBookCompo = styled.div`
   height: 20rem;
   width: 100%;
-`;
-const AiBookText = styled.h3`
-  display: flex;
-  align-items: center;
-  margin: 1rem 2rem;
-  font-size: 1.1rem;
-`;
-const Img = styled.img`
-  width: 2rem;
-  height: 1.5rem;
 `;
 const AiBookImg = styled.div`
   height: 100%;
