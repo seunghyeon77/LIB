@@ -2,33 +2,52 @@ import styled from "styled-components";
 import { TitleText } from "../../styles/Main/BookStyle";
 import { FlexCenter } from "../../styles/PageLayout";
 import { LoginFormInput } from "../../styles/Login/LoginForm";
+import { useState } from "react";
+import { MoreButton } from "../MyRecord/MyStudyWrapper";
 
 export default function BookDetailCommu() {
+  const [commuInputs, setCommuInputs] = useState([]); // 커뮤니티 input값들을 배열로 저장
+  const [commuInput, setCommuInput] = useState(""); // 커뮤니티 input창 저장
+
+  const buttonValueOnclick = (event) => {
+    event.preventDefault();
+    if (commuInput.trim() === "") {
+      return;
+    }
+    setCommuInputs([...commuInputs, commuInput]); // 기존 배열에 commuInput 값만 넣어준다.
+    setCommuInput("");
+  };
+  const inputValueOnchange = (event) => {
+    setCommuInput(event.target.value);
+  };
   return (
     <div>
       <div>
         <TitleText style={{ margin: "1.9rem 2rem" }}>커뮤니티</TitleText>
         <FlexCenterDiv>
-          <CommuDiv>
-            <h4 style={{margin: '0.5rem 0'}}>LIB 님</h4>
-            <CommuContent>
-              <p style={{ fontSize: "1rem", lineHeight: "1.5rem" }}>
-                정말 재밌어서 오늘 사고 오늘 다 봤습니다! 말로서 위안을 얻거나
-                깨달음을 얻고 싶은 분에게 추천드려요! 얻고 싶은 분에게
-                추천드려요! 얻고 싶은 분에게 추천드려요! 얻고 싶은 분에게
-                추천드려요! 얻고 싶은 분에게 추천드려요! ...
-              </p>
-              <CommuContentDate>
-                <span>2024-04-22</span>
-              </CommuContentDate>
-            </CommuContent>
-          </CommuDiv>
+          {commuInputs.map((input, index) => (
+            <CommuDiv key={index}>
+              <h4 style={{ margin: "0.5rem 0" }}>{'LIB 님'}</h4> {/* 닉네임 가져와야함 */}
+              <CommuContent>
+                <p style={{ fontSize: "1rem", lineHeight: "1.5rem" }}>
+                  {input}
+                </p>
+                <CommuContentDate>
+                  <span>2024-04-22</span> 
+                </CommuContentDate>
+              </CommuContent>
+            </CommuDiv>
+          ))}
           <FlexCenter>
-            <MoreButtonCommu>펼쳐보기</MoreButtonCommu>
+            <MoreButtonHover>펼쳐보기</MoreButtonHover>
           </FlexCenter>
-          <CommuForm>
-            <CommuInput type="text" placeholder="다양한 생각을 남겨보세요" />
-            <CommuButton>등록</CommuButton>
+          <CommuForm onClick={buttonValueOnclick}>
+            <CommuInput
+              type="text"
+              placeholder="다양한 생각을 남겨보세요"
+              onChange={inputValueOnchange}
+            />
+            <CommuButton type="submit">등록</CommuButton>
           </CommuForm>
         </FlexCenterDiv>
       </div>
@@ -53,10 +72,14 @@ const CommuContentDate = styled.span`
   font-size: 0.7rem;
   padding: 1rem 0;
 `;
-const MoreButtonCommu = styled.span`
-  background-color: #ebebeb;
-  margin: 1rem;
-`;
+const MoreButtonHover = styled(MoreButton)`
+  margin: 0.5rem;
+  padding: 0.5rem 0.7rem;
+  &:hover{
+    border: 1px solid;
+    border-radius: 7px;
+  }
+`
 const CommuForm = styled.form`
   width: 50rem;
 `;
@@ -71,4 +94,5 @@ const CommuButton = styled.button`
   color: #ffffff;
   border: none;
   border-radius: 7px;
+  cursor: pointer;
 `;
