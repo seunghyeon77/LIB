@@ -9,7 +9,7 @@ export default function LoginIcons() {
   )
 }
 const LoginIconDiv = styled.div`
-  height: 58.2rem;
+  height: 100%;
   width: 30rem;
   background: #6ea57e;
 `;
