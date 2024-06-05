@@ -13,7 +13,7 @@ export default function SignUpPage() {
     <LoginPageDiv>
       <LoginIcons />
       <LoginFormWrapper>
-        <LoginFormDiv style={{height: '50rem'}}>
+        <LoginFormDiv style={{height: '800px'}}>
           <LoginFormTitles>
             <LoginFormTitle>회원가입</LoginFormTitle>
             <LoginFormContent>

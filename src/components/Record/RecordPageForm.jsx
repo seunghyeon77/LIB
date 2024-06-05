@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { GoStar } from "react-icons/go";
+import StarNumber from "../starNumber";
 
 export default function RecordPageForm() {
   return (
@@ -13,26 +14,7 @@ export default function RecordPageForm() {
           <InputText type="text" placeholder="제목을 입력하세요" />
           <InputText type="text" placeholder="지은이를 입력하세요" />
           <InputText type="text" placeholder="장르를 입력하세요" />
-          <StarsWrapper>
-            <span>별점</span>
-            <Stars>
-              <StarButton>
-                <GoStar />
-              </StarButton>
-              <StarButton>
-                <GoStar />
-              </StarButton>
-              <StarButton>
-                <GoStar />
-              </StarButton>
-              <StarButton>
-                <GoStar />
-              </StarButton>
-              <StarButton>
-                <GoStar />
-              </StarButton>
-            </Stars>
-          </StarsWrapper>
+          <StarNumber />
         </InputTexts>
       </InputForms>
       <Textareas>
@@ -90,25 +72,6 @@ const InputText = styled.input`
   padding: 0.6rem;
   border: 1px solid #888888;
   border-radius: 7px;
-`;
-const StarsWrapper = styled.div`
-  margin: 0.7rem;
-  display: flex;
-  align-items: center;
-`;
-const Stars = styled.div`
-  margin: 0 0.5rem;
-`;
-const StarButton = styled.button`
-  width: 25px;
-  height: 25px;
-  padding: 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  &:hover {
-    color: #4eac27;
-  }
 `;
 const Textareas = styled.div`
   display: flex;
