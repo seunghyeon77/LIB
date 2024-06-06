@@ -11,11 +11,12 @@ export default function MyStudy() {
   )
 }
 const MyStudyDiv = styled.div`
-  margin: 3rem 1.5rem 0;
+  margin: 2.5rem 1rem 0;
 `
 const BookInfoImg = styled.img` // 메인 페이지와 책 크기 다름
-  width: 8rem;
-  height: 12rem;
+  width: 8.5rem;
+  height: 12.5rem;
+  filter: drop-shadow(#6c6c6c 0 2px 4px);
 `;
 const BookInfoText = styled.div`
   display: flex;
@@ -23,5 +24,5 @@ const BookInfoText = styled.div`
 `
 const BookInfoTitle = styled.span`
   font-size: 1rem;
-  margin: 0.5rem 0;
+  margin: 0.7rem 0;
 `
