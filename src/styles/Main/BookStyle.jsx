@@ -19,10 +19,12 @@ export const BookInfoTitle = styled.h3`
 export const BookInfoImg = styled.img`
   width: 9rem;
   height: 13rem;
+  filter: drop-shadow(#6c6c6c 0 2px 4px);
 `;
 export const BookInfoText = styled.div`
   display: flex;
   flex-flow: nowrap column;
+  margin: 2px 0;
 `;
 export const BookTitle = styled.span`
   font-size: 1.2rem;
