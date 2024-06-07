@@ -35,15 +35,20 @@ export const LoginFormInput = styled.input`
       border-color: rgb(255, 119, 119);
     `}
 `;
-export const LoginFormButton = styled.button`
-  margin: 0.5rem 0;
+export const LoginFormInputConfirm = styled(LoginFormInput)`
+  width: 19.3rem;
+`
+export const ConfirmButton = styled.button`
+  margin: 0.5rem 0 0.5rem 0.8rem;
   padding: 1rem 1.5rem;
   font-size: 1rem;
-  background-color: #539165;
-  color: #ffffff;
   border: 1px solid #d1d1d1;
   border-radius: 7px;
   cursor: pointer;
+`
+export const LoginFormButton = styled(ConfirmButton)`
+  background-color: #539165;
+  color: #ffffff;
 `;
 export const SelectGenres = styled.select`
   width: 100%;
@@ -52,6 +57,15 @@ export const SelectGenres = styled.select`
   font-size: 1rem;
   border: 1px solid #d1d1d1;
   border-radius: 7px;
+  appearance: none;
+  select::-ms-expand{
+    display:none;
+  }
+  ${(props) =>
+    props.error &&
+    css`
+      border-color: rgb(255, 119, 119);
+    `}
 `;
 export const SignupText = styled.span`
   margin: 0.6rem 0;
@@ -63,5 +77,3 @@ export const ErrorText = styled.p`
   font-size: 13px;
   color: rgb(255, 119, 119);
 `;
-export const Label = styled.label`
-`
