@@ -1,15 +1,12 @@
 import styled from "styled-components";
-import { GoStar } from "react-icons/go";
 import StarNumber from "../starNumber";
+import Bookimg from "./Bookimg";
 
 export default function RecordPageForm() {
   return (
     <form>
       <InputForms>
-        <AddFile>
-          <AddFileText htmlFor="addFile">사진 추가</AddFileText>
-          <InputFile type="file" accept="image/*" id="addFile" />
-        </AddFile>
+        <Bookimg />
         <InputTexts>
           <InputText type="text" placeholder="제목을 입력하세요" />
           <InputText type="text" placeholder="지은이를 입력하세요" />
@@ -44,23 +41,6 @@ const InputForms = styled.div`
   margin: 4rem 2rem;
   display: flex;
   align-items: center;
-`;
-const AddFile = styled.div`
-  width: 9rem;
-  height: 12rem;
-  padding-top: 1rem;
-  background-color: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`;
-const AddFileText = styled.label`
-  opacity: 0.6;
-  cursor: pointer;
-`;
-const InputFile = styled.input`
-  visibility: hidden;
 `;
 const InputTexts = styled.div`
   display: flex;
