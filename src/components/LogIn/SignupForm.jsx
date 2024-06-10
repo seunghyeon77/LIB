@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useRef } from "react";
 
 import {
   LoginForm,
@@ -23,8 +22,20 @@ export default function SignupForm() {
     handleSubmit,
   } = useForm();
 
-  const password = useRef();
-  password.current = watch("password");
+  // watch를 이용해 실시간으로 input값을 저장.
+  const id = watch("id");
+  const password = watch("password");
+  const passwordConfirm = watch("passwordConfirm");
+
+  // 사용자가 입력한 input 값이 정규식과 맞는지를 Boolean 값으로 반환.
+  const isIdInvalid = id && !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+$/.test(id);
+  const isPasswordInvalid =
+    password &&
+    !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@!%*#?&])[A-Za-z\d@!%*#?&]{8,}$/.test(
+      password
+    );
+  const isPasswordConfirmInvalid =
+    (passwordConfirm !== "") && passwordConfirm !== password;
 
   const onSubmit = (data) => {
     console.log(data);
@@ -32,99 +43,76 @@ export default function SignupForm() {
 
   return (
     <LoginForm onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="formID" error={errors.id}>
-        아이디
-      </label>
-      <SignupText>영문, 숫자를 포함한 아이디를 입력하세요.</SignupText>
+      <label error={errors.id || isIdInvalid}>아이디</label>
+      <SignupText>영문, 숫자만을 포함한 아이디를 입력해주세요.</SignupText>
       <div>
         <LoginFormInputConfirm
           type="text"
-          id="formId"
-          error={errors.id}
+          error={errors.id || isIdInvalid}
           {...register("id", {
-            required: true,
-            pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+$/,
+            required: "필수 입력 항목입니다.",
           })}
         />
         <ConfirmButton>확인</ConfirmButton>
       </div>
-      {errors.id && (
-        <ErrorText>
-          {errors.id.type === "required"
-            ? "필수 입력 항목입니다."
-            : "양식이 알맞지 않습니다."}
-        </ErrorText>
+      {(errors.id || isIdInvalid) && (
+        <ErrorText>{errors.id?.message || "양식이 알맞지 않습니다."}</ErrorText>
       )}
 
-      <label htmlFor="formPass" error={errors.password}>
-        비밀번호
-      </label>
+      <label error={errors.password || isPasswordInvalid}>비밀번호</label>
       <SignupText>
-        영문, 숫자, 특수기호(@!%*#?&)를 포함한 8자 이상의 비밀번호를 입력하세요.
+        영문, 숫자, 특수기호(@!%*#?&)만을 포함한 8자 이상의 비밀번호를
+        입력해주세요.
       </SignupText>
       <LoginFormInput
         type="password"
-        id="formPass"
-        error={errors.password}
+        error={errors.password || isPasswordInvalid}
         {...register("password", {
-          required: true,
-          pattern:
-            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@!%*#?&])[A-Za-z\d@!%*#?&]{8,}$/,
+          required: "필수 입력 항목입니다.",
         })}
       />
-      {errors.password && (
+      {(errors.password || isPasswordInvalid) && (
         <ErrorText>
-          {errors.password.type === "required"
-            ? "필수 입력 항목입니다."
-            : "양식이 알맞지 않습니다."}
+          {errors.password?.message || "양식이 알맞지 않습니다."}
         </ErrorText>
       )}
 
-      <label htmlFor="formPassCheck" error={errors.passwordConfirm}>
+      <label error={errors.passwordConfirm || isPasswordConfirmInvalid}>
         비밀번호 확인
       </label>
       <LoginFormInput
         type="password"
-        id="formPassCheck"
-        error={errors.passwordConfirm}
+        error={errors.passwordConfirm || isPasswordConfirmInvalid}
         {...register("passwordConfirm", {
-          required: true,
-          validate: (value) => value === password.current,
+          required: "필수 입력 항목입니다.",
+          validate: (value) => value === password,
         })}
       />
-      {errors.passwordConfirm && (
+      {(errors.passwordConfirm || isPasswordConfirmInvalid) && (
         <ErrorText>
-          {errors.passwordConfirm.type === "required"
-            ? "필수 입력 항목입니다."
-            : "비밀번호와 맞지 않습니다."}
+          {errors.passwordConfirm?.message || "비밀번호와 맞지 않습니다."}
         </ErrorText>
       )}
 
-      <label htmlFor="formNickname" error={errors.nickName}>
-        닉네임
-      </label>
+      <label error={errors.nickName}>닉네임</label>
       <div>
         <LoginFormInputConfirm
           type="text"
-          id="formNickname"
           placeholder="ex) 김기록"
           error={errors.nickName}
-          {...register("nickName", { required: true })}
+          {...register("nickName", { required: "필수 입력 항목입니다." })}
         />
         <ConfirmButton>확인</ConfirmButton>
       </div>
-      {errors.nickName && <ErrorText>필수 입력 항목입니다.</ErrorText>}
+      {errors.nickName && <ErrorText>{errors.nickName.message}</ErrorText>}
 
-      <label htmlFor="formgenres" error={errors.genres}>
-        선호하는 카테고리
-      </label>
+      <label error={errors.genres}>선호하는 카테고리</label>
       <Search>
         <SelectGenres
-          id="formgenres"
           error={errors.genres}
           {...register("genres", { required: true })}
         >
-          <option value="">카테고리 선택</option>
+          <option value="select">카테고리 선택</option>
           {/* 카테고리들을 가져와서 추가 */}
         </SelectGenres>
         <RiArrowDownSLine
@@ -138,12 +126,9 @@ export default function SignupForm() {
 
       <div style={{ display: "flex" }}>
         <div>
-          <label htmlFor="formGoalRecord" error={errors.goalRecord}>
-            목표 기록 수
-          </label>
+          <label error={errors.goalRecord}>목표 기록 수</label>
           <LoginFormInput
             type="number"
-            id="formGoalRecord"
             error={errors.goalRecord}
             {...register("goalRecord", { required: true })}
           />
@@ -151,13 +136,10 @@ export default function SignupForm() {
         </div>
 
         <div>
-          <label htmlFor="formReset" error={errors.resetPeriod}>
-            초기화 주기
-          </label>
-          <Search style={{marginRight: '1.5rem'}}>
+          <label error={errors.resetPeriod}>초기화 주기</label>
+          <Search style={{ marginRight: "1.5rem" }}>
             <SelectGenres
-              style={{width: '10rem'}}
-              id="formReset"
+              style={{ width: "10rem" }}
               error={errors.resetPeriod}
               {...register("resetPeriod", { required: true })}
             >

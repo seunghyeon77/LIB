@@ -25,7 +25,7 @@ export default function LoginForms() {
           placeholder="비밀번호 입력"
           id="formPass"
         />
-        <LoginFormButton>로그인</LoginFormButton>
+        <LoginFormButton style={{margin: '0.5rem 0'}}>로그인</LoginFormButton>
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
           <Link to={"/sign-up"}>
             <span style={{ color: "#000000", cursor: "pointer" }}>
