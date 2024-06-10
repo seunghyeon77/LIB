@@ -9,15 +9,12 @@ export default function Header() {
         <HeaderNav>
           <Link to={"/"}>
             <HeaderLogo>
-              <img src="public\기록의_서재_로고-removebg-preview.png" alt="logo" style={{width: '100%', height: '100%'}}/>
+              <img src="public\팀 로고.png" alt="logo" style={{width: '100%', height: '100%'}}/>
             </HeaderLogo>
           </Link>
           <HeaderUrls>
-            <Link to={"/my-record"}>
-              <HeaderUrl>나의 기록</HeaderUrl>
-            </Link>
             <Link to={"/record"}>
-              <HeaderUrl>기록하기</HeaderUrl>
+              <HeaderUrl style={{margin: '0 2.5rem'}}>기록하기</HeaderUrl>
             </Link>
           </HeaderUrls>
           <Search>
@@ -30,6 +27,9 @@ export default function Header() {
             />
           </Search>
           <HeaderUrls>
+            <Link to={"/my-record"}>
+              <HeaderUrl style={{margin: '0 3.5rem'}}>나의 기록</HeaderUrl>
+            </Link>
             <Link to={"/log-in"}>
               <HeaderUrl>로그인</HeaderUrl>
             </Link>
@@ -46,7 +46,7 @@ export default function Header() {
 
 const HeaderAll = styled.header`
   width: 100%;
-  height: 6rem;
+  height: 6.3rem;
   border-bottom: 0.06rem solid;
   background-color: #ffffff;
 `;
@@ -59,8 +59,9 @@ const HeaderNav = styled.nav`
   font-size: 1rem;
 `;
 const HeaderLogo = styled.div`
-  width: 11rem;
-  height: 4.5rem;
+  width: 10.5rem;
+  height: 3.5rem;
+  margin-right: -1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,7 +74,7 @@ const Search = styled.div`
   align-items: center;
 `
 const Input = styled.input`
-  width: 26.25rem;
+  width: 27rem;
   height: 2.5rem;
   border: 1.4px solid #4eac27;
   border-radius: 7px;
@@ -84,15 +85,16 @@ const Input = styled.input`
   }
 `;
 const HeaderUrls = styled.div`
-  margin: 0 5rem;
+  margin: 0 3rem;
   display: flex;
   justify-content: center;
 `;
 const HeaderUrl = styled.div`
-  padding: 0 1.2rem;
+  margin: 0 1rem;
+  font-size: 1.1rem;
   color: #000000;
   cursor: pointer;
   &:hover {
-    color: #4e4d4d;
+    color: #393939;
   }
 `;
