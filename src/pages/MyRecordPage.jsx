@@ -5,7 +5,7 @@ import { Body, Page } from "../styles/PageLayout";
 
 export default function MyRecordPage() {
   return (
-    <Page style={{height: '220vh'}}>
+    <Page style={{height: '100%'}}>
       <Body>
         <RecordWrapper />
         <ProgressWrapper />

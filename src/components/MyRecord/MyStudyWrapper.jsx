@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import MyStudy from "./MyStudy";
 import { useState } from "react";
+import { RecordTitle } from "./RecordWrapper";
 
 export default function MyStudyWrapper() {
   const [studyList, setStudyList] = useState([]); // 나의 서재에 있는 책들을 저장할 state
@@ -10,8 +11,8 @@ export default function MyStudyWrapper() {
   };
   return (
     <div style={{ margin: "1.7rem 0" }}>
-      <MyStudyTitle>나의 서재</MyStudyTitle>
       <MyStudysWrapper>
+        <RecordTitle>나의 서재</RecordTitle>
         <MyStudys>
           <MyStudy />
           <MyStudy />
@@ -24,37 +25,37 @@ export default function MyStudyWrapper() {
           <MyStudy />
           <MyStudy />
         </MyStudys>
-        <ButtonForm>
-          <Button onClick={MoreButtonClick}>더 보기</Button>
-        </ButtonForm>
+        <MoreButtonForm>
+          <MoreButton onClick={MoreButtonClick}>더 보기</MoreButton>
+        </MoreButtonForm>
       </MyStudysWrapper>
     </div>
   );
 }
-const MyStudyTitle = styled.h3`
-  margin: 1rem 2rem;
-  font-size: 1.1rem;
-`;
 const MyStudysWrapper = styled.div`
-  width: 100%;
-  height: 38rem;
+  width: 1050px; // 100%
+  height: 710px; // 46rem
   background-color: #ffffff;
   border-radius: 7px;
 `;
 const MyStudys = styled.div`
-  margin: 0.8rem 4.8rem;
+  margin: 0.8rem 6.5rem;
+  padding: 1rem 0 0;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 `;
-const ButtonForm = styled.form`
+// 더 보기 버튼 스타일
+export const MoreButtonForm = styled.form`
   display: flex;
   justify-content: flex-end;
   margin: 0 7rem;
 `;
-const Button = styled.button`
+export const MoreButton = styled.button`
   background: none;
   border: none;
   font-size: 1rem;
-  color: #4eac27;
+  color: #E86A33;
   cursor: pointer;
+
 `;
