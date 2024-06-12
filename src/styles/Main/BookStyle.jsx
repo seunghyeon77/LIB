@@ -19,7 +19,8 @@ export const BookInfoTitle = styled.h3`
 export const BookInfoImg = styled.img`
   width: 9rem;
   height: 13rem;
-  filter: drop-shadow(#6c6c6c 0 2px 4px);
+  /* filter: drop-shadow(#6c6c6c 0 0.5px 2px); */
+  border: 1.3px solid #eaeaea;
 `;
 export const BookInfoText = styled.div`
   display: flex;
