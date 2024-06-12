@@ -2,10 +2,7 @@ import styled, { css } from "styled-components";
 
 export const LoginFormDiv = styled.div`
   width: 28rem;
-  height: 40rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  height: 50rem;
 `;
 export const LoginFormTitles = styled.div`
   display: flex;
@@ -50,6 +47,10 @@ export const LoginFormButton = styled(ConfirmButton)`
   background-color: #539165;
   color: #ffffff;
 `;
+export const SignupTextDiv = styled.div`
+  display: ${(props) => props.display};
+  justify-content: flex-end;
+`
 export const SelectGenres = styled.select`
   width: 100%;
   margin: 0.8rem 0;

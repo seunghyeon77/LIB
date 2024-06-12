@@ -51,8 +51,9 @@ const BookInfos = styled.div`
 `;
 const BookInfoImg = styled.img`
   width: 14rem;
-  height: 20rem;
+  height: 19.5rem;
   margin: 0 3rem 4rem 5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
 `;
 const Buttons = styled.div`
   margin: 5rem 1rem 1rem;

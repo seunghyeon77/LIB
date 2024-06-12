@@ -1,6 +1,7 @@
 import { SlMagnifier } from "react-icons/sl";
 import styled from "styled-components";
 import { Link, Outlet } from "react-router-dom";
+import { FaRegUser } from "react-icons/fa";
 
 export default function Header() {
   return (
@@ -9,33 +10,35 @@ export default function Header() {
         <HeaderNav>
           <Link to={"/"}>
             <HeaderLogo>
-              <img src="public\팀 로고.png" alt="logo" style={{width: '100%', height: '100%'}}/>
+              <img
+                src="public\기록의 서재 로고 다른 버전.png"
+                alt="logo"
+                style={{ width: "100%", height: "100%" }}
+              />
             </HeaderLogo>
           </Link>
-          <HeaderUrls>
-            <Link to={"/record"}>
-              <HeaderUrl style={{margin: '0 2.5rem'}}>기록하기</HeaderUrl>
-            </Link>
-          </HeaderUrls>
-          <Search>
+          <Search style={{margin: '0 2.3rem'}}>
             <Input type="text" placeholder="검색어를 입력하세요" />
             <SlMagnifier
               style={{
                 fontSize: "1.2rem",
-                marginLeft: "-2.2rem", 
+                marginLeft: "-2.2rem",
               }}
             />
           </Search>
-          <HeaderUrls>
+          <HeaderUrls style={{ margin: "0 1.5rem 0 2.3rem" }}>
             <Link to={"/my-record"}>
-              <HeaderUrl style={{margin: '0 3.5rem'}}>나의 기록</HeaderUrl>
+              <HeaderUrl>나의 기록</HeaderUrl>
             </Link>
+            <Link to={"/record"}>
+              <HeaderUrl>기록하기</HeaderUrl>
+            </Link>
+          </HeaderUrls>
+          <HeaderUrls style={{ margin: "0 0.5rem" }}>
             <Link to={"/log-in"}>
-              <HeaderUrl>로그인</HeaderUrl>
+              <HeaderUrlLogin>로그인</HeaderUrlLogin>
             </Link>
-            <Link to={"/sign-up"}>
-              <HeaderUrl>회원가입</HeaderUrl>
-            </Link>
+            {/* <FaRegUser style={{fontSize: '1.5rem'}}/>  로그인를 해야 아이콘 보임 */}
           </HeaderUrls>
         </HeaderNav>
       </HeaderAll>
@@ -59,9 +62,9 @@ const HeaderNav = styled.nav`
   font-size: 1rem;
 `;
 const HeaderLogo = styled.div`
-  width: 10.5rem;
-  height: 3.5rem;
-  margin-right: -1rem;
+  width: 13rem;
+  height: 4rem;
+  margin: 0 3rem 0 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,23 +72,22 @@ const HeaderLogo = styled.div`
   color: #000000;
   cursor: pointer;
 `;
-const Search = styled.div`
+export const Search = styled.div`
   display: flex;
   align-items: center;
-`
+`;
 const Input = styled.input`
   width: 27rem;
   height: 2.5rem;
   border: 1.4px solid #4eac27;
   border-radius: 7px;
   margin: 0;
-  padding: 0  1rem;
+  padding: 0 1rem;
   &::placeholder {
     font-size: 1rem;
   }
 `;
 const HeaderUrls = styled.div`
-  margin: 0 3rem;
   display: flex;
   justify-content: center;
 `;
@@ -98,3 +100,13 @@ const HeaderUrl = styled.div`
     color: #393939;
   }
 `;
+const HeaderUrlLogin = styled(HeaderUrl)`
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  color: #ffffff;
+  background: #434343;
+  border-radius: 10px;
+  &:hover {
+    color: #ffffff;
+  }
+`

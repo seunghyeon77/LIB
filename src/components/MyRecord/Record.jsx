@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PresentDate from "../PresentDate";
 
 // 기록 하나의 컴포넌트
 export default function Record() {
@@ -17,10 +18,9 @@ export default function Record() {
           {/* 기록하기에서 기록 가져와야 됌*/}
         </InfoContent>
       </RecordInfo>
-      <Buttons>
-        <Button style={{ color: "#E86A33 " }}>삭제</Button>
-        <Button>수정</Button>
-      </Buttons>
+      <RecordDateDiv>
+        <PresentDate />
+      </RecordDateDiv>
     </RecordDiv>
   );
 }
@@ -28,13 +28,20 @@ export default function Record() {
 const RecordDiv = styled.div`
   width: 12rem;
   height: 100%;
-  margin: 4rem 1rem 0;
+  margin: 50px 16px 0;
+`;
+const HoverBook = styled.div`
+  width: 12rem;
+  height: 100%;
 `;
 const RecordInfo = styled.div`
   width: 100%;
   height: 100%;
   border: 1.3px solid #bfbfbf;
   border-radius: 7px;
+  ${HoverBook}:hover & {
+    transform-origin: left;
+  }
 `;
 const InfoTitle = styled.h3`
   padding: 0.9rem 1rem 0;
@@ -47,15 +54,8 @@ const InfoWriter = styled.span`
 `;
 const InfoContent = styled.p`
   padding: 0.8rem 1rem;
+  line-height: 1.1rem;
 `;
-const Buttons = styled.form`
-  display: flex;
-  justify-content: center;
-`;
-const Button = styled.button`
-  margin: 0.7rem 1rem;
-  border: none;
-  background: none;
-  font-size: 1rem;
-  cursor: pointer;
-`;
+const RecordDateDiv = styled.div`
+  margin: 0.3rem;
+`

@@ -13,14 +13,14 @@ export default function SignUpPage() {
     <LoginPageDiv>
       <LoginIcons />
       <LoginFormWrapper>
-        <LoginFormDiv style={{height: '800px'}}>
+        <LoginFormDiv style={{ height: "800px" }}>
           <LoginFormTitles>
             <LoginFormTitle>회원가입</LoginFormTitle>
             <LoginFormContent>
               여러분들만의 서재를 만들어보세요.
             </LoginFormContent>
           </LoginFormTitles>
-          <SignupForm />
+          <SignupForm display = 'flex' buttonText = '가입하기'/>
         </LoginFormDiv>
       </LoginFormWrapper>
     </LoginPageDiv>

@@ -10,11 +10,12 @@ import {
   ErrorText,
   ConfirmButton,
   LoginFormInputConfirm,
+  SignupTextDiv,
 } from "../../styles/Login/LoginForm";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { Search } from "../Header";
 
-export default function SignupForm() {
+export default function SignupForm({ display, buttonText }) {
   const {
     register,
     formState: { errors },
@@ -35,7 +36,7 @@ export default function SignupForm() {
       password
     );
   const isPasswordConfirmInvalid =
-    (passwordConfirm !== "") && passwordConfirm !== password;
+    passwordConfirm !== "" && passwordConfirm !== password;
 
   const onSubmit = (data) => {
     console.log(data);
@@ -158,17 +159,17 @@ export default function SignupForm() {
         </div>
       </div>
 
-      <LoginFormButton type="submit" style={{ margin: "0.5rem 0" }}>
-        가입하기
+      <LoginFormButton style={{ margin: "0.5rem 0" }}>
+        {buttonText}
       </LoginFormButton>
 
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+      <SignupTextDiv display={display}>
         <Link to={"/log-in"}>
           <span style={{ color: "#000000", cursor: "pointer" }}>
             회원가입을 하셨다면
           </span>
         </Link>
-      </div>
+      </SignupTextDiv>
     </LoginForm>
   );
 }

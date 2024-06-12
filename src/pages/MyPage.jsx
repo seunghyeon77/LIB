@@ -1,7 +1,13 @@
+import SignupForm from "../components/LogIn/SignupForm";
+import { LoginFormDiv } from "../styles/Login/LoginForm";
+import { LoginFormWrapper } from "../styles/Login/LoginLayout";
+
 export default function MyPage() {
   return (
-    <div className="MainPage">
-      마이페이지
-    </div>
+    <LoginFormWrapper>
+      <LoginFormDiv style={{ marginTop: "5.5rem" }}>
+        <SignupForm display = 'none' buttonText = '수정하기' />
+      </LoginFormDiv>
+    </LoginFormWrapper>
   );
 }
