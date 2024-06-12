@@ -23,7 +23,7 @@ export default function StarNumber() {
     </FlexCenterStar>
   );
 }
-const FlexCenterStar = styled(FlexCenter)`
+const FlexCenterStar = styled.div`
   margin: 0.7rem 1rem;
 `
 const StarNumberText = styled.span`

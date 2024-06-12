@@ -1,4 +1,13 @@
-import { AiBooks, BookInfoImg, BookInfoText, BookTitle, BookWriter, Img, SlickItem, TitleText } from "../../styles/Main/BookStyle";
+import {
+  AiBooks,
+  BookInfoImg,
+  BookInfoText,
+  BookTitle,
+  BookWriter,
+  Img,
+  SlickItem,
+  TitleText,
+} from "../../styles/Main/BookStyle";
 import { BookDetailinfoDiv } from "./BookDetailInfo";
 
 export default function BookDetailAi() {
@@ -16,7 +25,9 @@ export default function BookDetailAi() {
           />
           <BookInfoText>
             <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 <br /> 출판사</BookWriter>
+            <BookWriter>
+              프리드니히 니체 | 철학 <br /> 출판사
+            </BookWriter>
           </BookInfoText>
         </SlickItem>
         <SlickItem>
@@ -26,7 +37,9 @@ export default function BookDetailAi() {
           />
           <BookInfoText>
             <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 <br /> 출판사</BookWriter>
+            <BookWriter>
+              프리드니히 니체 | 철학 <br /> 출판사
+            </BookWriter>
           </BookInfoText>
         </SlickItem>
         <SlickItem>
@@ -36,7 +49,9 @@ export default function BookDetailAi() {
           />
           <BookInfoText>
             <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 <br /> 출판사</BookWriter>
+            <BookWriter>
+              프리드니히 니체 | 철학 <br /> 출판사
+            </BookWriter>
           </BookInfoText>
         </SlickItem>
         <SlickItem>
@@ -46,7 +61,9 @@ export default function BookDetailAi() {
           />
           <BookInfoText>
             <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 <br /> 출판사</BookWriter>
+            <BookWriter>
+              프리드니히 니체 | 철학 <br /> 출판사
+            </BookWriter>
           </BookInfoText>
         </SlickItem>
         <SlickItem>
@@ -56,7 +73,9 @@ export default function BookDetailAi() {
           />
           <BookInfoText>
             <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 <br /> 출판사</BookWriter>
+            <BookWriter>
+              프리드니히 니체 | 철학 <br /> 출판사
+            </BookWriter>
           </BookInfoText>
         </SlickItem>
       </AiBooks>
