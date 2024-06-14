@@ -5,7 +5,7 @@ export default function BookWrapperBest() {
   return (
     <Book>
       <TitleText>
-        <Img src="src\assets\책_아이콘-removebg-preview.png" />
+        <Img src="public\images\책_아이콘-removebg-preview.png" />
         독자들이 좋아하는 책
       </TitleText>
       <BookInfos>
