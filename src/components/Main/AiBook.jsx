@@ -6,7 +6,7 @@ export default function AiBook() {
   return (
     <AiBookCompo>
       <TitleText>
-        <Img src="public\로봇_아이콘-removebg-preview.png" />
+        <Img src="src\assets\로봇_아이콘-removebg-preview.png" />
         기록의 서재님을 위한 AI 맞춤 추천
       </TitleText>
       <Link to={"/log-in"}>
@@ -26,7 +26,7 @@ const AiBookCompo = styled.div`
 `;
 const AiBookImg = styled.div`
   height: 100%;
-  background-image: url("public/AI 도서관 사진.jpg");
+  background-image: url("src/assets/AI 도서관 사진.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 7px;
