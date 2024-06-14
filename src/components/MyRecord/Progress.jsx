@@ -24,13 +24,13 @@ export default function Progress() {
 }
 // %에 따른 bokkImg 리스트
 const bookImgs = [
-  "public/bookImgs/Book1.png",
-  "public/bookImgs/Book2.png",
-  "public/bookImgs/Book3.png",
-  "public/bookImgs/Book4.png",
-  "public/bookImgs/Book5.png",
-  "public/bookImgs/Book6.png",
-  "public/bookImgs/Book7.png",
+  "src/assets/bookImgs/Book1.png",
+  "src/assets/bookImgs/Book2.png",
+  "src/assets/bookImgs/Book3.png",
+  "src/assets/bookImgs/Book4.png",
+  "src/assets/bookImgs/Book5.png",
+  "src/assets/bookImgs/Book6.png",
+  "src/assets/bookImgs/Book7.png",
 ];
 const ProgressDiv = styled.div`
   display: flex;
