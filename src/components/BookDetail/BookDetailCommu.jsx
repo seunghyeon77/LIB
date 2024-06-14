@@ -7,8 +7,13 @@ import { MoreButton } from "../MyRecord/MyStudyWrapper";
 import PresentDate from "../PresentDate";
 
 export default function BookDetailCommu() {
-  const [commuInputs, setCommuInputs] = useState([]); // 커뮤니티 input값들을 배열로 저장
   const [commuInput, setCommuInput] = useState(""); // 커뮤니티 input창 저장
+  const [commuInputs, setCommuInputs] = useState([]); // 커뮤니티 input값들을 배열로 저장
+  const [isShowbutton, setIsShowbutton] = useState(false);
+
+  const inputValueOnchange = (event) => {
+    setCommuInput(event.target.value);
+  };
 
   const buttonValueOnclick = (event) => {
     event.preventDefault();
@@ -19,32 +24,38 @@ export default function BookDetailCommu() {
     setCommuInput(""); // input 창 초기화
   };
 
-  const inputValueOnchange = (event) => {
-    setCommuInput(event.target.value);
-  };
-
-
+  const displayInputs = !isShowbutton ? commuInputs.slice(0, 3) : commuInputs
   return (
     <div>
       <div>
         <TitleText style={{ margin: "1.9rem 2rem" }}>커뮤니티</TitleText>
         <FlexCenterDiv>
-          {commuInputs.map((input, index) => (
-            <CommuDiv key={index}>
-              <h4 style={{ margin: "0.5rem 0" }}>{"LIB 님"}</h4>{" "}
-              {/* 닉네임 가져와야함 */}
-              <CommuContent>
-                <p style={{ fontSize: "1rem", lineHeight: "1.5rem" }}>
-                  {input}
-                </p>
-                <CommuContentDate>
-                  <PresentDate />
-                </CommuContentDate>
-              </CommuContent>
-            </CommuDiv>
-          ))}
+          {displayInputs.map((input, index) => (
+              <CommuDiv key={index}>
+                <h4 style={{ margin: "0.5rem 0" }}>{"LIB 님"}</h4>{" "}
+                {/* 닉네임 가져와야함 */}
+                <CommuContent>
+                  <p style={{ fontSize: "1rem", lineHeight: "1.5rem" }}>
+                    {input}
+                  </p>
+                  <CommuContentDate>
+                    <PresentDate />
+                  </CommuContentDate>
+                </CommuContent>
+              </CommuDiv>
+            ))}
           <FlexCenter>
-            {commuInputs.length <= 2 ? "" : <MoreButtonHover>더보기</MoreButtonHover>}
+            {commuInputs.length <= 2 ? (
+              ""
+            ) : (
+              <MoreButtonHover
+                onClick={() => {
+                  setIsShowbutton(!isShowbutton);
+                }}
+              >
+                {!isShowbutton ? "더보기" : "접기"}
+              </MoreButtonHover>
+            )}
           </FlexCenter>
           <CommuForm onClick={buttonValueOnclick}>
             <CommuInput
@@ -53,9 +64,7 @@ export default function BookDetailCommu() {
               onChange={inputValueOnchange}
               value={commuInput} // input 값을 state와 동기화
             />
-            <CommuButton>
-              등록
-            </CommuButton>
+            <CommuButton>등록</CommuButton>
           </CommuForm>
         </FlexCenterDiv>
       </div>
