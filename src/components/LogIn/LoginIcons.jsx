@@ -3,8 +3,8 @@ import styled from "styled-components";
 export default function LoginIcons() {
   return (
     <LoginIconDiv>
-        <IconLight src="public\images\로그인아이콘.png" alt="LogInIcon" />
-        <IconPerson src="public\images\로그인사람아이콘.png" alt="LogInIconPerson" />
+        <IconLight src="https://github.com/JNU-econovation/LIB_FE/assets/144216731/0e3b4e1f-e319-4c08-b618-bf77b2dfe771" alt="LogInIcon" />
+        <IconPerson src="https://github.com/JNU-econovation/LIB_FE/assets/144216731/e4d3315c-1ec9-4709-9ccb-1d661e1c9a80" alt="LogInIconPerson" />
     </LoginIconDiv>
   )
 }

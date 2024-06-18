@@ -24,13 +24,13 @@ export default function Progress() {
 }
 // %에 따른 bokkImg 리스트
 const bookImgs = [
-  "public/images/bookImgs/Book1.png",
-  "public/images/bookImgs/Book2.png",
-  "public/images/bookImgs/Book3.png",
-  "public/images/bookImgs/Book4.png",
-  "public/images/bookImgs/Book5.png",
-  "public/images/bookImgs/Book6.png",
-  "public/images/bookImgs/Book7.png",
+  "https://github.com/JNU-econovation/LIB_FE/assets/144216731/f908b07b-7f19-4844-937b-56268cd4e5cd",
+  "https://github.com/JNU-econovation/LIB_FE/assets/144216731/dd3adf0d-c072-43b3-a684-db64c5e51e2e",
+  "https://github.com/JNU-econovation/LIB_FE/assets/144216731/8676c614-78c9-48a9-962c-fbf3c2196601",
+  "https://github.com/JNU-econovation/LIB_FE/assets/144216731/a69caa2e-5453-4589-95c5-52dcebee9182",
+  "https://github.com/JNU-econovation/LIB_FE/assets/144216731/0dbba83a-c8c4-45c3-b09f-5cb0e7a3ea04",
+  "https://github.com/JNU-econovation/LIB_FE/assets/144216731/36fb5372-68f3-4382-9f06-31a866c9be45",
+  "https://github.com/JNU-econovation/LIB_FE/assets/144216731/5f1726fe-0f68-4546-affc-822cb361fd6d",
 ];
 const ProgressDiv = styled.div`
   display: flex;
