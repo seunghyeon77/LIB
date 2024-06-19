@@ -35,10 +35,13 @@ export default function Header() {
             </Link>
           </HeaderUrls>
           <HeaderUrls style={{ margin: "0 0.5rem" }}>
-            <Link to={"/log-in"}>
-              <HeaderUrlLogin>로그인</HeaderUrlLogin>
+            {/* <Link to={"/log-in"}>
+              <HeaderUrlLogin as={'p'}>로그인</HeaderUrlLogin>
+            </Link> */}
+            <Link to={'/my-page'}>
+              <FaRegUser style={{fontSize: '30px', color: '#000000', margin: ' 0 10px 0 15px'}}/>  
             </Link>
-            {/* <FaRegUser style={{fontSize: '1.5rem'}}/>  로그인를 해야 아이콘 보임 */}
+            <HeaderUrlLogin as={'p'} style={{}}>로그아웃</HeaderUrlLogin>
           </HeaderUrls>
         </HeaderNav>
       </HeaderAll>
