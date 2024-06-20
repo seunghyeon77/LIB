@@ -1,0 +1,127 @@
+{
+  "success": true,
+  "response": [
+     {
+       "bookId": 1,
+       "bookCover": "https://image.yes24.com/goods/124999476/XL",
+       "bookName":"불변의 법칙",
+       "authorPublisher":"모건 하우절 | 서삼독"    
+     },
+     {
+       "bookId": 2,
+       "bookCover": "https://image.yes24.com/goods/126348287/XL",
+       "bookName":"부자의 마지막 가르침",
+       "authorPublisher":"다우치 마나부 | 북모먼트" 
+     },
+     {
+      "bookId": 3,
+      "bookCover": "https://image.yes24.com/goods/126187453/XL",
+      "bookName":"어떻게 살 것인가",
+      "authorPublisher":"이광수 | 이든하우스" 
+    },
+    {
+      "bookId": 4,
+      "bookCover": "https://image.yes24.com/goods/126661524/XL",
+      "bookName":"오늘부터는 오를 집만 보인다",
+      "authorPublisher":"앨리스허 | 다산북스" 
+    },
+    {
+      "bookId": 5,
+      "bookCover": "https://image.yes24.com/goods/126576222/XL",
+      "bookName":"원칙으로 수익 내는 단타의 기술",
+      "authorPublisher":"원정연(만쥬) | 길벗" 
+    },
+    {
+      "bookId": 6,
+      "bookCover": "https://image.yes24.com/goods/96547408/XL",
+      "bookName":"돈의 심리학 (30만 부 기념 스페셜 에디션)",
+      "authorPublisher":"모건 하우절 | 인플루엔셜" 
+    },
+    {
+      "bookId": 7,
+      "bookCover": "https://image.yes24.com/goods/126528622/XL",
+      "bookName":"밸류에이션을 알면 10배 주식이 보인다",
+      "authorPublisher":"박순혁 | 한국경제신문" 
+    },
+    {
+      "bookId": 8,
+      "bookCover": "https://image.yes24.com/goods/126702038/XL",
+      "bookName":"THE MONEY BOOK 더 머니북",
+      "authorPublisher":"토스 | 비바리퍼블리카" 
+    },
+    {
+      "bookId": 9,
+      "bookCover": "https://image.yes24.com/goods/126295769/XL",
+      "bookName":"cis의 주식 투자 법칙",
+      "authorPublisher":"cis | 이레미디어" 
+    },
+    {
+      "bookId": 10,
+      "bookCover": "https://image.yes24.com/goods/125393082/XL",
+      "bookName":"60년대생이 온다",
+      "authorPublisher":"김경록 | 비아북" 
+    },
+    {
+      "bookId": 11,
+      "bookCover": "https://image.yes24.com/goods/11081680/XL",
+      "bookName":"자본주의",
+      "authorPublisher":"정지은 | 가나출판사" 
+    },
+    {
+      "bookId": 12,
+      "bookCover": "https://image.yes24.com/goods/126115744/XL",
+      "bookName":"피크아웃 코리아",
+      "authorPublisher":"채상욱 | 커넥티드그라운드" 
+    },
+    {
+      "bookId": 13,
+      "bookCover": "https://image.yes24.com/goods/124112599/XL",
+      "bookName":"[예스리커버] 처음부터 시작하는 주식투자 단타전략",
+      "authorPublisher":"홍인기 | 길벗" 
+    },
+    {
+      "bookId": 14,
+      "bookCover": "https://image.yes24.com/goods/126406524/XL",
+      "bookName":"최강의 AI 혁명 투자",
+      "authorPublisher":"이형수 | 지베르니" 
+    },
+    {
+      "bookId": 15,
+      "bookCover": "https://image.yes24.com/goods/90428162/XL",
+      "bookName":"돈의 속성 300쇄 리커버",
+      "authorPublisher":"김승호 | 스노우폭스북스" 
+    },
+    {
+      "bookId": 16,
+      "bookCover": "https://image.yes24.com/goods/126436795/XL",
+      "bookName":"무엇을 바라볼 것인가",
+      "authorPublisher":"박종규 | 터닝페이지" 
+    },
+    {
+      "bookId": 17,
+      "bookCover": "https://image.yes24.com/goods/125384672/XL",
+      "bookName":"매주 달러 받는 배당주 통장",
+      "authorPublisher":"장우석 | 페이지2북스" 
+    },
+    {
+      "bookId": 18,
+      "bookCover": "https://image.yes24.com/goods/126437066/XL",
+      "bookName":"AI 사피엔스",
+      "authorPublisher":"최재붕 | 쌤앤파커스" 
+    },
+    {
+      "bookId": 19,
+      "bookCover": "https://image.yes24.com/goods/126721523/XL",
+      "bookName":"당신이 몰랐던 이야기",
+      "authorPublisher":"박준홍 | 북스고" 
+    },
+    {
+      "bookId": 20,
+      "bookCover": "https://image.yes24.com/goods/58774995/XL",
+      "bookName":"부자 아빠 가난한 아빠 20주년 특별 기념판",
+      "authorPublisher":"로버트 기요사키 | 민음인" 
+    }
+       
+    ],
+    "error": null
+}
