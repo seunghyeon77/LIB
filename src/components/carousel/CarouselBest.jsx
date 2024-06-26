@@ -2,7 +2,16 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import { BookInfoImg, BookInfoText, BookTitle, BookWriter, SlickItem } from "../../styles/Main/BookStyle";
+import {
+  BookInfoImg,
+  BookInfoText,
+  BookTitle,
+  BookWriter,
+  SlickItem,
+} from "../../styles/Main/BookStyle";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import BookTitlelimit from "../BookTitlelimit";
 
 export default function CarouselBest() {
   const settings = {
@@ -14,209 +23,35 @@ export default function CarouselBest() {
     slidesToScroll: 5,
     touchMove: false,
   };
+  const [bookInfos, setBookInfos] = useState([]);
+
+  const booksApi = async () => {
+    try {
+      const response = await axios.get("src/api/Main/BestSeller.json");
+      setBookInfos(response.data.response);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  useEffect(() => {
+    booksApi();
+  }, []);
+
   return (
     <BookCarousel>
       <SlickSlider {...settings}>
-        <SlickItem>
-          <BookInfoImg // 책 정보들을 가져와야 됌
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>프리드니히 니체 | 철학 </BookWriter>
-          </BookInfoText>
-        </SlickItem>
+          {bookInfos.map((bookInfo) => (
+            <SlickItem key={bookInfo.bookId}>
+              <BookInfoImg 
+                src={bookInfo.bookCover}
+                alt="bookimg"
+              />
+              <BookInfoText>
+                <BookTitlelimit bookTitle={bookInfo.bookName}/>
+                <BookWriter> {bookInfo.authorPublisher} </BookWriter>
+              </BookInfoText>
+            </SlickItem>
+          ))}
       </SlickSlider>
     </BookCarousel>
   );
