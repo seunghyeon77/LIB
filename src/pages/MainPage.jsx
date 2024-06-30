@@ -9,7 +9,7 @@ export default function MainPage() {
     <Page>
       <Body>
         <AiBook />
-        <RecordHistory />
+        {/* <RecordHistory /> */}
         <BookWrapperBest />
         <BookWrapperGenres />
       </Body>
