@@ -1,8 +1,24 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Img, TitleText } from "../../styles/Main/BookStyle";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+import { BookInfoImg, Img, TitleText } from "../../styles/Main/BookStyle";
+import { SlickSlider } from "../carousel/CarouselBest";
 
 export default function AiBook() {
+  const settings = {
+    dots: true,
+    infinite: true,
+    arrows: true,
+    speed: 800,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    touchMove: false,
+    centerMode: true,
+    centerPadding: '0px',
+  };
+
   return (
     <AiBookCompo>
       <TitleText>
@@ -12,7 +28,28 @@ export default function AiBook() {
       <Link to={"/log-in"}>
         <AiBookImg>
           <AiBookImgOverlay>
-            <AiBookImgText>로그인 후 이용가능합니다.</AiBookImgText>
+            {/*로그인 하기 전*/}
+            <SlickSlider {...settings} style={{width: '60%', height: '250px'}}>
+              <div>
+                <CenterBookInfoImg
+                  src="https://th.bing.com/th/id/OIP.04ireZcUOGAc4yE0cCk6OgHaJg?rs=1&pid=ImgDetMain"
+                  alt="bookimg"
+                />
+              </div>
+              <div>
+                <CenterBookInfoImg
+                  src="https://th.bing.com/th/id/OIP.04ireZcUOGAc4yE0cCk6OgHaJg?rs=1&pid=ImgDetMain"
+                  alt="bookimg"
+                />
+              </div>
+              <div>
+                <CenterBookInfoImg
+                  src="https://th.bing.com/th/id/OIP.04ireZcUOGAc4yE0cCk6OgHaJg?rs=1&pid=ImgDetMain"
+                  alt="bookimg"
+                />
+              </div>
+            </SlickSlider>
+            {/*로그인 한 후*/}
           </AiBookImgOverlay>
         </AiBookImg>
       </Link>
@@ -43,3 +80,6 @@ const AiBookImgText = styled.span`
   font-size: 1.2rem;
   color: #000000;
 `;
+const CenterBookInfoImg = styled(BookInfoImg)`
+  margin: 10px auto;
+`

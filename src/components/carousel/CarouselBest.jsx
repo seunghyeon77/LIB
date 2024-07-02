@@ -5,7 +5,6 @@ import styled from "styled-components";
 import {
   BookInfoImg,
   BookInfoText,
-  BookTitle,
   BookWriter,
   SlickItem,
 } from "../../styles/Main/BookStyle";
@@ -40,18 +39,18 @@ export default function CarouselBest() {
   return (
     <BookCarousel>
       <SlickSlider {...settings}>
-          {bookInfos.map((bookInfo) => (
-            <SlickItem key={bookInfo.bookId}>
-              <BookInfoImg 
-                src={bookInfo.bookCover}
-                alt="bookimg"
-              />
-              <BookInfoText>
-                <BookTitlelimit bookTitle={bookInfo.bookName}/>
-                <BookWriter> {bookInfo.authorPublisher} </BookWriter>
-              </BookInfoText>
-            </SlickItem>
-          ))}
+        {bookInfos.map((bookInfo) => (
+          <SlickItem key={bookInfo.bookId}>
+            <BookInfoImg 
+              src={bookInfo.bookCover}
+              alt="bookimg"
+            />
+            <BookInfoText>
+              <BookTitlelimit bookTitle={bookInfo.bookName}/>
+              <BookWriter> {bookInfo.authorPublisher} </BookWriter>
+            </BookInfoText>
+          </SlickItem>
+        ))}
       </SlickSlider>
     </BookCarousel>
   );
@@ -62,7 +61,7 @@ const BookCarousel = styled.div`
   margin: 0 auto;
 `;
 
-const SlickSlider = styled(Slider)`
+export const SlickSlider = styled(Slider)`
   .slick-prev:before,
   .slick-next:before {
     color: black;
