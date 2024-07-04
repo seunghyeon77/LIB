@@ -29,6 +29,7 @@ export default function AiBook() {
         <AiBookImg>
           <AiBookImgOverlay>
             {/*로그인 하기 전*/}
+            {/* <AiBookImgText>로그인 후 이용 가능합니다.</AiBookImgText> */}
             <SlickSlider {...settings} style={{width: '60%', height: '250px'}}>
               <div>
                 <CenterBookInfoImg
