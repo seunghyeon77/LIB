@@ -2,14 +2,15 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
+import { axiosInstance } from "../../api/axiosInstance";
+import { useEffect, useState } from "react";
+
 import {
   BookInfoImg,
   BookInfoText,
   BookWriter,
   SlickItem,
 } from "../../styles/Main/BookStyle";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import BookTitlelimit from "../BookTitlelimit";
 
 export default function CarouselBest() {
@@ -26,7 +27,7 @@ export default function CarouselBest() {
 
   const booksApi = async () => {
     try {
-      const response = await axios.get("src/api/Main/BestSeller.json");
+      const response = await axiosInstance.get("/books/popular");
       setBookInfos(response.data.response);
     } catch (err) {
       console.error(err);
@@ -47,7 +48,7 @@ export default function CarouselBest() {
             />
             <BookInfoText>
               <BookTitlelimit bookTitle={bookInfo.bookName}/>
-              <BookWriter> {bookInfo.authorPublisher} </BookWriter>
+              <BookWriter> {bookInfo.authorPub} </BookWriter>
             </BookInfoText>
           </SlickItem>
         ))}
