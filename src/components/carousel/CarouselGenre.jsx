@@ -6,12 +6,13 @@ import styled from "styled-components";
 import {
   BookInfoImg,
   BookInfoText,
+  BookTitle,
   BookWriter,
   SlickItem,
 } from "../../styles/Main/BookStyle";
 import BookTitlelimit from "../BookTitlelimit";
 
-export default function CarouselBest(genreBooks) {
+export default function CarouselBest({ genreBooks }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -25,7 +26,7 @@ export default function CarouselBest(genreBooks) {
   return (
     <BookCarousel>
       <SlickSlider {...settings}>
-        {/* {genreBooks.map((genreBook) => (
+        {genreBooks.map((genreBook) => (
           <SlickItem key={genreBook.bookId}>
             <BookInfoImg 
               src={genreBook.bookCover}
@@ -33,12 +34,12 @@ export default function CarouselBest(genreBooks) {
             />
             <BookInfoText>
               <BookTitle>
-                <BookTitlelimit bookTitle={bookInfo.bookName} TextLimitAccount={9}/>
+                <BookTitlelimit bookTitle={genreBook.bookName} TextLimitAccount={10}/>
               </BookTitle>
-              <BookWriter> {genreBook.authorPublisher} </BookWriter>
+              <BookWriter> {genreBook.authorPub} </BookWriter>
             </BookInfoText>
           </SlickItem>
-        ))} */}
+        ))}
       </SlickSlider>
     </BookCarousel>
   );

@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import {
   BookInfoImg,
   BookInfoText,
+  BookTitle,
   BookWriter,
   SlickItem,
 } from "../../styles/Main/BookStyle";
