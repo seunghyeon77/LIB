@@ -42,11 +42,11 @@ export default function RecordPageForm() {
     try {
       const response = await axiosInstance.post("/records", data);
       console.log("Success:", response.data);
-      alert("나의 기록 페이지에 저장되었습니다 :)");
-      navigator("/");
     } catch (error) {
       console.error(error);
     }
+    alert("나의 기록 페이지에 저장되었습니다 :)");
+    navigator("/");
     console.log(data)
   };
 
