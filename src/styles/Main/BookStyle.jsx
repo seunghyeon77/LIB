@@ -20,7 +20,7 @@ export const BookInfoImg = styled.img`
   width: 9rem;
   height: 13rem;
   /* filter: drop-shadow(#6c6c6c 0 0.5px 2px); */
-  border: 1.3px solid #eaeaea;
+  border: 1.3px solid #331d1d;
 `;
 export const BookInfoText = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ export const BookInfoText = styled.div`
   margin: 2px 0;
 `;
 export const BookTitle = styled.span`
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin: 0.7rem 0;
 `;
 export const BookInfoGenre = styled.span`

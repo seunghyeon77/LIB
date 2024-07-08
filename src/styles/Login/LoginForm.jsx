@@ -36,9 +36,8 @@ export const LoginFormInputConfirm = styled(LoginFormInput)`
   width: 19.3rem;
 `
 export const ConfirmButton = styled.button`
-  margin: 0.5rem 0 0.5rem 0.8rem;
-  padding: 1rem 1.5rem;
-  font-size: 1rem;
+  margin: 0.5rem 0 0.5rem 0.4rem;
+  padding: 1rem;
   border: 1px solid #d1d1d1;
   border-radius: 7px;
   cursor: pointer;
