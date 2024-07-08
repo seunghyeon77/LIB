@@ -2,8 +2,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import { axiosInstance } from "../../api/axiosInstance";
-import { useEffect, useState } from "react";
 
 import {
   BookInfoImg,
@@ -14,7 +12,7 @@ import {
 } from "../../styles/Main/BookStyle";
 import BookTitlelimit from "../BookTitlelimit";
 
-export default function CarouselBest() {
+export default function CarouselBest({ genreBooks }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -24,34 +22,21 @@ export default function CarouselBest() {
     slidesToScroll: 5,
     touchMove: false,
   };
-  const [bookInfos, setBookInfos] = useState([]);
-
-  const booksApi = async () => {
-    try {
-      const response = await axiosInstance.get("/books/popular");
-      setBookInfos(response.data.response);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-  useEffect(() => {
-    booksApi();
-  }, []);
 
   return (
     <BookCarousel>
       <SlickSlider {...settings}>
-        {bookInfos.map((bookInfo) => (
-          <SlickItem key={bookInfo.bookId}>
+        {genreBooks.map((genreBook) => (
+          <SlickItem key={genreBook.bookId}>
             <BookInfoImg 
-              src={bookInfo.bookCover}
+              src={genreBook.bookCover}
               alt="bookimg"
             />
             <BookInfoText>
               <BookTitle>
-                <BookTitlelimit bookTitle={bookInfo.bookName} TextLimitAccount={9}/>
+                <BookTitlelimit bookTitle={genreBook.bookName} TextLimitAccount={10}/>
               </BookTitle>
-              <BookWriter> {bookInfo.authorPub} </BookWriter>
+              <BookWriter> {genreBook.authorPub} </BookWriter>
             </BookInfoText>
           </SlickItem>
         ))}
