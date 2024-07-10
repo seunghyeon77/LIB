@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Book, BookInfos } from "../../styles/Main/BookStyle";
 import CarouselGenre from "../carousel/CarouselGenre";
 
-export default function BookWrapperGenres({ClickBookId}) {
+export default function BookWrapperGenres() {
   const genreToCategory = ([
     "경제 경영",
     "IT 모바일",
@@ -47,7 +47,7 @@ export default function BookWrapperGenres({ClickBookId}) {
         ))}
       </BookGenres>
       <BookInfos>
-        <CarouselGenre genreBooks={genreBooks} ClickBookID={ClickBookId} />
+        <CarouselGenre genreBooks={genreBooks} />
       </BookInfos>
     </Book>
   );
