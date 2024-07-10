@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import { axiosInstance } from "../../api/axiosInstance";
 
 import {
   LoginForm,
@@ -23,10 +24,13 @@ export default function SignupForm({ display, buttonText }) {
     handleSubmit,
   } = useForm();
 
+  const navigator = useNavigate();
+
   // watch를 이용해 실시간으로 input값을 저장.
   const id = watch("id");
   const password = watch("password");
-  const passwordConfirm = watch("passwordConfirm");
+  const passwordConfirm = watch("passwordCheck");
+  const nickName = watch('nickName')
 
   // 사용자가 입력한 input 값이 정규식과 맞는지를 Boolean 값으로 반환.
   const isIdInvalid = id && !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+$/.test(id);
@@ -37,10 +41,22 @@ export default function SignupForm({ display, buttonText }) {
     );
   const isPasswordConfirmInvalid =
     passwordConfirm !== "" && passwordConfirm !== password;
-
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  
+  const onClick = () => {
+    console.log(id);
+    console.log(nickName);
+  }
+  
+  const onSubmit = async (data) => {
+    console.log(data)
+    try {
+      const response = await axiosInstance.post("/members/join", data);
+      console.log("Success:", response.data);
+    } catch (error) {
+      console.error(error);
+    }
+    // navigator("/");
+  }
 
   return (
     <LoginForm onSubmit={handleSubmit(onSubmit)}>
@@ -54,7 +70,7 @@ export default function SignupForm({ display, buttonText }) {
             required: "필수 입력 항목입니다.",
           })}
         />
-        <ConfirmButton>확인</ConfirmButton>
+        <ConfirmButton onClick={onClick}>중복 확인</ConfirmButton>
       </div>
       {(errors.id || isIdInvalid) && (
         <ErrorText>{errors.id?.message || "양식이 알맞지 않습니다."}</ErrorText>
@@ -84,7 +100,7 @@ export default function SignupForm({ display, buttonText }) {
       <LoginFormInput
         type="password"
         error={errors.passwordConfirm || isPasswordConfirmInvalid}
-        {...register("passwordConfirm", {
+        {...register("passwordCheck", {
           required: "필수 입력 항목입니다.",
           validate: (value) => value === password,
         })}
@@ -103,7 +119,7 @@ export default function SignupForm({ display, buttonText }) {
           error={errors.nickName}
           {...register("nickName", { required: "필수 입력 항목입니다." })}
         />
-        <ConfirmButton>확인</ConfirmButton>
+        <ConfirmButton onClick={onClick}>중복 확인</ConfirmButton>
       </div>
       {errors.nickName && <ErrorText>{errors.nickName.message}</ErrorText>}
 
@@ -111,10 +127,15 @@ export default function SignupForm({ display, buttonText }) {
       <Search>
         <SelectGenres
           error={errors.genres}
-          {...register("genres", { required: true })}
+          {...register("category", { required: true })}
         >
           <option value="select">카테고리 선택</option>
-          {/* 카테고리들을 가져와서 추가 */}
+          <option value="경제 경영">경제 경영</option>
+          <option value="모바일">IT 모바일</option>
+          <option value="가정 살림">가정 살림</option>
+          <option value="건강 취미">건강 취미</option>
+          <option value="사회 정치">사회 정치</option>
+          <option value="인문">인문</option>
         </SelectGenres>
         <RiArrowDownSLine
           style={{
@@ -131,7 +152,7 @@ export default function SignupForm({ display, buttonText }) {
           <LoginFormInput
             type="number"
             error={errors.goalRecord}
-            {...register("goalRecord", { required: true })}
+            {...register("goalNumber", { required: true })}
           />
           {errors.goalRecord && <ErrorText>필수 입력 항목입니다.</ErrorText>}
         </div>
@@ -142,11 +163,12 @@ export default function SignupForm({ display, buttonText }) {
             <SelectGenres
               style={{ width: "10rem" }}
               error={errors.resetPeriod}
-              {...register("resetPeriod", { required: true })}
+              {...register("resetCycle", { required: true })}
             >
               <option value="">초기화 주기</option>
               <option value="30">30일</option>
               <option value="60">60일</option>
+              <option value="90">90일</option>
             </SelectGenres>
             <RiArrowDownSLine
               style={{

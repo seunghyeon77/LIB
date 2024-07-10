@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { axiosInstance } from "../../api/axiosInstance";
+
 import {
   AiBooks,
   BookInfoImg,
@@ -9,8 +12,23 @@ import {
   TitleText,
 } from "../../styles/Main/BookStyle";
 import { BookDetailinfoDiv } from "./BookDetailInfo";
+import BookTitlelimit from "../BookTitlelimit";
 
-export default function BookDetailAi() {
+export default function BookDetailAi({bookId}) {
+  const [aiBookInfos, setAiBookInfos] = useState([]);
+
+  const AibooksApi = async () => {
+    try {
+      const response = await axiosInstance.get(`recommand/detail/${bookId}`);
+      setAiBookInfos(response.data.response);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  useEffect(() => {
+    AibooksApi();
+  }, []);
+
   return (
     <BookDetailinfoDiv>
       <TitleText style={{ marginTop: "1.3rem" }}>
@@ -18,66 +36,22 @@ export default function BookDetailAi() {
         이 책과 유사한 책들을 소개해드릴게요!
       </TitleText>
       <AiBooks>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>
-              프리드니히 니체 | 철학 <br /> 출판사
-            </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>
-              프리드니히 니체 | 철학 <br /> 출판사
-            </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>
-              프리드니히 니체 | 철학 <br /> 출판사
-            </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>
-              프리드니히 니체 | 철학 <br /> 출판사
-            </BookWriter>
-          </BookInfoText>
-        </SlickItem>
-        <SlickItem>
-          <BookInfoImg
-            src="https://image.yes24.com/goods/112013526/XL"
-            alt="bookimg"
-          />
-          <BookInfoText>
-            <BookTitle>니체의 말</BookTitle>
-            <BookWriter>
-              프리드니히 니체 | 철학 <br /> 출판사
-            </BookWriter>
-          </BookInfoText>
-        </SlickItem>
+        {aiBookInfos.map((aiBookInfo) => (
+          <SlickItem key={aiBookInfo.bookId}>
+            <BookInfoImg
+              src={aiBookInfo.bookCover}
+              alt="bookimg"
+            />
+            <BookInfoText>
+              <BookTitle>
+                <BookTitlelimit bookTitle={aiBookInfo.bookName} TextLimitAccount={9}/>
+              </BookTitle>
+              <BookWriter>
+                {aiBookInfo.authorPub}
+              </BookWriter>
+            </BookInfoText>
+          </SlickItem>
+        ))}
       </AiBooks>
     </BookDetailinfoDiv>
   );

@@ -1,45 +1,49 @@
 import { Link } from "react-router-dom";
 import { BookInfoGenre, BookInfoTitle } from "../../styles/Main/BookStyle";
 import styled from "styled-components";
-import StarNumber from "../starNumber";
+import StarNumber from "../Record/starNumber";
 
-export default function BookDetailinfo() {
+export default function BookDetailinfo( {bookInfos} ) {
+  const bookDetailInfos = [bookInfos];
+
   return (
     <BookDetailinfoDiv>
-      <BookInfos>
-        <BookInfoImg
-          src="https://image.yes24.com/goods/112013526/XL"
-          alt="bookImg"
-        />
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <BookInfoTitle>니체의 말</BookInfoTitle>
-          <BookInfoGenre>책 장르가 들어갈 자리 </BookInfoGenre>
-          <StarNumbers/>
-          <Buttons>
-            <form>
-              <Button
-                style={{
-                  border: "1px solid #888888",
-                  backgroundColor: "#ffffff",
-                  padding: "0.8rem 1.1rem",
-                }}
-              >
-                서재에 추가
-              </Button>
-              <Button
-                style={{
-                  border: "none",
-                  backgroundColor: "#539165",
-                }}
-              >
-                <Link to={"/record"} style={{ color: "#ffffff" }}>
-                  기록하기
-                </Link>
-              </Button>
-            </form>
-          </Buttons>
-        </div>
-      </BookInfos>
+      {bookDetailInfos.map((bookInfo) => (
+        <BookInfos key={bookInfo.bookId}>
+          <BookInfoImg
+            src={bookInfo.bookCover}
+            alt="bookImg"
+          />
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <BookInfoTitle> {bookInfo.bookName} </BookInfoTitle>
+            <BookInfoGenre> {bookInfo.authorCate} |{bookInfo.publisher} </BookInfoGenre>
+            <StarNumbers />
+            <Buttons>
+              <form>
+                <Button
+                  style={{
+                    border: "1px solid #888888",
+                    backgroundColor: "#ffffff",
+                    padding: "0.8rem 1.1rem",
+                  }}
+                >
+                  서재에 추가
+                </Button>
+                <Button
+                  style={{
+                    border: "none",
+                    backgroundColor: "#539165",
+                  }}
+                >
+                  <Link to={"/record"} style={{ color: "#ffffff" }}>
+                    기록하기
+                  </Link>
+                </Button>
+              </form>
+            </Buttons>
+          </div>
+        </BookInfos>
+      ))}
     </BookDetailinfoDiv>
   );
 }
@@ -67,4 +71,4 @@ const Button = styled.button`
 `;
 const StarNumbers = styled(StarNumber)`
   margin: 0;
-`
+`;

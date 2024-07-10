@@ -13,6 +13,7 @@ import {
   SlickItem,
 } from "../../styles/Main/BookStyle";
 import BookTitlelimit from "../BookTitlelimit";
+import { Link } from "react-router-dom";
 
 export default function CarouselBest() {
   const settings = {
@@ -43,17 +44,19 @@ export default function CarouselBest() {
       <SlickSlider {...settings}>
         {bookInfos.map((bookInfo) => (
           <SlickItem key={bookInfo.bookId}>
-            <BookInfoImg 
-              src={bookInfo.bookCover}
-              alt="bookimg"
-            />
+            <Link to={`/books/${bookInfo.bookId}`}>
+              <BookInfoImg 
+                src={bookInfo.bookCover}
+                alt="bookimg"
+              />
+            </Link>
             <BookInfoText>
               <BookTitle>
                 <BookTitlelimit bookTitle={bookInfo.bookName} TextLimitAccount={9}/>
               </BookTitle>
               <BookWriter> {bookInfo.authorPub} </BookWriter>
             </BookInfoText>
-          </SlickItem>
+        </SlickItem>
         ))}
       </SlickSlider>
     </BookCarousel>
