@@ -1,36 +1,21 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import axios from "axios";
 import styled from "styled-components";
 
 import PresentDate from "../PresentDate";
 import BookTitlelimit from "../BookTitlelimit";
 
 // 기록 하나의 컴포넌트
-export default function Record() {
-  const [recordInfos, setRecordInfos] = useState([]);
-
-  const recordsApi = async () => {
-    try {
-      const response = await axios.get("src/api/Record/RecordInfo.json");
-      setRecordInfos(response.data.response);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    recordsApi();
-  }, []);
-
+export default function Record({recordInfos}) {
   return (
     <RecordDiv>
       {recordInfos.map((recordInfo) => (
         <div key={recordInfo.recordId}>
           <RecordInfo>
-            <InfoTitle>{recordInfo.bookName}</InfoTitle>
+            <InfoTitle>
+              <BookTitlelimit bookTitle={recordInfo.bookName} TextLimitAccount={12}/>
+            </InfoTitle>
             <InfoWriter>{recordInfo.author}</InfoWriter>
             <InfoContent>
-              <BookTitlelimit bookTitle={recordInfo.recordContent} TextLimitAccount={150} />
+              <BookTitlelimit bookTitle={recordInfo.recordContent} TextLimitAccount={140} />
             </InfoContent>
           </RecordInfo>
           <RecordDateDiv>
