@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         element: <MyRecordPage />
       },
       {
-        path:"book-detail-page",
+        path:"/books/:bookId",
         element: <BookDetailPage />
       },
       {

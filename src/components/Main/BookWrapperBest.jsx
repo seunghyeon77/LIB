@@ -1,7 +1,7 @@
 import CarouselBest from "../carousel/CarouselBest";
 import { Book, BookInfos, Img, TitleText } from "../../styles/Main/BookStyle";
 
-export default function BookWrapperBest() {
+export default function BookWrapperBest({ClickBookId}) {
   return (
     <Book style={{margin: '5rem 0'}}>
       <TitleText>
@@ -9,7 +9,7 @@ export default function BookWrapperBest() {
         독자들이 좋아하는 책
       </TitleText>
       <BookInfos>
-        <CarouselBest />
+        <CarouselBest ClickBookId={ClickBookId} />
       </BookInfos>
     </Book>
   );

@@ -14,7 +14,7 @@ import {
 } from "../../styles/Main/BookStyle";
 import BookTitlelimit from "../BookTitlelimit";
 
-export default function CarouselBest() {
+export default function CarouselBest({ClickBookId}) {
   const settings = {
     dots: true,
     infinite: true,
@@ -42,7 +42,7 @@ export default function CarouselBest() {
     <BookCarousel>
       <SlickSlider {...settings}>
         {bookInfos.map((bookInfo) => (
-          <SlickItem key={bookInfo.bookId}>
+          <SlickItem key={bookInfo.bookId} onClick={() => ClickBookId(bookInfo.bookId)}>
             <BookInfoImg 
               src={bookInfo.bookCover}
               alt="bookimg"
