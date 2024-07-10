@@ -6,20 +6,7 @@ import { BookInfoImg, BookInfos, TitleText } from "../../styles/Main/BookStyle";
 import BookTitlelimit from "../BookTitlelimit";
 
 export default function RecordHistory() {
-  const [recordInfos, setRecordInfos] = useState([
-    {
-      recordId: 2,
-      bookCover: "https://image.yes24.com/goods/112013526/XL",
-      recordContent:
-        "이 책을 읽고 정말 많은 생각을 했다. 그 예로 나는 지금 어떤 존재인가?’ ‘나는 현재 일류의 조건을 충족하는가?’ 등이 있다. 세상엔 참 다양한 사람이 있는 거 같다. 내이 책을 읽고 정말 많은 생각을 했다. 그 예로 ‘나는 지금 어떤 존재인 내가 너무 두렵다 그러힞",
-    },
-    {
-      recordId: 3,
-      bookCover: "https://image.yes24.com/goods/112013526/XL",
-      recordContent:
-        "이 책을 읽고 정말 많은 생각을 했다. 그 예로 나는 지금 어떤 존재인가?’ ‘나는 현재 일류의 조건을 충족하는가?’ 등이 있다. 세상엔 참 다양한 사람이 있는 거 같다. 내이 책을 읽고 정말 많은 생각을 했다. 그 예로 ‘나는 지금 어떤 존재인 내가 너무 두렵다 그러힞",
-    },
-  ]);
+  const [recordInfos, setRecordInfos] = useState([]);
 
   const recordsApi = async () => {
     try {
