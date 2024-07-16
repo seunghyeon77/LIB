@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import { BookInfoGenre, BookInfoTitle } from "../../styles/Main/BookStyle";
 import styled from "styled-components";
 import StarNumber from "../Record/starNumber";
+import { useState } from "react";
 
 export default function BookDetailinfo( {bookInfos} ) {
   const bookDetailInfos = [bookInfos];
+  const [rating, setRating] = useState("");
 
   return (
     <BookDetailinfoDiv>
@@ -16,8 +18,8 @@ export default function BookDetailinfo( {bookInfos} ) {
           />
           <div style={{ display: "flex", flexDirection: "column" }}>
             <BookInfoTitle> {bookInfo.bookName} </BookInfoTitle>
-            <BookInfoGenre> {bookInfo.authorCate} |{bookInfo.publisher} </BookInfoGenre>
-            <StarNumbers />
+            <BookInfoGenre> {bookInfo.authorCate}|{bookInfo.publisher} </BookInfoGenre>
+            <StarNumbers rating={rating} setRating={setRating} />
             <Buttons>
               <form>
                 <Button

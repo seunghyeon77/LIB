@@ -4,6 +4,11 @@ import { Link, Outlet } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
 
 export default function Header() {
+  const accessToken = localStorage.getItem("accessToken");
+  const onClick = () => {
+    localStorage.removeItem('accessToken');
+    window.location.reload();
+  }
   return (
     <div>
       <HeaderAll>
@@ -17,7 +22,7 @@ export default function Header() {
               />
             </HeaderLogo>
           </Link>
-          <Search style={{margin: '0 2.3rem'}}>
+          <Search style={{ margin: "0 2.3rem" }}>
             <Input type="text" placeholder="검색어를 입력하세요" />
             <SlMagnifier
               style={{
@@ -35,13 +40,26 @@ export default function Header() {
             </Link>
           </HeaderUrls>
           <HeaderUrls style={{ margin: "0 0.5rem" }}>
-            <Link to={"/log-in"}>
-              <HeaderUrlLogin as={'p'}>로그인</HeaderUrlLogin>
-            </Link>
-            {/* <Link to={'/my-page'}>
-              <FaRegUser style={{fontSize: '30px', color: '#000000', margin: ' 0 10px 0 15px'}}/>  
-            </Link>
-            <HeaderUrlLogin as={'p'} style={{}}>로그아웃</HeaderUrlLogin> */}
+            {accessToken ? (
+              <div style={{display: 'flex'}}>
+                <Link to={"/my-page"}>
+                  <FaRegUser
+                    style={{
+                      fontSize: "30px",
+                      color: "#000000",
+                      margin: " 0 10px 0 15px",
+                    }}
+                  />
+                </Link>
+                <HeaderUrlLogin as={"p"} style={{}} onClick={onClick}>
+                  로그아웃
+                </HeaderUrlLogin>
+              </div>
+            ) : (
+              <Link to={"/log-in"}>
+                <HeaderUrlLogin as={"p"}>로그인</HeaderUrlLogin>
+              </Link>
+            )}
           </HeaderUrls>
         </HeaderNav>
       </HeaderAll>
@@ -112,4 +130,4 @@ const HeaderUrlLogin = styled(HeaderUrl)`
   &:hover {
     color: #ffffff;
   }
-`
+`;

@@ -29,17 +29,22 @@ export default function LoginForms() {
     event.preventDefault();
     const data = {
       id,
-      password
-    }
+      password,
+    };
 
     try {
       const response = await axiosInstance.post("/members/login", data);
-      console.log("Success:", response.data);
+      console.log('백엔드에 로그인 정보 보내기 성공', response.data.response.accessToken)
+      if (response.data.response.accessToken) {
+        localStorage.setItem("accessToken", response.data.response.accessToken);
+        console.log("accessToken 저장 성공");
+        navigator("/");
+      }
     } catch (error) {
       console.error(error);
+      alert('로그인 인증에 실패했습니다.')
     }
-    // navigator("/");
-  }
+  };
   const navigator = useNavigate();
 
   return (

@@ -24,20 +24,32 @@ export default function CarouselBest({ genreBooks }) {
     touchMove: false,
   };
 
+  const accessToken = localStorage.getItem("accessToken");
+  const toLogin = () => {
+    alert("로그인 후 이용가능합니다.");
+    navigator("/log-in");
+  };
+
   return (
     <BookCarousel>
       <SlickSlider {...settings}>
         {genreBooks.map((genreBook) => (
           <SlickItem key={genreBook.bookId}>
-            <Link to={`/books/${genreBook.bookId}`}>
-              <BookInfoImg 
-                src={genreBook.bookCover}
-                alt="bookimg"
-              />
-            </Link>
+            {accessToken ? (
+              <Link to={`/books/${genreBook.bookId}`}>
+                <BookInfoImg src={genreBook.bookCover} alt="bookimg" />
+              </Link>
+            ) : (
+              <div onClick={toLogin} style={{ cursor: "pointer" }}>
+                <BookInfoImg src={genreBook.bookCover} alt="bookimg" />
+              </div>
+            )}
             <BookInfoText>
               <BookTitle>
-                <BookTitlelimit bookTitle={genreBook.bookName} TextLimitAccount={10}/>
+                <BookTitlelimit
+                  bookTitle={genreBook.bookName}
+                  TextLimitAccount={10}
+                />
               </BookTitle>
               <BookWriter> {genreBook.authorPub} </BookWriter>
             </BookInfoText>

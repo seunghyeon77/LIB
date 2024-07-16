@@ -1,13 +1,20 @@
-import { useMemo, useRef, useState } from "react";
-import { TitleText } from "../../styles/Main/BookStyle";
+import { useEffect, useMemo, useRef, useState } from "react";
 import styled from "styled-components";
+
+import { TitleText } from "../../styles/Main/BookStyle";
 import { FlexCenter } from "../../styles/PageLayout";
 import { BookDetailinfoDiv } from "./BookDetailInfo";
 import { MoreButton, MoreButtonForm } from "../MyRecord/MyStudyWrapper";
 
 export default function BookDetailContent({bookInfos}) {
   const [isShowbutton, setIsShowbutton] = useState(false);
-  const bookContent = bookInfos.bookExplain;
+  const [bookContent, setBookContent] = useState("")
+
+  useEffect(() => {
+    if (bookInfos.bookExplain) {
+      setBookContent(bookInfos.bookExplain)
+    }
+  }, [bookInfos])
 
   const limitText = useRef(437); // 제한된 글자수를 useRef로 저장
   const bookContents = useMemo(() => {

@@ -7,9 +7,10 @@ import StarNumber from "./starNumber";
 import Bookimg from "./Bookimg";
 
 export default function RecordPageForm() {
+  const [bookCover, setBookCover] = useState("");
   const [bookName, setBookName] = useState("");
   const [author, setAuthor] = useState("");
-  const [genre, setGenre] = useState("");
+  const [categoryType, setCategoryType] = useState("");
   const [rating, setRating] = useState(0);
   const textAreaContent = useRef();
 
@@ -20,7 +21,7 @@ export default function RecordPageForm() {
     setAuthor(event.target.value);
   };
   const genreInput = (event) => {
-    setGenre(event.target.value);
+    setCategoryType(event.target.value);
   };
   const inputTextArea = (event) => {
     textAreaContent.current = event.target;
@@ -32,13 +33,14 @@ export default function RecordPageForm() {
 
     const data = {
       // 백엔드에 보낼 데이터
+      bookCover,
       bookName,
       author,
-      genre,
-      rating,
+      categoryType,
       recordContent,
+      rating,
     };
-
+    console.log(data)
     try {
       const response = await axiosInstance.post("/records", data);
       console.log("Success:", response.data);
@@ -47,7 +49,7 @@ export default function RecordPageForm() {
     }
     alert("나의 기록 페이지에 저장되었습니다 :)");
     navigator("/");
-    console.log(data)
+    console.log(data);
   };
 
   const navigator = useNavigate(); // 취소하기 버튼을 눌렀을 때
@@ -62,7 +64,11 @@ export default function RecordPageForm() {
   return (
     <form onSubmit={handleSubmit}>
       <InputForms>
-        <Bookimg name="bookCover" />
+        <Bookimg
+          name="bookCover"
+          setBookCover={setBookCover}
+          bookCover={bookCover}
+        />
         <InputTexts>
           <InputText
             name="bookName"
@@ -76,12 +82,15 @@ export default function RecordPageForm() {
             placeholder="지은이를 입력하세요"
             onChange={authorInput}
           />
-          <InputText
-            name="genre"
-            type="text"
-            placeholder="장르를 입력하세요"
-            onChange={genreInput}
-          />
+          <InputTextGenre as="select" onChange={genreInput}>
+            <option value="select">카테고리 선택</option>
+            <option value="경제 경영">경제 경영</option>
+            <option value="모바일">IT 모바일</option>
+            <option value="가정 살림">가정 살림</option>
+            <option value="건강 취미">건강 취미</option>
+            <option value="사회 정치">사회 정치</option>
+            <option value="인문">인문</option>
+          </InputTextGenre>
           <StarNumber name="rating" rating={rating} setRating={setRating} />
         </InputTexts>
       </InputForms>
@@ -149,4 +158,7 @@ const Button = styled.button`
   padding: 0.5rem 1rem;
   border-radius: 7px;
   cursor: pointer;
+`;
+const InputTextGenre = styled(InputText)`
+  width: 12.2rem;
 `;

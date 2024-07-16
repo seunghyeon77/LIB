@@ -1,13 +1,32 @@
+import { useEffect, useMemo, useRef, useState } from "react";
+import { axiosInstance } from "../../api/axiosInstance";
 import styled from "styled-components";
+
 import Record from "./Record";
 
 export default function RecordWrapper() {
+  const [recordInfos, setRecordInfos] = useState([]);
+
+  const recordsApi = async () => {
+    try {
+      const response = await axiosInstance.get("/records/books");
+      setRecordInfos(response.data.response);
+      console.log(response.data.response)
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    recordsApi();
+  }, []);
+
   return (
     <div style={{ margin: "1.7rem 0" }}>
       <RecordsWrapper>
-        <RecordTitle>현재 {}개의 기록을 작성했습니다.</RecordTitle>
+        <RecordTitle>현재 {recordInfos.length}개의 기록을 작성했습니다.</RecordTitle>
         <Records>
-          <Record />
+          <Record recordInfos={recordInfos} />
         </Records>
       </RecordsWrapper>
     </div>
