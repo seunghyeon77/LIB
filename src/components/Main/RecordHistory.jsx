@@ -20,19 +20,27 @@ export default function RecordHistory() {
     recordsApi();
   }, []);
 
+  const accessToken = localStorage.getItem("accessToken");
+
   return (
     <RecordHistoryDiv>
       <TitleText>최근 기록 히스토리</TitleText>
       <RecordHistoryBooks>
         {recordInfos.map((recordInfo) => (
           <BookContainer key={recordInfo.recordId}>
-            <RecordHistoryBook src={recordInfo.bookCover} />
-              <HoverContent>
-                <BookTitlelimit
-                  bookTitle={recordInfo.recordContent}
-                  TextLimitAccount={120}
-                />
-              </HoverContent>
+            {accessToken ? (
+              <>
+                <RecordHistoryBook src={recordInfo.bookCover} />
+                <HoverContent>
+                  <BookTitlelimit
+                    bookTitle={recordInfo.recordContent}
+                    TextLimitAccount={120}
+                  />
+                </HoverContent>
+              </>
+            ) : (
+              <BookContainerNo></BookContainerNo>
+            )}
           </BookContainer>
         ))}
       </RecordHistoryBooks>
@@ -57,6 +65,9 @@ const BookContainer = styled.div`
     opacity: 1;
   }
 `;
+const BookContainerNo = styled(BookContainer)`
+  height: 1rem;
+`;
 const RecordHistoryBook = styled(BookInfoImg)`
   width: 100%;
   height: 100%;
@@ -78,8 +89,8 @@ const HoverContent = styled.p`
   opacity: 0;
   transition: opacity 0.3s ease;
   line-height: 1.3rem;
-  box-sizing: border-box;  
-  padding: 1rem;  
+  box-sizing: border-box;
+  padding: 1rem;
   font-size: 0.9rem;
   color: #ffffff;
 `;

@@ -13,7 +13,7 @@ import {
   SlickItem,
 } from "../../styles/Main/BookStyle";
 import BookTitlelimit from "../BookTitlelimit";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function CarouselBest() {
   const settings = {
@@ -39,24 +39,39 @@ export default function CarouselBest() {
     booksApi();
   }, []);
 
+  const accessToken = localStorage.getItem("accessToken");
+  console.log(accessToken);
+  const toLogin = () => {
+    alert("로그인 후 이용가능합니다.");
+    navigator("/log-in");
+  };
+
+  const navigator = useNavigate();
+
   return (
     <BookCarousel>
       <SlickSlider {...settings}>
         {bookInfos.map((bookInfo) => (
           <SlickItem key={bookInfo.bookId}>
-            <Link to={`/books/${bookInfo.bookId}`}>
-              <BookInfoImg 
-                src={bookInfo.bookCover}
-                alt="bookimg"
-              />
-            </Link>
+            {accessToken ? (
+              <Link to={`/books/${bookInfo.bookId}`}>
+                <BookInfoImg src={bookInfo.bookCover} alt="bookimg" />
+              </Link>
+            ) : (
+              <div onClick={toLogin} style={{ cursor: "pointer" }}>
+                <BookInfoImg src={bookInfo.bookCover} alt="bookimg" />
+              </div>
+            )}
             <BookInfoText>
               <BookTitle>
-                <BookTitlelimit bookTitle={bookInfo.bookName} TextLimitAccount={9}/>
+                <BookTitlelimit
+                  bookTitle={bookInfo.bookName}
+                  TextLimitAccount={9}
+                />
               </BookTitle>
               <BookWriter> {bookInfo.authorPub} </BookWriter>
             </BookInfoText>
-        </SlickItem>
+          </SlickItem>
         ))}
       </SlickSlider>
     </BookCarousel>
