@@ -16,10 +16,9 @@ import BookTitlelimit from "../BookTitlelimit";
 
 export default function BookDetailAi({bookId}) {
   const [aiBookInfos, setAiBookInfos] = useState([]);
-
   const AibooksApi = async () => {
     try {
-      const response = await axiosInstance.get(`recommand/detail/${bookId}`);
+      const response = await axiosInstance.get(`recommand/detail/${bookId.bookId}`);
       setAiBookInfos(response.data.response);
     } catch (err) {
       console.error(err);

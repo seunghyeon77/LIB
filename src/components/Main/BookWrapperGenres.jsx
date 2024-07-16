@@ -16,20 +16,17 @@ export default function BookWrapperGenres() {
   ]);
 
   const [genreBooks, setGenreBooks] = useState([]); // 책 정보들을 저장할 state
-  const [selectGenre, setSelectGenre] = useState('경영 경제') // 클릭했을 때 해당 장르 저장 state
-  
+  const [selectGenre, setSelectGenre] = useState('경제 경영') // 클릭했을 때 해당 장르 저장 state
   const onClickGenre = (genre) => {
     setSelectGenre(genre)
   }
 
   const booksApi = async () => {
-    if (selectGenre) {
       try {
-        const response = await axiosInstance.get(`/books/categorys?categoryId=${selectGenre}`);
+        const response = await axiosInstance.get(`/books/categorys?categoryType=${selectGenre}`);
         setGenreBooks(response.data.response);
       } catch (err) {
         console.error(err);
-      }
     }
   };
 
