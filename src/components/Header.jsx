@@ -35,7 +35,7 @@ export default function Header() {
             <Link to={"/my-record"}>
               <HeaderUrl>나의 기록</HeaderUrl>
             </Link>
-            <Link to={"/record"}>
+            <Link to={"/records"}>
               <HeaderUrl>기록하기</HeaderUrl>
             </Link>
           </HeaderUrls>

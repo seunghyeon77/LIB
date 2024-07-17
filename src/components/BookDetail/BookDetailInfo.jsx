@@ -1,12 +1,44 @@
-import { Link } from "react-router-dom";
-import { BookInfoGenre, BookInfoTitle } from "../../styles/Main/BookStyle";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import StarNumber from "../Record/starNumber";
 import { useState } from "react";
+import { axiosInstance } from "../../api/axiosInstance";
 
-export default function BookDetailinfo( {bookInfos} ) {
+import { BookInfoGenre, BookInfoTitle } from "../../styles/Main/BookStyle";
+
+export default function BookDetailinfo( {bookInfos, bookId} ) {
   const bookDetailInfos = [bookInfos];
   const [rating, setRating] = useState("");
+  const [bookRecordInfos, setBookRecordInfos] = useState("");
+  const navigate = useNavigate();
+  
+  const Addbookshelf = async (event) => {
+    event.preventDefault();
+    
+    const data = {
+      bookId,
+    }
+
+    try {
+      const response = await axiosInstance.post(`/bookshelf/${bookId.bookId}`, data);
+      console.log("Success:", response.data);
+      alert('나의 서재에 추가되었습니다 :)');
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const MoveRecord = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await axiosInstance.get(`/records/${bookId.bookId}`);
+      setBookRecordInfos(response.data.response)
+      navigate(`/records/${bookId}`, { state: { bookRecordInfos: response.data.response } })
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <BookDetailinfoDiv>
@@ -16,7 +48,7 @@ export default function BookDetailinfo( {bookInfos} ) {
             src={bookInfo.bookCover}
             alt="bookImg"
           />
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <BookDetailInfos>
             <BookInfoTitle> {bookInfo.bookName} </BookInfoTitle>
             <BookInfoGenre> {bookInfo.authorCate}|{bookInfo.publisher} </BookInfoGenre>
             <StarNumbers rating={rating} setRating={setRating} />
@@ -28,6 +60,7 @@ export default function BookDetailinfo( {bookInfos} ) {
                     backgroundColor: "#ffffff",
                     padding: "0.8rem 1.1rem",
                   }}
+                  onClick={Addbookshelf}
                 >
                   서재에 추가
                 </Button>
@@ -36,14 +69,15 @@ export default function BookDetailinfo( {bookInfos} ) {
                     border: "none",
                     backgroundColor: "#539165",
                   }}
+                  onClick={MoveRecord}
                 >
-                  <Link to={"/record"} style={{ color: "#ffffff" }}>
+                  <Link to={`/record/${bookId}`} style={{color: '#ffffff'}}>
                     기록하기
                   </Link>
                 </Button>
               </form>
             </Buttons>
-          </div>
+          </BookDetailInfos>
         </BookInfos>
       ))}
     </BookDetailinfoDiv>
@@ -61,6 +95,10 @@ const BookInfoImg = styled.img`
   margin: 0 3rem 4rem 5rem;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
 `;
+export const BookDetailInfos = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 const Buttons = styled.div`
   margin: 5rem 1rem 1rem;
 `;

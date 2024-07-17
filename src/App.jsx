@@ -18,7 +18,11 @@ const router = createBrowserRouter([
         element: <MainPage />
       },
       {
-        path:"record",
+        path:"records",
+        element: <RecordPage />
+      },
+      {
+        path:"records/:bookId",
         element: <RecordPage />
       },
       {
@@ -26,7 +30,7 @@ const router = createBrowserRouter([
         element: <MyRecordPage />
       },
       {
-        path:"/books/:bookId",
+        path:"books/:bookId",
         element: <BookDetailPage />
       },
       {
