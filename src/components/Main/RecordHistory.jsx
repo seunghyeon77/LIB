@@ -42,6 +42,14 @@ export default function RecordHistory() {
                     TextLimitAccount={120}
                   />
                 </HoverContent>
+                <ToMyRecord>
+                  <Link
+                    to="my-record"
+                    style={{ color: "#000000", borderBottom: "1px solid #000000" }}
+                  >
+                    더 많은 기록을 보고 싶다면
+                  </Link>
+                </ToMyRecord>
               </>
             ) : (
               <></>
@@ -49,14 +57,6 @@ export default function RecordHistory() {
           </BookContainer>
         ))}
       </RecordHistoryBooks>
-      <ToMyRecord>
-        <Link
-          to="my-record"
-          style={{ color: "#000000", borderBottom: "1px solid #000000" }}
-        >
-          더 많은 기록을 보고 싶다면
-        </Link>
-      </ToMyRecord>
     </RecordHistoryDiv>
   );
 }
