@@ -4,14 +4,19 @@ import styled from "styled-components";
 
 import { BookInfoImg, BookInfos, TitleText } from "../../styles/Main/BookStyle";
 import BookTitlelimit from "../BookTitlelimit";
+import { Link } from "react-router-dom";
 
 export default function RecordHistory() {
   const [recordInfos, setRecordInfos] = useState([]);
+  const recordCount = 5;
 
   const recordsApi = async () => {
     try {
       const response = await axiosInstance.get("/records/main");
-      setRecordInfos(response.data.response);
+      const records = response.data.response;
+      if (records.length > recordCount) {
+        setRecordInfos(records.slice(0, recordCount));
+      }
     } catch (err) {
       console.error(err);
     }
@@ -39,16 +44,30 @@ export default function RecordHistory() {
                 </HoverContent>
               </>
             ) : (
-              <BookContainerNo></BookContainerNo>
+              <></>
             )}
           </BookContainer>
         ))}
       </RecordHistoryBooks>
+      <ToMyRecord>
+        <Link
+          to="my-record"
+          style={{ color: "#000000", borderBottom: "1px solid #000000" }}
+        >
+          더 많은 기록을 보고 싶다면
+        </Link>
+      </ToMyRecord>
     </RecordHistoryDiv>
   );
 }
 const RecordHistoryDiv = styled.div`
   margin: 5rem 0;
+`;
+const ToMyRecord = styled.span`
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
 `;
 const RecordHistoryBooks = styled(BookInfos)`
   height: 20rem;
@@ -64,9 +83,6 @@ const BookContainer = styled.div`
   &:hover p {
     opacity: 1;
   }
-`;
-const BookContainerNo = styled(BookContainer)`
-  height: 1rem;
 `;
 const RecordHistoryBook = styled(BookInfoImg)`
   width: 100%;
