@@ -11,8 +11,7 @@ export default function RecordPageToDetail({ bookRecordInfos, bookId }) {
   const bookRecordArrayInfos = [bookRecordInfos.bookRecordInfos];
   const [rating, setRating] = useState(0);
   const textAreaContent = useRef();
-  console.log(bookRecordArrayInfos[0]);
-
+  
   const inputTextArea = (event) => {
     textAreaContent.current = event.target;
   };
