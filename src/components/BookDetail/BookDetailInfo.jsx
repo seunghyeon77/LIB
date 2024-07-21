@@ -11,7 +11,6 @@ export default function BookDetailinfo( {bookInfos, bookId} ) {
   const [rating, setRating] = useState("");
   const [bookRecordInfos, setBookRecordInfos] = useState("");
   const navigate = useNavigate();
-  
   const Addbookshelf = async (event) => {
     event.preventDefault();
     
@@ -20,7 +19,7 @@ export default function BookDetailinfo( {bookInfos, bookId} ) {
     }
 
     try {
-      const response = await axiosInstance.post(`/bookshelf/${bookId.bookId}`, data);
+      const response = await axiosInstance.post(`/bookshelf/${bookId}`, data);
       console.log("Success:", response.data);
       alert('나의 서재에 추가되었습니다 :)');
     } catch (error) {
@@ -32,8 +31,9 @@ export default function BookDetailinfo( {bookInfos, bookId} ) {
     event.preventDefault();
 
     try {
-      const response = await axiosInstance.get(`/records/${bookId.bookId}`);
+      const response = await axiosInstance.get(`/records/${bookId}`);
       setBookRecordInfos(response.data.response)
+      console.log(bookRecordInfos)
       navigate(`/records/${bookId}`, { state: { bookRecordInfos: response.data.response } })
     } catch (error) {
       console.error(error);
@@ -71,7 +71,7 @@ export default function BookDetailinfo( {bookInfos, bookId} ) {
                   }}
                   onClick={MoveRecord}
                 >
-                  <Link to={`/record/${bookId}`} style={{color: '#ffffff'}}>
+                  <Link to={`/records/${bookId.bookId}`} style={{color: '#ffffff'}}>
                     기록하기
                   </Link>
                 </Button>
