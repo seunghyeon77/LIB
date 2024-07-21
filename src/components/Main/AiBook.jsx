@@ -51,9 +51,11 @@ export default function AiBook() {
               style={{ width: "60%", height: "250px" }}
             >
               {bookInfos.map((bookInfo) => (
-                <div key={bookInfo.bookId}>
-                  <CenterBookInfoImg src={bookInfo.bookCover} alt="bookimg" />
-                </div>
+                <Link to={`/books/${bookInfo.bookId}`}>
+                  <div key={bookInfo.bookId}>
+                    <CenterBookInfoImg src={bookInfo.bookCover} alt="bookimg" />
+                  </div>
+                </Link>
               ))}
             </SlickSlider>
           ) : (

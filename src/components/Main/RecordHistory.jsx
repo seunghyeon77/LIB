@@ -9,13 +9,14 @@ import { Link } from "react-router-dom";
 export default function RecordHistory() {
   const [recordInfos, setRecordInfos] = useState([]);
   const recordCount = 5;
-
   const recordsApi = async () => {
     try {
       const response = await axiosInstance.get("/records/main");
       const records = response.data.response;
       if (records.length > recordCount) {
         setRecordInfos(records.slice(0, recordCount));
+      } else {
+        setRecordInfos(records)
       }
     } catch (err) {
       console.error(err);
@@ -42,14 +43,6 @@ export default function RecordHistory() {
                     TextLimitAccount={120}
                   />
                 </HoverContent>
-                <ToMyRecord>
-                  <Link
-                    to="my-record"
-                    style={{ color: "#000000", borderBottom: "1px solid #000000" }}
-                  >
-                    더 많은 기록을 보고 싶다면
-                  </Link>
-                </ToMyRecord>
               </>
             ) : (
               <></>
@@ -57,6 +50,14 @@ export default function RecordHistory() {
           </BookContainer>
         ))}
       </RecordHistoryBooks>
+      <ToMyRecord>
+        <Link
+          to="my-record"
+          style={{ color: "#000000", borderBottom: "1px solid #000000" }}
+        >
+          더 많은 기록을 보고 싶다면
+        </Link>
+      </ToMyRecord>
     </RecordHistoryDiv>
   );
 }
