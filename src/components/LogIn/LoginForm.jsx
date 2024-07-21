@@ -31,7 +31,7 @@ export default function LoginForms() {
       id,
       password,
     };
-
+    console.log(data)
     try {
       const response = await axiosInstance.post("/members/login", data);
       console.log('백엔드에 로그인 정보 보내기 성공', response.data.response.accessToken)

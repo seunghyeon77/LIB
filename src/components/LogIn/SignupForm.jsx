@@ -30,7 +30,7 @@ export default function SignupForm({ display, buttonText }) {
   const id = watch("id");
   const password = watch("password");
   const passwordConfirm = watch("passwordCheck");
-  const nickName = watch('nickName')
+  const nickName = watch("nickName");
 
   // 사용자가 입력한 input 값이 정규식과 맞는지를 Boolean 값으로 반환.
   const isIdInvalid = id && !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+$/.test(id);
@@ -41,22 +41,31 @@ export default function SignupForm({ display, buttonText }) {
     );
   const isPasswordConfirmInvalid =
     passwordConfirm !== "" && passwordConfirm !== password;
-  
+
   const onClick = () => {
     console.log(id);
     console.log(nickName);
-  }
-  
+  };
+
   const onSubmit = async (data) => {
-    console.log(data)
+    const dataValue = {
+      ...data,
+      goalNumber: parseInt(data.goalNumber),
+      resetCycle: parseInt(data.resetCycle),
+    }
+    delete dataValue.passwordCheck;
+    
+    console.log(dataValue)
+    
     try {
-      const response = await axiosInstance.post("/members/join", data);
+      const response = await axiosInstance.post("/members/join", dataValue);
       console.log("Success:", response.data);
+      alert('회원가입이 완료되었습니다. :)')
+      navigator("/log-in")
     } catch (error) {
       console.error(error);
     }
-    // navigator("/");
-  }
+  };
 
   return (
     <LoginForm onSubmit={handleSubmit(onSubmit)}>
@@ -117,7 +126,7 @@ export default function SignupForm({ display, buttonText }) {
           type="text"
           placeholder="ex) 김기록"
           error={errors.nickName}
-          {...register("nickName", { required: "필수 입력 항목입니다." })}
+          {...register("nickname", { required: "필수 입력 항목입니다." })}
         />
         <ConfirmButton onClick={onClick}>중복 확인</ConfirmButton>
       </div>
@@ -131,7 +140,7 @@ export default function SignupForm({ display, buttonText }) {
         >
           <option value="select">카테고리 선택</option>
           <option value="경제 경영">경제 경영</option>
-          <option value="모바일">IT 모바일</option>
+          <option value="IT 모바일">IT 모바일</option>
           <option value="가정 살림">가정 살림</option>
           <option value="건강 취미">건강 취미</option>
           <option value="사회 정치">사회 정치</option>
@@ -165,10 +174,10 @@ export default function SignupForm({ display, buttonText }) {
               error={errors.resetPeriod}
               {...register("resetCycle", { required: true })}
             >
-              <option value="">초기화 주기</option>
-              <option value="30">30일</option>
-              <option value="60">60일</option>
-              <option value="90">90일</option>
+              <option value={0}>초기화 주기</option>
+              <option value={30}>30일</option>
+              <option value={60}>60일</option>
+              <option value={90}>90일</option>
             </SelectGenres>
             <RiArrowDownSLine
               style={{
@@ -186,7 +195,7 @@ export default function SignupForm({ display, buttonText }) {
       </LoginFormButton>
 
       <SignupTextDiv display={display}>
-        <Link to={"/log-in"}>
+        <Link to={"/log-in"} style={{borderBotton: '1px solid #000000'}}>
           <span style={{ color: "#000000", cursor: "pointer" }}>
             회원가입을 하셨다면
           </span>
