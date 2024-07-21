@@ -18,7 +18,7 @@ export default function BookDetailAi({bookId}) {
   const [aiBookInfos, setAiBookInfos] = useState([]);
   const AibooksApi = async () => {
     try {
-      const response = await axiosInstance.get(`recommand/detail/${bookId.bookId}`);
+      const response = await axiosInstance.get(`recommend/detail/${bookId.bookId}`);
       setAiBookInfos(response.data.response);
     } catch (err) {
       console.error(err);

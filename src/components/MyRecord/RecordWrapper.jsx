@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { axiosInstance } from "../../api/axiosInstance";
 import styled from "styled-components";
 
@@ -6,7 +6,7 @@ import Record from "./Record";
 
 export default function RecordWrapper() {
   const [recordInfos, setRecordInfos] = useState([]);
-
+  
   const recordsApi = async () => {
     try {
       const response = await axiosInstance.get("/records/books");

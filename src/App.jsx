@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import MainPage from "./pages/MainPage";
 import RecordPage from "./pages/RecordPage";
 import MyRecordPage from "./pages/MyRecordPage";
@@ -7,6 +8,7 @@ import MyPage from "./pages/MyPage";
 import LogInPage from "./pages/LogInPage";
 import SignUpPage from "./pages/SignUpPage";
 import Header from "./components/Header";
+import RecordPageRead from "./pages/RecordPageRead";
 
 const router = createBrowserRouter([
   {
@@ -18,15 +20,23 @@ const router = createBrowserRouter([
         element: <MainPage />
       },
       {
-        path:"record",
+        path:"records",
         element: <RecordPage />
+      },
+      {
+        path:"records/:bookId",
+        element: <RecordPage />
+      },
+      {
+        path:"records/detail/:recordId",
+        element: <RecordPageRead />
       },
       {
         path:"my-record",
         element: <MyRecordPage />
       },
       {
-        path:"/books/:bookId",
+        path:"books/:bookId",
         element: <BookDetailPage />
       },
       {
