@@ -1,16 +1,14 @@
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
-import { useRef } from "react";
 
 import ToRecord from "../components/Record/ToRecord";
 
 export default function RecordPageRead() {
   const location = useLocation();
-  
   return (
     <Page>
       <Body>
-        <ToRecord recordReadInfos={location.state.recordDetailInfos} />
+        <ToRecord recordReadInfos={location.state.recordDetailInfo} />
       </Body>
     </Page>
   );

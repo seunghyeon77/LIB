@@ -51,9 +51,9 @@ const Textareas = styled.div`
 const Textarea = styled.p`
   width: 100%;
   height: 30rem;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   border: 1px solid;
   border-radius: 7px;
-  padding: 1rem;
+  padding: 1.2rem;
 `;
 
