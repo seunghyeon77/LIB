@@ -1,14 +1,20 @@
 import { SlMagnifier } from "react-icons/sl";
 import styled from "styled-components";
-import { Link, Outlet } from "react-router-dom";
-import { FaRegUser } from "react-icons/fa";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { VscAccount } from "react-icons/vsc";
 
 export default function Header() {
+  const navigate = useNavigate();
   const accessToken = localStorage.getItem("accessToken");
   const onClick = () => {
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem("accessToken");
     window.location.reload();
-  }
+  };
+  const ClickToLogin = () => {
+    alert("로그인 후 이용가능한 서비스입니다.");
+    navigate("/log-in");
+  };
+
   return (
     <div>
       <HeaderAll>
@@ -31,19 +37,19 @@ export default function Header() {
               }}
             />
           </Search>
-          <HeaderUrls style={{ margin: "0 1.5rem 0 2.3rem" }}>
-            <Link to={"/my-record"}>
-              <HeaderUrl>나의 기록</HeaderUrl>
-            </Link>
-            <Link to={"/records"}>
-              <HeaderUrl>기록하기</HeaderUrl>
-            </Link>
-          </HeaderUrls>
           <HeaderUrls style={{ margin: "0 0.5rem" }}>
             {accessToken ? (
-              <div style={{display: 'flex'}}>
+              <HeaderUrls style={{marginLeft: '2rem'}}>
+                <HeaderUrls style={{marginRight: '1.5rem'}}>
+                  <Link to={"/my-record"}>
+                    <HeaderUrl>나의 기록</HeaderUrl>
+                  </Link>
+                  <Link to={"/records"}>
+                    <HeaderUrl>기록하기</HeaderUrl>
+                  </Link>
+                </HeaderUrls>
                 <Link to={"/my-page"}>
-                  <FaRegUser
+                  <VscAccount
                     style={{
                       fontSize: "30px",
                       color: "#000000",
@@ -54,11 +60,17 @@ export default function Header() {
                 <HeaderUrlLogin as={"p"} style={{}} onClick={onClick}>
                   로그아웃
                 </HeaderUrlLogin>
-              </div>
+              </HeaderUrls>
             ) : (
-              <Link to={"/log-in"}>
-                <HeaderUrlLogin as={"p"}>로그인</HeaderUrlLogin>
-              </Link>
+              <div style={{display: 'flex', marginLeft: '2.3rem'}}>
+                <HeaderUrls>
+                  <HeaderUrl onClick={ClickToLogin}>나의 기록</HeaderUrl>
+                  <HeaderUrl onClick={ClickToLogin}>기록하기</HeaderUrl>
+                </HeaderUrls>
+                <Link to={"/log-in"}>
+                  <HeaderUrlLogin as={"p"}>로그인</HeaderUrlLogin>
+                </Link>
+              </div>
             )}
           </HeaderUrls>
         </HeaderNav>
@@ -111,6 +123,7 @@ const Input = styled.input`
 const HeaderUrls = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 const HeaderUrl = styled.div`
   margin: 0 1rem;
