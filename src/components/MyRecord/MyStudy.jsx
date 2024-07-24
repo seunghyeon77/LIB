@@ -1,14 +1,18 @@
 import styled from "styled-components";
 import { BookTitle } from "../../styles/Main/BookStyle";
 import BookTitlelimit from "../BookTitlelimit";
+import { Link } from "react-router-dom";
 
 export default function MyStudy({ studyLists }) {
-  
+  console.log(studyLists)
+  const studysLists = studyLists.slice(0, 10);
   return (
     <>
-      {studyLists.map((studyList) => (
+      {studysLists.map((studyList) => (
         <MyStudyDiv key={studyList.bookId}>
-          <BookInfoImg src={studyList.bookCover} alt="BookImg" />
+          <Link to={`/books/${studyList.bookId}`}>
+            <BookInfoImg src={studyList.bookCover} alt="BookImg" />
+          </Link>
           <BookInfoText>
             <BookTitle>
               <BookTitlelimit

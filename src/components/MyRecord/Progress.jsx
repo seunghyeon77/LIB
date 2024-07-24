@@ -1,15 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { axiosInstance } from "../../api/axiosInstance";
 
 export default function Progress() {
-  const [goalRecord, setGoalRecord] = useState(20); // 회원가입할 떄 설정한 값을 가져온다.
-  const [currentRecord, setCurrentRecord] = useState(10); // 기록을 할 떄마다 1씩 늘어난다.
+  const [goalRecord, setGoalRecord] = useState(""); 
+  const [currentRecord, setCurrentRecord] = useState(""); 
   const progressPersentage = (currentRecord / goalRecord) * 100;
   const imgIndex = Math.min( 
     Math.floor(progressPersentage / 14), // %로 표현된 progressPersentage를 14으로 나눠 7개의 book이미지에 맞게 정수로 나타낸다. 
     bookImgs.length // Math.min을 이용하여 최대 bookImgs 리스트의 길이만큼(7)
   );
   const currentImgIndex = bookImgs[imgIndex - 1];
+
+  const recordCountApi = async () => {
+    try {
+      const response = await axiosInstance.get("/members/goal");
+      setGoalRecord(response.data.response.goalNumber);
+      setCurrentRecord(response.data.response.bookRecentCnt);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  useEffect(() => {
+    recordCountApi();
+  }, []);
 
   return (
     <ProgressDiv>
