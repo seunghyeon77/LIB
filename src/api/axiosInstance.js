@@ -3,7 +3,7 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 export const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL,
+  baseURL: "https://b6dc-168-131-35-101.ngrok-free.app",
   headers: {
     // "withCredentials": true,
     "Access-Control-Allow-Credentials": true,
