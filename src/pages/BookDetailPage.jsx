@@ -22,16 +22,16 @@ export default function BookDetailPage() {
   };
   useEffect(() => {
     booksApi();
-  }, []);
+  }, [bookId]);
 
   return (
-    <Page style={{backgroundColor: '#ffffff'}}>
+    <Page style={{ backgroundColor: "#ffffff" }}>
       <Body>
         <BookDetailinfo bookInfos={bookInfos} bookId={bookId.bookId} />
         <BookDetailContent bookInfos={bookInfos} />
         <BookDetailAi bookId={bookId} />
-        <BookDetailCommu />
+        <BookDetailCommu bookId={bookId.bookId} />
       </Body>
     </Page>
-  )
+  );
 }

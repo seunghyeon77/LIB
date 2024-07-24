@@ -1,27 +1,47 @@
-import styled from "styled-components";
 import { TitleText } from "../../styles/Main/BookStyle";
 import { FlexCenter } from "../../styles/PageLayout";
 import { LoginFormInput } from "../../styles/Login/LoginForm";
-import { useState } from "react";
-import { MoreButton } from "../MyRecord/MyStudyWrapper";
-import PresentDate from "../PresentDate";
 
-export default function BookDetailCommu() {
+import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { MoreButton } from "../MyRecord/MyStudyWrapper";
+import { axiosInstance } from "../../api/axiosInstance";
+
+export default function BookDetailCommu({bookId}) {
   const [commuInput, setCommuInput] = useState(""); // 커뮤니티 input창 저장
   const [commuInputs, setCommuInputs] = useState([]); // 커뮤니티 input값들을 배열로 저장
   const [isShowbutton, setIsShowbutton] = useState(false);
-
   const inputValueOnchange = (event) => {
     setCommuInput(event.target.value);
   };
+
+  const commentApi = async () => {
+    try {
+      const response = await axiosInstance.get(`/comments/${bookId}`);
+      setCommuInputs(response.data.response);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  useEffect(() => {
+    commentApi();
+  }, []);
+
 
   const buttonValueOnclick = (event) => {
     event.preventDefault();
     if (commuInput.trim() === "") {
       return;
+    }else {
+      const inputValue = async () => {
+        try {
+          await axiosInstance.post(`/comments/${bookId}`);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      inputValue();
     }
-    setCommuInputs([...commuInputs, commuInput]); // 기존 배열에 commuInput 값만 넣어준다.
-    setCommuInput(""); // input 창 초기화
   };
 
   const displayInputs = !isShowbutton ? commuInputs.slice(0, 3) : commuInputs
@@ -30,16 +50,15 @@ export default function BookDetailCommu() {
       <div>
         <TitleText style={{ margin: "1.9rem 2rem" }}>커뮤니티</TitleText>
         <FlexCenterDiv>
-          {displayInputs.map((input, index) => (
-              <CommuDiv key={index}>
-                <h4 style={{ margin: "0.5rem 0" }}>{"LIB 님"}</h4>{" "}
-                {/* 닉네임 가져와야함 */}
+          {displayInputs.map((displayInput) => (
+              <CommuDiv key={displayInput.CommentId}>
+                <h4 style={{ margin: "0.5rem 0" }}>{displayInput.nickname}</h4>
                 <CommuContent>
                   <p style={{ fontSize: "1rem", lineHeight: "1.5rem" }}>
-                    {input}
+                    {displayInput.commentContent}
                   </p>
                   <CommuContentDate>
-                    <PresentDate />
+                    {displayInput.commentDate}
                   </CommuContentDate>
                 </CommuContent>
               </CommuDiv>
