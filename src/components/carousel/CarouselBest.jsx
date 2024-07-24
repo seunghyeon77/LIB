@@ -41,10 +41,6 @@ export default function CarouselBest() {
 
   const accessToken = localStorage.getItem("accessToken");
   console.log(accessToken);
-  const toLogin = () => {
-    alert("로그인 후 이용가능합니다.");
-    navigator("/log-in");
-  };
 
   const navigator = useNavigate();
 
@@ -53,15 +49,9 @@ export default function CarouselBest() {
       <SlickSlider {...settings}>
         {bookInfos.map((bookInfo) => (
           <SlickItem key={bookInfo.bookId}>
-            {accessToken ? (
-              <Link to={`/books/${bookInfo.bookId}`}>
+            <Link to={`/books/${bookInfo.bookId}`}>
                 <BookInfoImg src={bookInfo.bookCover} alt="bookimg" />
-              </Link>
-            ) : (
-              <div onClick={toLogin} style={{ cursor: "pointer" }}>
-                <BookInfoImg src={bookInfo.bookCover} alt="bookimg" />
-              </div>
-            )}
+            </Link>
             <BookInfoText>
               <BookTitle>
                 <BookTitlelimit
