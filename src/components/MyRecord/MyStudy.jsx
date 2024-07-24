@@ -39,7 +39,3 @@ const BookInfoText = styled.div`
   display: flex;
   flex-flow: nowrap column;
 `;
-const BookInfoTitle = styled.span`
-  font-size: 1rem;
-  margin: 0.7rem 0;
-`;

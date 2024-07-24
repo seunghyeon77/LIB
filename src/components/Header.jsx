@@ -22,7 +22,7 @@ export default function Header() {
           <Link to={"/"}>
             <HeaderLogo>
               <img
-                src="https://github.com/JNU-econovation/LIB_FE/assets/144216731/e6cef398-e6f0-4dd5-af1f-6a31e9f48655"
+                src="public\images\기록의 서재 로고 다른 버전.png"
                 alt="logo"
                 style={{ width: "100%", height: "100%" }}
               />

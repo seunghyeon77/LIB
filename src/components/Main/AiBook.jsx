@@ -40,7 +40,7 @@ export default function AiBook() {
   return (
     <AiBookCompo>
       <TitleText>
-        <Img src="https://github.com/JNU-econovation/LIB_FE/assets/144216731/860f40e6-4cb5-487c-a8f2-213ecd22b8aa" />
+        <Img src="public\images\로봇_아이콘-removebg-preview.png" />
         기록의 서재님을 위한 AI 맞춤 추천
       </TitleText>
       <AiBookImg>
@@ -75,7 +75,7 @@ const AiBookCompo = styled.div`
 `;
 const AiBookImg = styled.div`
   height: 100%;
-  background-image: url("https://github.com/JNU-econovation/LIB_FE/assets/144216731/c1ee7c55-006a-42b1-a59d-44dae71feacd");
+  background-image: url("public/images/AI 도서관 사진.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 7px;
