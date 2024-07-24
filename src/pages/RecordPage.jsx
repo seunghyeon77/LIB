@@ -8,13 +8,12 @@ import RecordPageToDetail from "../components/Record/RecordPageToDetail";
 export default function RecordPage() {
   const location = useLocation();
   const bookToRecordInfos = location.state ? location.state.bookRecordInfos : null;
-  const bookDetailId = useRef(bookToRecordInfos ? bookToRecordInfos.bookId : null);
-  
+  const bookDetailId = bookToRecordInfos ? bookToRecordInfos.bookId : null;
   return (
     <Page>
       <Body>
-        {bookDetailId.current ? (
-          <RecordPageToDetail bookRecordInfos={location.state} bookId={bookDetailId.current} />
+        {bookDetailId ? (
+          <RecordPageToDetail bookRecordInfos={location.state} bookId={bookDetailId} />
         ) : (
           <RecordPageForm />
         )}

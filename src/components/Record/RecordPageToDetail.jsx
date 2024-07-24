@@ -4,14 +4,18 @@ import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../api/axiosInstance";
 
 import StarNumber from "./starNumber";
-import { BookInfoGenre, BookInfos, BookInfoTitle } from "../../styles/Main/BookStyle";
+import {
+  BookInfoGenre,
+  BookInfos,
+  BookInfoTitle,
+} from "../../styles/Main/BookStyle";
 import { BookDetailInfos } from "../BookDetail/BookDetailInfo";
 
 export default function RecordPageToDetail({ bookRecordInfos, bookId }) {
   const bookRecordArrayInfos = [bookRecordInfos.bookRecordInfos];
   const [rating, setRating] = useState(0);
   const textAreaContent = useRef();
-  
+
   const inputTextArea = (event) => {
     textAreaContent.current = event.target;
   };
@@ -51,9 +55,15 @@ export default function RecordPageToDetail({ bookRecordInfos, bookId }) {
       {bookRecordArrayInfos.map((bookRecordInfo) => (
         <BookDetailInfo key={bookRecordInfo.bookId}>
           <BookRecordimg name="bookCover" src={bookRecordInfo.bookCover} />
-          <BookDetailInfos style={{margin: '0 0 4rem 1.4rem'}}>
-            <BookInfoTitle name="bookName"> {bookRecordInfo.bookName} </BookInfoTitle>
-            <BookInfoGenre name="authorCatePub"> {bookRecordInfo.authorCatePub} </BookInfoGenre>
+          <BookDetailInfos style={{ margin: "0 0 4rem 1.4rem" }}>
+            <BookInfoTitle name="bookName">
+              {" "}
+              {bookRecordInfo.bookName}{" "}
+            </BookInfoTitle>
+            <BookInfoGenre name="authorCatePub">
+              {" "}
+              {bookRecordInfo.authorCatePub}{" "}
+            </BookInfoGenre>
             <StarNumber name="rating" rating={rating} setRating={setRating} />
           </BookDetailInfos>
         </BookDetailInfo>
@@ -85,7 +95,7 @@ export default function RecordPageToDetail({ bookRecordInfos, bookId }) {
 const BookDetailInfo = styled(BookInfos)`
   height: 11rem;
   margin: 6rem 2rem;
-`
+`;
 const BookRecordimg = styled.img`
   width: 10.5rem;
   height: 13.5rem;
@@ -99,11 +109,11 @@ const Textarea = styled.textarea`
   width: 100%;
   height: 30rem;
   max-height: 40rem;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   resize: none;
   border: 1px solid;
   border-radius: 7px;
-  padding: 1rem;
+  padding: 1.2rem;
 `;
 const Buttons = styled.div`
   display: flex;
@@ -115,4 +125,3 @@ const Button = styled.button`
   border-radius: 7px;
   cursor: pointer;
 `;
-

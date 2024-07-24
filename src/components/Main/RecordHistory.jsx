@@ -16,7 +16,7 @@ export default function RecordHistory() {
       if (records.length > recordCount) {
         setRecordInfos(records.slice(0, recordCount));
       } else {
-        setRecordInfos(records)
+        setRecordInfos(records);
       }
     } catch (err) {
       console.error(err);
@@ -30,34 +30,40 @@ export default function RecordHistory() {
 
   return (
     <RecordHistoryDiv>
-      <TitleText>최근 기록 히스토리</TitleText>
-      <RecordHistoryBooks>
-        {recordInfos.map((recordInfo) => (
-          <BookContainer key={recordInfo.recordId}>
-            {accessToken ? (
-              <>
-                <RecordHistoryBook src={recordInfo.bookCover} />
-                <HoverContent>
-                  <BookTitlelimit
-                    bookTitle={recordInfo.recordContent}
-                    TextLimitAccount={120}
-                  />
-                </HoverContent>
-              </>
-            ) : (
-              <></>
-            )}
-          </BookContainer>
-        ))}
-      </RecordHistoryBooks>
-      <ToMyRecord>
-        <Link
-          to="my-record"
-          style={{ color: "#000000", borderBottom: "1px solid #000000" }}
-        >
-          더 많은 기록을 보고 싶다면
-        </Link>
-      </ToMyRecord>
+      {accessToken ? (
+        <>
+          <TitleText>최근 기록 히스토리</TitleText>
+          <RecordHistoryBooks>
+            {recordInfos.map((recordInfo) => (
+              <BookContainer key={recordInfo.recordId}>
+                {accessToken ? (
+                  <>
+                    <RecordHistoryBook src={recordInfo.bookCover} />
+                    <HoverContent>
+                      <BookTitlelimit
+                        bookTitle={recordInfo.recordContent}
+                        TextLimitAccount={120}
+                      />
+                    </HoverContent>
+                  </>
+                ) : (
+                  <></>
+                )}
+              </BookContainer>
+            ))}
+          </RecordHistoryBooks>
+          <ToMyRecord>
+            <Link
+              to="my-record"
+              style={{ color: "#000000", borderBottom: "1px solid #000000" }}
+            >
+              더 많은 기록을 보고 싶다면
+            </Link>
+          </ToMyRecord>
+        </>
+      ) : (
+        <div></div>
+      )}
     </RecordHistoryDiv>
   );
 }

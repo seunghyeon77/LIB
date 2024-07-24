@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { GiClover } from "react-icons/gi";
+import { useState } from "react";
 
-export default function StarNumber({rating, setRating}) {
+export default function StarNumber() {
+  const [rating, setRating] = useState(0);
   const dummyList = [0, 1, 2, 3, 4]; // 항상 별이 5개가 보여지기 위해 더미를 만든다.
   const starClick = (index) => {
     setRating(index + 1);

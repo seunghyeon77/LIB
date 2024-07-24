@@ -13,20 +13,23 @@ import {
 } from "../../styles/Main/BookStyle";
 import { BookDetailinfoDiv } from "./BookDetailInfo";
 import BookTitlelimit from "../BookTitlelimit";
+import { Link } from "react-router-dom";
 
-export default function BookDetailAi({bookId}) {
+export default function BookDetailAi({ bookId }) {
   const [aiBookInfos, setAiBookInfos] = useState([]);
   const AibooksApi = async () => {
     try {
-      const response = await axiosInstance.get(`recommend/detail/${bookId.bookId}`);
+      const response = await axiosInstance.get(
+        `recommend/detail/${bookId.bookId}`
+      );
       setAiBookInfos(response.data.response);
     } catch (err) {
       console.error(err);
-    }
+    } 
   };
   useEffect(() => {
     AibooksApi();
-  }, []);
+  }, [bookId]);
 
   return (
     <BookDetailinfoDiv>
@@ -37,16 +40,21 @@ export default function BookDetailAi({bookId}) {
       <AiBooks>
         {aiBookInfos.map((aiBookInfo) => (
           <SlickItem key={aiBookInfo.bookId}>
-            <BookInfoImg
-              src={aiBookInfo.bookCover}
-              alt="bookimg"
-            />
+            <Link to={`/books/${aiBookInfo.bookId}`}>
+              <BookInfoImg src={aiBookInfo.bookCover} alt="bookimg" />
+            </Link>
             <BookInfoText>
               <BookTitle>
-                <BookTitlelimit bookTitle={aiBookInfo.bookName} TextLimitAccount={9}/>
+                <BookTitlelimit
+                  bookTitle={aiBookInfo.bookName}
+                  TextLimitAccount={9}
+                />
               </BookTitle>
               <BookWriter>
-                {aiBookInfo.authorPub}
+                <BookTitlelimit
+                  bookTitle={aiBookInfo.authorPub}
+                  TextLimitAccount={8}
+                />
               </BookWriter>
             </BookInfoText>
           </SlickItem>

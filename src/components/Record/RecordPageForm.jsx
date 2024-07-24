@@ -143,11 +143,11 @@ const Textarea = styled.textarea`
   width: 100%;
   height: 30rem;
   max-height: 40rem;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   resize: none;
   border: 1px solid;
   border-radius: 7px;
-  padding: 1rem;
+  padding: 1.2rem;
 `;
 const Buttons = styled.div`
   display: flex;

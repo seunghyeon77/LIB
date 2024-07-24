@@ -10,22 +10,23 @@ export default function Bookimg({ setBookCover, bookCover }) {
     setBookCover("");
   };
 
-  const handleUpload = async (file) => {
+  const handleUpload = async (file) => { 
     setIsLoading(true);
 
-    const params = {
-      Bucket: import.meta.env.VITE_S3_BUCKET_NAME,
-      Key: `${file.name}`,
-      Body: file,
-      ACL: "public-read",
+    const params = { // S3 업로드를 위한 객체이다.
+      Bucket: import.meta.env.VITE_S3_BUCKET_NAME, 
+      Key: `${file.name}`, // S3 버킷 내에서 파일의 경로와 이름을 지정한다.
+      Body: file, 
+      ACL: "public-read", // 파일을 공개적으로 읽을 수 있도록 설정한다.
     };
 
     try {
-      const command = new PutObjectCommand(params);
-      const response = await s3Client.send(command);
+      const command = new PutObjectCommand(params); // 파일을 S3 버킷에 업로드하는 명령이다.
+      const response = await s3Client.send(command); // 인스턴스를 통해 PutObjectCommand를 S3에 전송한다.
       console.log("사진 업로드 성공", response);
 
-      const imageUrl = `https://${params.Bucket}.s3.amazonaws.com/${params.Key}`;
+      // 해당 Bucket 이름과 file 이름을 넣어 이미지 Url을 가져온다.
+      const imageUrl = `https://${params.Bucket}.s3.amazonaws.com/${params.Key}`; 
       setBookCover(imageUrl);
       setIsLoading(false);
     } catch (err) {
