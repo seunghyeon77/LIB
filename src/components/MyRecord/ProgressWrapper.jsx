@@ -14,8 +14,8 @@ export default function ProgressWrapper() {
 }
 
 const ProgressWrapperDiv = styled.div`
-  width: 1050px; // 100%
-  height: 380px; // 46rem
+  width: 100%; // 100%
+  height: 23.75rem; // 46rem
   background-color: #ffffff;
   border-radius: 7px;
 `;

@@ -37,8 +37,8 @@ export const RecordTitle = styled.h3`
   padding: 2.5rem 0 0 3rem;
 `;
 const RecordsWrapper = styled.div`
-  width: 1050px; // 100%
-  height: 790px; // 46rem
+  width: 100%; // 100%
+  height: 46rem; // 46rem
   background-color: #ffffff;
   border-radius: 7px;
 `;

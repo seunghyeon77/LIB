@@ -79,8 +79,8 @@ const RecordDiv = styled.div`
 `;
 
 const RecordInfo = styled.div`
-  width: 210px;
-  height: 250px;
+  width: 13.1rem;
+  height: 15.6rem;
   border: 1.3px solid #bfbfbf;
   border-radius: 7px;
 `;

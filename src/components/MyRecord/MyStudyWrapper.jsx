@@ -41,8 +41,8 @@ export default function MyStudyWrapper() {
   );
 }
 const MyStudysWrapper = styled.div`
-  width: 1050px; // 100%
-  height: 710px; // 46rem
+  width: 100%; // 100%
+  height: 44.3rem; // 46rem
   background-color: #ffffff;
   border-radius: 7px;
 `;
