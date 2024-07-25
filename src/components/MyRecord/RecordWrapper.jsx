@@ -26,7 +26,7 @@ export default function RecordWrapper() {
       <RecordsWrapper>
         <RecordTitle>현재 {recordInfos.length}개의 기록을 작성했습니다.</RecordTitle>
         <Records>
-          <Record recordInfos={recordInfos} />
+          <Record recordInfos={recordInfos} setRecordInfos={setRecordInfos} />
         </Records>
       </RecordsWrapper>
     </div>
