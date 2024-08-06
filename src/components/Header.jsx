@@ -1,9 +1,11 @@
 import { SlMagnifier } from "react-icons/sl";
 import styled from "styled-components";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { VscAccount } from "react-icons/vsc";
+import { useEffect, useState } from "react";
+import { axiosInstance } from "../api/axiosInstance";
 
 export default function Header() {
+  const [headerId, setHeaderId] = useState("");
   const navigate = useNavigate();
   const accessToken = localStorage.getItem("accessToken");
   const onClick = () => {
@@ -15,6 +17,18 @@ export default function Header() {
     navigate("/log-in");
   };
 
+  const headerIdGet = async () => {
+    try {
+      const response = await axiosInstance.get(`/members/`);
+      setHeaderId(response.data.response);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  useEffect(() => {
+    headerIdGet();
+  }, []);
+
   return (
     <div>
       <HeaderAll>
@@ -22,7 +36,7 @@ export default function Header() {
           <Link to={"/"}>
             <HeaderLogo>
               <img
-                src="public\images\기록의 서재 로고 다른 버전.png"
+                src="public\images\기록의 서재 로고.png"
                 alt="logo"
                 style={{ width: "100%", height: "100%" }}
               />
@@ -39,8 +53,8 @@ export default function Header() {
           </Search>
           <HeaderUrls style={{ margin: "0 0.5rem" }}>
             {accessToken ? (
-              <HeaderUrls style={{marginLeft: '2rem'}}>
-                <HeaderUrls style={{marginRight: '1.5rem'}}>
+              <HeaderUrls style={{ marginLeft: "2rem" }}>
+                <HeaderUrls style={{ marginRight: "1.5rem" }}>
                   <Link to={"/my-record"}>
                     <HeaderUrl>나의 기록</HeaderUrl>
                   </Link>
@@ -49,20 +63,23 @@ export default function Header() {
                   </Link>
                 </HeaderUrls>
                 <Link to={"/my-page"}>
-                  <VscAccount
+                  <span
                     style={{
-                      fontSize: "30px",
+                      fontSize: "20px",
                       color: "#000000",
-                      margin: " 0 10px 0 15px",
+                      margin: " 0 8px 0 15px",
                     }}
-                  />
+                  >
+                    {" "}
+                    {headerId.nickname} 님{" "}
+                  </span>
                 </Link>
                 <HeaderUrlLogin as={"p"} style={{}} onClick={onClick}>
                   로그아웃
                 </HeaderUrlLogin>
               </HeaderUrls>
             ) : (
-              <div style={{display: 'flex', marginLeft: '2.3rem'}}>
+              <div style={{ display: "flex", marginLeft: "2.3rem" }}>
                 <HeaderUrls>
                   <HeaderUrl onClick={ClickToLogin}>나의 기록</HeaderUrl>
                   <HeaderUrl onClick={ClickToLogin}>기록하기</HeaderUrl>
