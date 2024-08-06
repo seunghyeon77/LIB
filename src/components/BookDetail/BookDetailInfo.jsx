@@ -7,9 +7,15 @@ import { axiosInstance } from "../../api/axiosInstance";
 import { BookInfoGenre, BookInfoTitle } from "../../styles/Main/BookStyle";
 
 export default function BookDetailinfo({ bookInfos, bookId }) {
-  const bookDetailInfos = [bookInfos];
+  const [isAdded, setIsAdded] = useState(bookInfos.isAdded);
   const [bookRecordInfos, setBookRecordInfos] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (bookInfos && bookInfos.isAdded !== undefined) {
+      setIsAdded(bookInfos.isAdded);
+    }
+  }, [bookInfos]);
 
   const Addbookshelf = async (event) => {
     event.preventDefault();
@@ -21,7 +27,12 @@ export default function BookDetailinfo({ bookInfos, bookId }) {
     try {
       const response = await axiosInstance.post(`/bookshelf/${bookId}`, data);
       console.log("Success:", response.data);
-      alert("나의 서재에 추가되었습니다 :)");
+      setIsAdded((prevIsAdded) => !prevIsAdded);
+      {
+        isAdded
+          ? alert("서재에서 삭제되었습니다 :)")
+          : alert("서재에 추가되었습니다.");
+      }
     } catch (error) {
       console.error(error);
     }
@@ -46,65 +57,48 @@ export default function BookDetailinfo({ bookInfos, bookId }) {
 
   return (
     <BookDetailinfoDiv>
-      {bookDetailInfos.map((bookInfo) => (
-        <BookInfos key={bookInfo.bookId}>
-          <BookInfoImg src={bookInfo.bookCover} alt="bookImg" />
-          <BookDetailInfos>
-            <BookInfoTitle> {bookInfo.bookName} </BookInfoTitle>
-            <BookInfoGenre> {bookInfo.authorCate}</BookInfoGenre>
-            <StarNumbers />
-            <Buttons>
-              {accessToken ? (
-                <form>
-                  {bookInfo.isAdded ? (
-                    <Button
-                      style={{
-                        border: "1px solid #E86A33",
-                        backgroundColor: "#ffffff",
-                        color: "#E86A33",
-                        padding: "0.7rem 1rem",
-                      }}
-                      onClick={Addbookshelf}
-                    >
-                      서재에서 삭제
-                    </Button>
-                  ) : (
-                    <Button
-                      style={{
-                        border: "1px solid #888888",
-                        backgroundColor: "#ffffff",
-                        padding: "0.8rem 1.1rem",
-                      }}
-                      onClick={Addbookshelf}
-                    >
-                      서재에 추가
-                    </Button>
-                  )}
-                  <Button
-                    style={{
-                      border: "none",
-                      backgroundColor: "#539165",
-                    }}
-                    onClick={MoveRecord}
-                  >
-                    <Link
-                      to={`/records/${bookId.bookId}`}
-                      style={{ color: "#ffffff" }}
-                    >
-                      기록하기
-                    </Link>
-                  </Button>
-                </form>
-              ) : (
-                <></>
-              )}
-            </Buttons>
-          </BookDetailInfos>
-        </BookInfos>
-      ))}
+      <BookInfos>
+        <BookInfoImg src={bookInfos.bookCover} alt="bookImg" />
+        <BookDetailInfos>
+          <BookInfoTitle> {bookInfos.bookName} </BookInfoTitle>
+          <BookInfoGenre> {bookInfos.authorCate} </BookInfoGenre>
+          <StarNumbers />
+          <Buttons>
+            {accessToken ? (
+              <form>
+                <Button
+                  style={{
+                    border: isAdded ? "1px solid #E86A33" : "1px solid #888888",
+                    backgroundColor: "#ffffff",
+                    color: isAdded ? "#E86A33" : "#000000",
+                    padding: "0.7rem 1rem",
+                  }}
+                  onClick={Addbookshelf}
+                >
+                  {isAdded ? "서재에서 삭제" : "서재에 추가"}
+                </Button>
+                <Button
+                  style={{
+                    border: "none",
+                    backgroundColor: "#539165",
+                  }}
+                  onClick={MoveRecord}
+                >
+                  <Link to={`/records/${bookId}`} style={{ color: "#ffffff" }}>
+                    기록하기
+                  </Link>
+                </Button>
+              </form>
+            ) : (
+              <></>
+            )}
+          </Buttons>
+        </BookDetailInfos>
+      </BookInfos>
     </BookDetailinfoDiv>
   );
 }
+
 export const BookDetailinfoDiv = styled.div`
   border-bottom: 0.06rem solid;
 `;

@@ -34,7 +34,7 @@ export default function BookDetailAi({ bookId }) {
   return (
     <BookDetailinfoDiv>
       <TitleText style={{ marginTop: "1.3rem" }}>
-        <Img src="public\images\로봇_아이콘-removebg-preview.png" />
+        <Img src="https://github.com/user-attachments/assets/648f22d8-8bb9-412d-a6bc-7eb0f7fcd409"/>
         이 책과 유사한 책들을 소개해드릴게요!
       </TitleText>
       <AiBooks>
