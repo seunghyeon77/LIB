@@ -62,7 +62,7 @@ export default function Record({ recordInfos, setRecordInfos }) {
             </Link>
           </div>
           <RecordDateDiv>
-            <PresentDate />
+            <span style={{fontSize: '0.9rem'}}>{recordInfo.createdDate}</span>
             <Delbtn onClick={() => recordDel(recordInfo.recordId)}>삭제</Delbtn>
           </RecordDateDiv>
         </div>
