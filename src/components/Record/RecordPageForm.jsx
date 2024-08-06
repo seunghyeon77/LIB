@@ -85,7 +85,7 @@ export default function RecordPageForm() {
           <InputTextGenre as="select" onChange={genreInput}>
             <option value="select">카테고리 선택</option>
             <option value="경제 경영">경제 경영</option>
-            <option value="모바일">IT 모바일</option>
+            <option value="IT 모바일">IT 모바일</option>
             <option value="가정 살림">가정 살림</option>
             <option value="건강 취미">건강 취미</option>
             <option value="사회 정치">사회 정치</option>
