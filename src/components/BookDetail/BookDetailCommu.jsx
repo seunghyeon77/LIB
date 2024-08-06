@@ -2,17 +2,44 @@ import { TitleText } from "../../styles/Main/BookStyle";
 import { FlexCenter } from "../../styles/PageLayout";
 import { LoginFormInput } from "../../styles/Login/LoginForm";
 
+import { FaRegTrashAlt } from "react-icons/fa";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { MoreButton } from "../MyRecord/MyStudyWrapper";
 import { axiosInstance } from "../../api/axiosInstance";
 
-export default function BookDetailCommu({bookId}) {
-  const [commuInput, setCommuInput] = useState(""); // 커뮤니티 input창 저장
+export default function BookDetailCommu({ bookId }) {
+  const [commentContent, setcommentContent] = useState(""); // 커뮤니티 input창 저장
   const [commuInputs, setCommuInputs] = useState([]); // 커뮤니티 input값들을 배열로 저장
   const [isShowbutton, setIsShowbutton] = useState(false);
+
   const inputValueOnchange = (event) => {
-    setCommuInput(event.target.value);
+    setcommentContent(event.target.value);
+  };
+
+  const buttonValueOnclick = (event) => {
+    event.preventDefault();
+
+    const data = {
+      commentContent,
+    };
+
+    if (commentContent.trim() === "") {
+      return;
+    } else {
+      const inputValue = async () => {
+        try {
+          await axiosInstance.post(`/comments/${bookId}`, data);
+          setcommentContent("");
+          alert("댓글이 등록되었습니다 :)");
+          console.log("성공", data);
+          await commentApi();
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      inputValue();
+    }
   };
 
   const commentApi = async () => {
@@ -27,42 +54,47 @@ export default function BookDetailCommu({bookId}) {
     commentApi();
   }, []);
 
-
-  const buttonValueOnclick = (event) => {
-    event.preventDefault();
-    if (commuInput.trim() === "") {
-      return;
-    }else {
-      const inputValue = async () => {
-        try {
-          await axiosInstance.post(`/comments/${bookId}`);
-        } catch (error) {
-          console.error(error);
-        }
-      }
-      inputValue();
+  const buttonDel = async (commentId) => {
+    try {
+      await axiosInstance.delete(`/comments/${commentId}`);
+      alert('기록이 삭제되었습니다 :)')
+      setCommuInputs((prevInputs) =>
+        prevInputs.filter((comment) => comment.commentId !== commentId)
+      );
+    } catch (error) {
+      console.error(error);
     }
   };
 
-  const displayInputs = !isShowbutton ? commuInputs.slice(0, 3) : commuInputs
+  const displayInputs = !isShowbutton ? commuInputs.slice(0, 3) : commuInputs;
+  console.log(displayInputs)
   return (
     <div>
       <div>
         <TitleText style={{ margin: "1.9rem 2rem" }}>커뮤니티</TitleText>
         <FlexCenterDiv>
           {displayInputs.map((displayInput) => (
-              <CommuDiv key={displayInput.CommentId}>
-                <h4 style={{ margin: "0.5rem 0" }}>{displayInput.nickname}</h4>
-                <CommuContent>
-                  <p style={{ fontSize: "1rem", lineHeight: "1.5rem" }}>
-                    {displayInput.commentContent}
-                  </p>
-                  <CommuContentDate>
-                    {displayInput.commentDate}
-                  </CommuContentDate>
-                </CommuContent>
-              </CommuDiv>
-            ))}
+            <CommuDiv key={displayInput.commentId}>
+              <h4 style={{ margin: "0.5rem 0" }}>{displayInput.nickname}</h4>
+              <CommuContent>
+                <p style={{ fontSize: "1rem", lineHeight: "1.5rem" }}>
+                  {displayInput.commentContent}
+                </p>
+                <CommuNickname>
+                  <CommuContentDate>{displayInput.createdDate}</CommuContentDate>
+                    {displayInput.isOwner === true ? (
+                    <button onClick={() => buttonDel(displayInput.commentId)} style={{background: 'none', border: 'none', cursor: 'pointer'}}>
+                      <FaRegTrashAlt
+                        style={{ fontSize: "1.1rem", marginLeft: "10px" }}
+                      />
+                    </button>
+                    ) : (
+                      <></>
+                    )}
+                </CommuNickname>
+              </CommuContent>
+            </CommuDiv>
+          ))}
           <FlexCenter>
             {commuInputs.length <= 2 ? (
               ""
@@ -81,7 +113,7 @@ export default function BookDetailCommu({bookId}) {
               type="text"
               placeholder="다양한 생각을 남겨보세요"
               onChange={inputValueOnchange}
-              value={commuInput} // input 값을 state와 동기화
+              value={commentContent} // input 값을 state와 동기화
             />
             <CommuButton>등록</CommuButton>
           </CommuForm>
@@ -98,6 +130,11 @@ const FlexCenterDiv = styled(FlexCenter)`
 const CommuDiv = styled.div`
   width: 50rem;
   margin: 1.2rem;
+`;
+
+const CommuNickname = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const CommuContent = styled.div`

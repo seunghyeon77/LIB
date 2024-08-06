@@ -31,6 +31,7 @@ export default function AiBook() {
       console.error(err);
     }
   };
+
   useEffect(() => {
     booksApi();
   }, []);
@@ -75,7 +76,7 @@ const AiBookCompo = styled.div`
 `;
 const AiBookImg = styled.div`
   height: 100%;
-  background-image: url("public/images/AI 도서관 사진.jpg");
+  background-image: url("public/images/AI_main.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 7px;

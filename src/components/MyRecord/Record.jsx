@@ -1,14 +1,12 @@
 import styled from "styled-components";
 import { axiosInstance } from "../../api/axiosInstance";
-import { useCallback, useEffect, useState } from "react";
 
 import PresentDate from "../PresentDate";
 import BookTitlelimit from "../BookTitlelimit";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function Record({ recordInfos }) {
+export default function Record({ recordInfos, setRecordInfos }) {
   const navigate = useNavigate();
-
   const recordsApi = async (recordId) => {
     try {
       const response = await axiosInstance.get(`/records/detail/${recordId}`);
@@ -26,13 +24,17 @@ export default function Record({ recordInfos }) {
       const deleteApi = async () => {
         try {
           await axiosInstance.delete(`/records/${recordId}`);
+          setRecordInfos((prevInfos) =>
+            prevInfos.filter((info) => info.recordId !== recordId)
+          );
         } catch (err) {
           console.error(err);
         }
-        deleteApi();
       };
+      deleteApi();
     }
   };
+
   return (
     <RecordDiv>
       {recordInfos.map((recordInfo) => (
@@ -46,7 +48,7 @@ export default function Record({ recordInfos }) {
                 <InfoTitle>
                   <BookTitlelimit
                     bookTitle={recordInfo.bookName}
-                    TextLimitAccount={7}
+                    TextLimitAccount={12}
                   />
                 </InfoTitle>
                 <InfoWriter>{recordInfo.author}</InfoWriter>
@@ -60,7 +62,7 @@ export default function Record({ recordInfos }) {
             </Link>
           </div>
           <RecordDateDiv>
-            <PresentDate />
+            <span style={{fontSize: '0.9rem'}}>{recordInfo.createdDate}</span>
             <Delbtn onClick={() => recordDel(recordInfo.recordId)}>삭제</Delbtn>
           </RecordDateDiv>
         </div>
