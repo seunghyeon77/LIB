@@ -5,10 +5,16 @@ import ToRecord from "../components/Record/ToRecord";
 
 export default function RecordPageRead() {
   const location = useLocation();
+  const recordDetailInfo = location.state?.recordDetailInfo || null;
+
   return (
     <Page>
       <Body>
-        <ToRecord recordReadInfos={location.state.recordDetailInfo} />
+        {recordDetailInfo ? (
+          <ToRecord recordReadInfos={recordDetailInfo} />
+        ) : (
+          <Loading>Loading...</Loading>
+        )}
       </Body>
     </Page>
   );
@@ -20,4 +26,8 @@ const Page = styled.div`
 `;
 const Body = styled.div`
   margin: 4rem 30rem;
+`;
+const Loading = styled.p`
+  font-size: 1.8rem;
+  text-align: center;
 `;
