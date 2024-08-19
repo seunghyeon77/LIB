@@ -30,6 +30,7 @@ axiosInstance.interceptors.response.use(
 
       try {
         const refreshToken = localStorage.getItem("refreshToken");
+        console.log(refreshToken)
         const response = await axiosInstance.post("/members/refresh", { refreshToken });
 
         if (response.status === 200) {
@@ -41,11 +42,11 @@ axiosInstance.interceptors.response.use(
         }
       } catch (err) {
         console.error(err);
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
+        // localStorage.removeItem("accessToken");
+        // localStorage.removeItem("refreshToken");
         alert('로그아웃 되었습니다.');
-        window.location.href = "/login";
-      }
+        window.location.href = "/log-in";
+      } 
     }
   }
 );
