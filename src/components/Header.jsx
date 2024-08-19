@@ -6,13 +6,15 @@ import { axiosInstance } from "../api/axiosInstance";
 
 export default function Header() {
   const [headerId, setHeaderId] = useState("");
+  const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
   const accessToken = localStorage.getItem("accessToken");
-  
+
   const onClick = () => {
     localStorage.removeItem("accessToken");
     window.location.reload();
   };
+
   const ClickToLogin = () => {
     alert("로그인 후 이용가능한 서비스입니다.");
     navigate("/log-in");
@@ -30,6 +32,22 @@ export default function Header() {
     headerIdGet();
   }, []);
 
+  const searchInputFun = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  const searchInputGet = async () => {
+    try {
+      const response = await axiosInstance.get(`/search?input=${searchInput}`);
+      navigate(`search/${searchInput}`, { state: response.data.response });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  // useEffect(() => {
+  //   searchInputGet();
+  // }, [searchInputBook]);
+
   return (
     <div>
       <HeaderAll>
@@ -44,12 +62,18 @@ export default function Header() {
             </HeaderLogo>
           </Link>
           <Search style={{ margin: "0 2.3rem" }}>
-            <Input type="text" placeholder="검색어를 입력하세요" />
+            <Input
+              type="text"
+              placeholder="검색어를 입력하세요"
+              onChange={searchInputFun}
+            />
             <SlMagnifier
               style={{
                 fontSize: "1.2rem",
                 marginLeft: "-2.2rem",
+                cursor: "pointer",
               }}
+              onClick={searchInputGet}
             />
           </Search>
           <HeaderUrls style={{ margin: "0 0.5rem" }}>
@@ -100,7 +124,7 @@ export default function Header() {
 
 const HeaderAll = styled.header`
   width: 100%;
-  height: 6.3rem;
+  height: 6.6rem;
   border-bottom: 0.06rem solid;
   background-color: #ffffff;
 `;
@@ -129,13 +153,14 @@ export const Search = styled.div`
 `;
 const Input = styled.input`
   width: 27rem;
-  height: 2.5rem;
+  height: 2.8rem;
   border: 1.4px solid #4eac27;
   border-radius: 7px;
   margin: 0;
   padding: 0 1rem;
+  font-size: 1.1rem;
   &::placeholder {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 `;
 const HeaderUrls = styled.div`
