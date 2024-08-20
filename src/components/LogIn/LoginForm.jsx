@@ -31,13 +31,17 @@ export default function LoginForms() {
       id,
       password,
     };
-    console.log(data)
+
     try {
       const response = await axiosInstance.post("/members/login", data);
-      console.log('백엔드에 로그인 정보 보내기 성공', response.data.response.accessToken)
-      if (response.data.response.accessToken) {
-        localStorage.setItem("accessToken", response.data.response.accessToken);
-        console.log("accessToken 저장 성공");
+      const access = response.data.response.accessToken;
+      const refresh = response.data.response.refreshToken;
+
+      if (access && refresh) {
+        localStorage.setItem("accessToken", access);
+        localStorage.setItem('refreshToken', refresh)
+        console.log("accessToken 저장 성공", access);
+        console.log("refreshToken 저장 성공", refresh)
         navigator("/");
       }
     } catch (error) {

@@ -8,6 +8,7 @@ export default function Header() {
   const [headerId, setHeaderId] = useState("");
   const navigate = useNavigate();
   const accessToken = localStorage.getItem("accessToken");
+  
   const onClick = () => {
     localStorage.removeItem("accessToken");
     window.location.reload();

@@ -3,12 +3,11 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 export const axiosInstance = axios.create({
-  baseURL: "https://b6dc-168-131-35-101.ngrok-free.app",
+  baseURL: import.meta.env.VITE_BASE_URL,
   headers: {
-    // "withCredentials": true,
+    "withCredentials": true,
     "Access-Control-Allow-Credentials": true,
     "ngrok-skip-browser-warning": true,
-    // "Accept": "application/json, text/plain",
   },
   mode: "cors"
 });
@@ -21,3 +20,32 @@ axiosInstance.interceptors.request.use((config) => {
   return config;
 });
 
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const originalRequest = error.config;
+
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;  
+
+      try {
+        const refreshToken = localStorage.getItem("refreshToken");
+        const response = await axiosInstance.post("/members/refresh", { refreshToken });
+
+        if (response.status === 200) {
+          const reAccessToken = response.data.accessToken;
+          localStorage.setItem("accessToken", reAccessToken);
+
+          originalRequest.headers.Authorization = `Bearer ${reAccessToken}`;
+          return axiosInstance(originalRequest);  
+        }
+      } catch (err) {
+        console.error(err);
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+        alert('로그아웃 되었습니다.');
+        window.location.href = "/login";
+      }
+    }
+  }
+);
