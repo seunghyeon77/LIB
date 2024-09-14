@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { axiosInstance } from "../../api/axiosInstance";
+import { TitleText } from "../../styles/Main/BookStyle";
 
 export default function RecordCalendar() {
   const [userData, setUserData] = useState([]);
@@ -16,8 +17,6 @@ export default function RecordCalendar() {
     fetchData();
   }, []);
 
-  console.log(userData);
-
   const weeks = 53;
   const days = 7;
 
@@ -25,7 +24,13 @@ export default function RecordCalendar() {
   const endDate = new Date("2024-12-31");
 
   const getDateData = (date) => {
-    return userData.find((data) => data.date === date) || { recordCnt: 0, commentCnt: 0 , totalCnt: 0};
+    return (
+      userData.find((data) => data.date === date) || {
+        recordCnt: 0,
+        commentCnt: 0,
+        totalCnt: 0,
+      }
+    );
   };
 
   function getColor(recordCnt, commentCnt) {
@@ -37,31 +42,49 @@ export default function RecordCalendar() {
   }
 
   return (
-    <div style={{padding: '30px 0'}}>
-      <table style={{display: 'flex', justifyContent: 'center'}}>
+    <div style={{ padding: "30px 0" }}>
+      <TitleText style={{margin: '1.3rem 2rem'}}>기록 캘린더</TitleText>
+      <table style={{ borderCollapse: "separate", borderSpacing: "2px" }}>
+        <thead></thead>
         <tbody>
           {[...Array(days)].map((_, dayIndex) => (
-            <tr key={dayIndex}>
+            <tr key={dayIndex} style={{}}>
               {[...Array(weeks)].map((_, weekIndex) => {
                 const currentDate = new Date(startDate);
-                currentDate.setDate(startDate.getDate() + (weekIndex * days) + dayIndex);
+                currentDate.setDate(
+                  startDate.getDate() + weekIndex * days + dayIndex
+                );
                 const dateStr = currentDate.toISOString().split("T")[0];
 
                 if (currentDate > endDate) {
-                  return <td key={weekIndex} style={{ width: "17px", height: "17px", backgroundColor: "#f1f1f1" }}></td>;
+                  return (
+                    <td
+                      key={weekIndex}
+                      style={{
+                        width: "17px",
+                        height: "17px",
+                        backgroundColor: "#f1f1f1",
+                      }}
+                    ></td>
+                  );
                 }
 
-                const { recordCnt, commentCnt, totalCnt } = getDateData(dateStr);
-                const backgroundColor = getColor(recordCnt, commentCnt, totalCnt);
+                const { recordCnt, commentCnt, totalCnt } =
+                  getDateData(dateStr);
+                const backgroundColor = getColor(
+                  recordCnt,
+                  commentCnt,
+                  totalCnt
+                );
 
                 return (
                   <td
                     key={weekIndex}
                     style={{
-                      width: "25px",
+                      width: "20px",
                       height: "20px",
                       backgroundColor,
-                      border: "1px solid #c0bfbf",
+                      borderRadius: "8px",
                     }}
                     title={`날짜: ${dateStr}\n기록: ${recordCnt}\n댓글: ${commentCnt}\n전체: ${totalCnt}`}
                   ></td>
