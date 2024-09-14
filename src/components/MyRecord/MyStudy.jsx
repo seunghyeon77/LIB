@@ -1,29 +1,40 @@
 import styled from "styled-components";
+
 import { BookTitle } from "../../styles/Main/BookStyle";
 import BookTitlelimit from "../BookTitlelimit";
 import { Link } from "react-router-dom";
+import Pagination from "../Pagination";
 
 export default function MyStudy({ studyLists }) {
-  console.log(studyLists)
-  const studysLists = studyLists.slice(0, 10);
+  const renderItems = (currentItems) => {
+    return (
+      <MystudysDiv>
+        {currentItems.map((studyList) => (
+          <MyStudyDiv key={studyList.bookId}>
+            <Link to={`/books/${studyList.bookId}`}>
+              <BookInfoImg src={studyList.bookCover} alt="BookImg" />
+            </Link>
+            <BookInfoText>
+              <BookTitle>
+                <BookTitlelimit
+                  bookTitle={studyList.bookName}
+                  TextLimitAccount={9}
+                />
+              </BookTitle>
+            </BookInfoText>
+          </MyStudyDiv>
+        ))}
+      </MystudysDiv>
+    );
+  };
   return (
-    <>
-      {studysLists.map((studyList) => (
-        <MyStudyDiv key={studyList.bookId}>
-          <Link to={`/books/${studyList.bookId}`}>
-            <BookInfoImg src={studyList.bookCover} alt="BookImg" />
-          </Link>
-          <BookInfoText>
-            <BookTitle>
-              <BookTitlelimit
-                bookTitle={studyList.bookName}
-                TextLimitAccount={9}
-              />
-            </BookTitle>
-          </BookInfoText>
-        </MyStudyDiv>
-      ))}
-    </>
+    <div>
+      <Pagination
+        data={studyLists}
+        itemsPerPage={8}
+        renderItems={renderItems}
+      />
+    </div>
   );
 }
 const MyStudyDiv = styled.div`
@@ -39,3 +50,8 @@ const BookInfoText = styled.div`
   display: flex;
   flex-flow: nowrap column;
 `;
+const MystudysDiv = styled.div`
+  display: "grid",
+  grid-template-columns: "repeat(4, 1fr)",
+  gap: "30px auto",
+`

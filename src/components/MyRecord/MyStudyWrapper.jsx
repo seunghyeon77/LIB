@@ -27,30 +27,21 @@ export default function MyStudyWrapper() {
           <MyStudys>
             <MyStudy studyLists={studysLists} />
           </MyStudys>
-        {/* <MoreButtonForm>
-          <MoreButton
-            onClick={() => {
-              setIsShowbutton(!isShowbutton);
-            }}
-          >
-            {!isShowbutton ? "더보기" : "접기"}
-          </MoreButton>
-        </MoreButtonForm> */}
       </MyStudysWrapper>
     </div>
   );
 }
 const MyStudysWrapper = styled.div`
   width: 100%; // 100%
-  height: 44.3rem; // 46rem
+  height: 48rem; // 46rem
   background-color: #ffffff;
   border-radius: 7px;
 `;
 const MyStudys = styled.div`
   margin: 0.8rem 6.5rem;
   padding: 1rem 0 0;
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex;
+  flex-wrap: wrap; */
 `;
 // 더 보기 버튼 스타일
 export const MoreButtonForm = styled.div`
