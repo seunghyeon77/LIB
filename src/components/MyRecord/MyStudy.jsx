@@ -42,8 +42,8 @@ const MyStudyDiv = styled.div`
 `;
 const BookInfoImg = styled.img`
   // 메인 페이지와 책 크기 다름
-  width: 8rem;
-  height: 12rem;
+  width: 9.5rem;
+  height: 13rem;
   border: 1.3px solid #eaeaea;
 `;
 const BookInfoText = styled.div`
@@ -51,7 +51,7 @@ const BookInfoText = styled.div`
   flex-flow: nowrap column;
 `;
 const MystudysDiv = styled.div`
-  display: "grid",
-  grid-template-columns: "repeat(4, 1fr)",
-  gap: "30px auto",
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px 25px;
 `
