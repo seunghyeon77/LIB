@@ -44,7 +44,7 @@ const bookImgs = [
   "public/images/progressImgs/Book4-removebg-preview.png",
   "public/images/progressImgs/Book5-removebg-preview.png",
   "public/images/progressImgs/Book6-removebg-preview.png",
-  "public/images/progressImgs/Book7-removebg-preview.png",
+  "public/images/progressImgs/Book7-removebg-preview (1).png",
 ];
 const ProgressDiv = styled.div`
   display: flex;
