@@ -9,6 +9,7 @@ import LogInPage from "./pages/LogInPage";
 import SignUpPage from "./pages/SignUpPage";
 import Header from "./components/Header";
 import RecordPageRead from "./pages/RecordPageRead";
+import SearchPage from "./pages/SearchPage";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path:"books/:bookId",
         element: <BookDetailPage />
+      },
+      {
+        path:"search/:input",
+        element: <SearchPage />
       },
       {
         path:"my-page",
