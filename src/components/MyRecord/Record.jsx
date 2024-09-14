@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { axiosInstance } from "../../api/axiosInstance";
 
-import PresentDate from "../PresentDate";
 import BookTitlelimit from "../BookTitlelimit";
 import { Link, useNavigate } from "react-router-dom";
+import Pagination from "../Pagination";
 
 export default function Record({ recordInfos, setRecordInfos }) {
   const navigate = useNavigate();
@@ -35,39 +35,51 @@ export default function Record({ recordInfos, setRecordInfos }) {
     }
   };
 
-  return (
-    <RecordDiv>
-      {recordInfos.map((recordInfo) => (
-        <div key={recordInfo.recordId}>
-          <div onClick={() => recordsApi(recordInfo.recordId)}>
-            <Link
-              to={`/records/detail/${recordInfo.recordId}`}
-              style={{ color: "#000000" }}
-            >
-              <RecordInfo>
-                <InfoTitle>
-                  <BookTitlelimit
-                    bookTitle={recordInfo.bookName}
-                    TextLimitAccount={12}
-                  />
-                </InfoTitle>
-                <InfoWriter>{recordInfo.author}</InfoWriter>
-                <InfoContent>
-                  <BookTitlelimit
-                    bookTitle={recordInfo.recordContent}
-                    TextLimitAccount={137}
-                  />
-                </InfoContent>
-              </RecordInfo>
-            </Link>
+  const renderItems = (currentItems) => {
+    return (
+      <RecordDiv>
+        {currentItems.map((recordInfo) => (
+          <div key={recordInfo.recordId}>
+            <div onClick={() => recordsApi(recordInfo.recordId)}>
+              <Link
+                to={`/records/detail/${recordInfo.recordId}`}
+                style={{ color: "#000000" }}
+              >
+                <RecordInfo>
+                  <InfoTitle>
+                    <BookTitlelimit
+                      bookTitle={recordInfo.bookName}
+                      TextLimitAccount={12}
+                    />
+                  </InfoTitle>
+                  <InfoWriter>{recordInfo.author}</InfoWriter>
+                  <InfoContent>
+                    <BookTitlelimit
+                      bookTitle={recordInfo.recordContent}
+                      TextLimitAccount={137}
+                    />
+                  </InfoContent>
+                </RecordInfo>
+              </Link>
+            </div>
+            <RecordDateDiv>
+              <span style={{ fontSize: "0.9rem" }}>
+                {recordInfo.createdDate}
+              </span>
+              <Delbtn onClick={() => recordDel(recordInfo.recordId)}>
+                삭제
+              </Delbtn>
+            </RecordDateDiv>
           </div>
-          <RecordDateDiv>
-            <span style={{fontSize: '0.9rem'}}>{recordInfo.createdDate}</span>
-            <Delbtn onClick={() => recordDel(recordInfo.recordId)}>삭제</Delbtn>
-          </RecordDateDiv>
-        </div>
-      ))}
-    </RecordDiv>
+        ))}
+      </RecordDiv>
+    );
+  };
+
+  return (
+    <div>
+      <Pagination data={recordInfos} itemsPerPage={8} renderItems={renderItems} />
+    </div>
   );
 }
 

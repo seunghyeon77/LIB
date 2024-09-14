@@ -4,19 +4,19 @@ import styled from "styled-components";
 
 import Record from "./Record";
 
+
 export default function RecordWrapper() {
-  const [recordInfos, setRecordInfos] = useState([]);
-  
+  const [recordInfos, setRecordInfos] = useState([]); 
+
   const recordsApi = async () => {
     try {
       const response = await axiosInstance.get("/records/books");
       setRecordInfos(response.data.response);
-      console.log(response.data.response)
+      console.log(response.data.response);
     } catch (err) {
       console.error(err);
     }
   };
-
   useEffect(() => {
     recordsApi();
   }, []);
@@ -24,7 +24,9 @@ export default function RecordWrapper() {
   return (
     <div style={{ margin: "1.7rem 0" }}>
       <RecordsWrapper>
-        <RecordTitle>현재 {recordInfos.length}개의 기록을 작성했습니다.</RecordTitle>
+        <RecordTitle>
+          현재 {recordInfos.length}개의 기록을 작성했습니다.
+        </RecordTitle>
         <Records>
           <Record recordInfos={recordInfos} setRecordInfos={setRecordInfos} />
         </Records>
@@ -38,7 +40,7 @@ export const RecordTitle = styled.h3`
 `;
 const RecordsWrapper = styled.div`
   width: 100%; // 100%
-  height: 46rem; // 46rem
+  height: 51rem; // 46rem
   background-color: #ffffff;
   border-radius: 7px;
 `;
