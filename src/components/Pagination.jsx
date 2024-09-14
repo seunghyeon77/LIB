@@ -47,6 +47,7 @@ const Paginate = styled(ReactPaginate).attrs({
   gap: 30px;
   font-size: 18px;
   margin: 30px;
+  cursor: pointer;
 
 `
 

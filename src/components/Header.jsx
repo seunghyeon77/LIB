@@ -1,4 +1,5 @@
 import { SlMagnifier } from "react-icons/sl";
+import { TiDelete } from "react-icons/ti";
 import styled from "styled-components";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -40,13 +41,15 @@ export default function Header() {
     try {
       const response = await axiosInstance.get(`/search?input=${searchInput}`);
       navigate(`search/${searchInput}`, { state: response.data.response });
+      setSearchInput("");
     } catch (err) {
       console.error(err);
     }
   };
-  // useEffect(() => {
-  //   searchInputGet();
-  // }, [searchInputBook]);
+
+  const clearSearchInput = () => {
+    setSearchInput("");
+  };
 
   return (
     <div>
@@ -65,16 +68,39 @@ export default function Header() {
             <Input
               type="text"
               placeholder="검색어를 입력하세요"
+              value={searchInput}
               onChange={searchInputFun}
             />
-            <SlMagnifier
-              style={{
-                fontSize: "1.2rem",
-                marginLeft: "-2.2rem",
-                cursor: "pointer",
-              }}
-              onClick={searchInputGet}
-            />
+            <div style={{marginLeft: '-5rem'}}>
+              {searchInput ? (
+                <TiDelete
+                  style={{
+                    fontSize: "1.5rem",
+                    cursor: "pointer",
+                    marginRight: "13px",
+                    visibility: "visible",
+                  }}
+                  onClick={clearSearchInput}
+                />
+              ) : (
+                <TiDelete
+                  style={{
+                    fontSize: "1.5rem",
+                    cursor: "pointer",
+                    marginRight: "13px",
+                    visibility: "hidden",
+                  }}
+                  onClick={clearSearchInput}
+                />
+              )}
+              <SlMagnifier
+                style={{
+                  fontSize: "1.6rem",
+                  cursor: "pointer",
+                }}
+                onClick={searchInputGet}
+              />
+            </div>
           </Search>
           <HeaderUrls style={{ margin: "0 0.5rem" }}>
             {accessToken ? (
@@ -150,13 +176,13 @@ const HeaderLogo = styled.div`
 export const Search = styled.div`
   display: flex;
   align-items: center;
+  border-radius: 3px;
 `;
 const Input = styled.input`
   width: 27rem;
   height: 2.8rem;
-  border: 1.4px solid #4eac27;
-  border-radius: 7px;
   margin: 0;
+  border: 1.5px solid #48b11b;
   padding: 0 1rem;
   font-size: 1.1rem;
   &::placeholder {
@@ -185,5 +211,6 @@ const HeaderUrlLogin = styled(HeaderUrl)`
   border-radius: 10px;
   &:hover {
     color: #ffffff;
+    background-color: #535353;
   }
 `;

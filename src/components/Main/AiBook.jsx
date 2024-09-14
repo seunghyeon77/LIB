@@ -76,9 +76,10 @@ const AiBookCompo = styled.div`
 `;
 const AiBookImg = styled.div`
   height: 100%;
-  background-image: url("public/images/AI_main.jpg");
+  /* background-image: url("public/images/AI_main.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
+  background: rgba(77, 172, 39, 0.06);
   border-radius: 7px;
 `;
 const AiBookImgOverlay = styled.div`
