@@ -58,9 +58,9 @@ export default function Header() {
           <Link to={"/"}>
             <HeaderLogo>
               <img
-                src="public\images\기록의 서재 로고.png"
+                src="public\images\기록의 서재.png"
                 alt="logo"
-                style={{ width: "100%", height: "100%" }}
+                style={{ width: "90%", height: "90%" }}
               />
             </HeaderLogo>
           </Link>
