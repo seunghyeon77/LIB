@@ -31,7 +31,7 @@ export default function SearchPageBook({ searchBooks, searchInput }) {
             </SearchBookDiv>
           </>
         ) : (
-          <SearchBookTitle>찾으시는 책은 기록의 서재에 없습니다.</SearchBookTitle>
+          <SearchBookTitle>찾으시는 {searchInput.input}은 기록의 서재에 없습니다.</SearchBookTitle>
         )}
       </div>
     );
