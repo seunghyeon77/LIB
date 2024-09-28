@@ -4,7 +4,7 @@ import { recordCalender } from "../../api/mainApis";
 
 export default function RecordCalendar() {
   const { data, isError, error, isLoading } = useQuery({
-    queryKey: ["records"],
+    queryKey: ["recordsCalender"],
     queryFn: recordCalender,
   });
   if (isError) return <span>{error.message}</span>;

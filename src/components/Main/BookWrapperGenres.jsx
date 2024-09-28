@@ -22,7 +22,7 @@ export default function BookWrapperGenres() {
   };
 
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["books", selectGenre],
+    queryKey: ["booksGenre", selectGenre],
     queryFn: () => carouselGenre(selectGenre),
   });
 

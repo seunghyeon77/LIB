@@ -27,7 +27,7 @@ export default function CarouselBest() {
   };
 
   const { data, isError, error, isLoading } = useQuery({
-    queryKey: ["books"],
+    queryKey: ["booksBest"],
     queryFn: carouselBest,
   });
 

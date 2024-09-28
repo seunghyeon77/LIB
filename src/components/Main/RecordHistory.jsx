@@ -8,7 +8,7 @@ import { recordHistory } from "../../api/mainApis";
 
 export default function RecordHistory() {
   const { data, isError, error, isLoading } = useQuery({
-    queryKey: ["records"],
+    queryKey: ["recordsHistory"],
     queryFn: recordHistory,
   });
   if (isLoading) return <span>기록 정보를 가져오는 중입니다...</span>;
