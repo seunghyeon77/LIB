@@ -13,7 +13,7 @@ import {
 import BookTitlelimit from "../BookTitlelimit";
 import { Link } from "react-router-dom";
 
-export default function CarouselBest({ genreBooks }) {
+export default function CarouselBest( records ) {
   const settings = {
     dots: true,
     infinite: true,
@@ -23,7 +23,6 @@ export default function CarouselBest({ genreBooks }) {
     slidesToScroll: 5,
     touchMove: false,
   };
-
   const accessToken = localStorage.getItem("accessToken");
   const toLogin = () => {
     alert("로그인 후 이용가능합니다.");
@@ -33,7 +32,7 @@ export default function CarouselBest({ genreBooks }) {
   return (
     <BookCarousel>
       <SlickSlider {...settings}>
-        {genreBooks.map((genreBook) => (
+        {records.records.map((genreBook) => (
           <SlickItem key={genreBook.bookId}>
             {accessToken ? (
               <Link to={`/books/${genreBook.bookId}`}>

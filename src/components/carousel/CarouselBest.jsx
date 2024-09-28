@@ -2,8 +2,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import { axiosInstance } from "../../api/axiosInstance";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 import {
   BookInfoImg,
@@ -13,7 +12,8 @@ import {
   SlickItem,
 } from "../../styles/Main/BookStyle";
 import BookTitlelimit from "../BookTitlelimit";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { carouselBest } from "../../api/mainApis";
 
 export default function CarouselBest() {
   const settings = {
@@ -25,32 +25,22 @@ export default function CarouselBest() {
     slidesToScroll: 5,
     touchMove: false,
   };
-  const [bookInfos, setBookInfos] = useState([]);
 
-  const booksApi = async () => {
-    try {
-      const response = await axiosInstance.get("/books/popular");
-      setBookInfos(response.data.response);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-  useEffect(() => {
-    booksApi();
-  }, []);
+  const { data, isError, error, isLoading } = useQuery({
+    queryKey: ["books"],
+    queryFn: carouselBest,
+  });
 
-  const accessToken = localStorage.getItem("accessToken");
-  console.log(accessToken);
-
-  const navigator = useNavigate();
+  if (isError) return <span>{error.message}</span>;
+  if (isLoading) return <span>책 정보를 가져오는 중입니다...</span>;
 
   return (
     <BookCarousel>
       <SlickSlider {...settings}>
-        {bookInfos.map((bookInfo) => (
+        {data.data.response.map((bookInfo) => (
           <SlickItem key={bookInfo.bookId}>
             <Link to={`/books/${bookInfo.bookId}`}>
-                <BookInfoImg src={bookInfo.bookCover} alt="bookimg" />
+              <BookInfoImg src={bookInfo.bookCover} alt="bookimg" />
             </Link>
             <BookInfoText>
               <BookTitle>

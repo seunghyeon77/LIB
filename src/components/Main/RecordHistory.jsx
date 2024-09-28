@@ -1,30 +1,18 @@
-import { axiosInstance } from "../../api/axiosInstance";
-import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useQuery } from "@tanstack/react-query";
 
 import { BookInfoImg, BookInfos, TitleText } from "../../styles/Main/BookStyle";
 import BookTitlelimit from "../BookTitlelimit";
 import { Link } from "react-router-dom";
+import { recordHistory } from "../../api/mainApis";
 
 export default function RecordHistory() {
-  const [recordInfos, setRecordInfos] = useState([]);
-  const recordCount = 5;
-  const recordsApi = async () => {
-    try {
-      const response = await axiosInstance.get("/records/main");
-      const records = response.data.response;
-      if (records.length > recordCount) {
-        setRecordInfos(records.slice(0, recordCount));
-      } else {
-        setRecordInfos(records);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-  useEffect(() => {
-    recordsApi();
-  }, []);
+  const { data, isError, error, isLoading } = useQuery({
+    queryKey: ["records"],
+    queryFn: recordHistory,
+  });
+  if (isLoading) return <span>기록 정보를 가져오는 중입니다...</span>;
+  if (isError) return <span>{error.message}</span>;
 
   const accessToken = localStorage.getItem("accessToken");
 
@@ -34,7 +22,7 @@ export default function RecordHistory() {
         <>
           <TitleText>최근 기록 히스토리</TitleText>
           <RecordHistoryBooks>
-            {recordInfos.map((recordInfo) => (
+            {data.data.response.slice(0, 5).map((recordInfo) => (
               <BookContainer key={recordInfo.recordId}>
                 {accessToken ? (
                   <>
