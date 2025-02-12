@@ -30,7 +30,6 @@ export default function CarouselBest() {
     queryKey: ["booksBest"],
     queryFn: carouselBest,
   });
-
   if (isError) return <span>{error.message}</span>;
   if (isLoading) return <span>책 정보를 가져오는 중입니다...</span>;
 
@@ -40,7 +39,7 @@ export default function CarouselBest() {
         {data.data.response.map((bookInfo) => (
           <SlickItem key={bookInfo.bookId}>
             <Link to={`/books/${bookInfo.bookId}`}>
-              <BookInfoImg src={bookInfo.bookCover} alt="bookimg" />
+              <BookInfoImg src={bookInfo.bookCover} alt='bookimg' />
             </Link>
             <BookInfoText>
               <BookTitle>

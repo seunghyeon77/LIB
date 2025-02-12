@@ -8,7 +8,7 @@ export default function RecordCalendar() {
     queryFn: recordCalender,
   });
   if (isError) return <span>{error.message}</span>;
-  if (isLoading) return <span>기록 정보를 가져오는 중입니다...</span>
+  if (isLoading) return <span>기록 정보를 가져오는 중입니다...</span>;
 
   const weeks = 53;
   const days = 7;
@@ -39,7 +39,7 @@ export default function RecordCalendar() {
   return (
     <>
       {accessToken ? (
-        <div style={{ padding: "30px 0" }}>
+        <div style={{ margin: "5rem 0" }}>
           <TitleText style={{ margin: "1.3rem 2rem" }}>기록 캘린더</TitleText>
           <table style={{ borderCollapse: "separate", borderSpacing: "2px" }}>
             <thead></thead>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import styled from "styled-components";
 
-import { Book, BookInfos } from "../../styles/Main/BookStyle";
+import { Book, BookInfos, TitleText } from "../../styles/Main/BookStyle";
 import CarouselGenre from "../carousel/CarouselGenre";
 import { carouselGenre } from "../../api/mainApis";
 
@@ -17,6 +17,7 @@ export default function BookWrapperGenres() {
   ];
 
   const [selectGenre, setSelectGenre] = useState("경제 경영"); // 클릭했을 때 해당 장르 저장 state
+
   const onClickGenre = (genre) => {
     setSelectGenre(genre);
   };
@@ -32,9 +33,13 @@ export default function BookWrapperGenres() {
   return (
     <Book>
       <BookGenres>
+        <TitleText>카테고리별 종류</TitleText>
         {genreToCategory.map((bookGenre, index) => (
           <div key={index}>
-            <BookGenre onClick={() => onClickGenre(bookGenre)}>
+            <BookGenre
+              onClick={() => onClickGenre(bookGenre)}
+              isSelected={selectGenre === bookGenre}
+            >
               {bookGenre}
             </BookGenre>
           </div>
@@ -48,15 +53,16 @@ export default function BookWrapperGenres() {
 }
 const BookGenres = styled.div`
   display: flex;
-  justify-content: center;
+  align-items: center;
+  column-gap: 2rem;
   margin-bottom: 20px;
 `;
 const BookGenre = styled.p`
-  margin: 0 3rem 1.3rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   border: none;
   background: none;
   cursor: pointer;
+  color: ${(props) => (props.isSelected ? "#e86a33" : "inherit")};
   &:hover {
     color: #e86a33;
   }

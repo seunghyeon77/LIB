@@ -41,8 +41,10 @@ export default function AiBook() {
   return (
     <AiBookCompo>
       <TitleText>
-        <Img src="public\images\로봇_아이콘-removebg-preview.png" />
-        기록의 서재님을 위한 AI 맞춤 추천
+        <Img src='public\images\로봇_아이콘-removebg-preview.png' />
+        <span style={{ margin: "0 0 0 0.5rem" }}>
+          기록의 서재님을 위한 AI 맞춤 추천
+        </span>
       </TitleText>
       <AiBookImg>
         <AiBookImgOverlay>
@@ -52,11 +54,11 @@ export default function AiBook() {
               style={{ width: "60%", height: "250px" }}
             >
               {bookInfos.map((bookInfo) => (
-                <Link to={`/books/${bookInfo.bookId}`}>
-                  <div key={bookInfo.bookId}>
-                    <CenterBookInfoImg src={bookInfo.bookCover} alt="bookimg" />
-                  </div>
-                </Link>
+                <div key={bookInfo.bookId}>
+                  <Link to={`/books/${bookInfo.bookId}`}>
+                    <CenterBookInfoImg src={bookInfo.bookCover} alt='bookimg' />
+                  </Link>
+                </div>
               ))}
             </SlickSlider>
           ) : (
@@ -73,17 +75,14 @@ export default function AiBook() {
 const AiBookCompo = styled.div`
   height: 20rem;
   width: 100%;
+  margin: 3rem 0 5rem 0;
 `;
 const AiBookImg = styled.div`
   height: 100%;
-  /* background-image: url("public/images/AI_main.jpg");
-  background-repeat: no-repeat;
-  background-size: cover; */
   background: rgba(77, 172, 39, 0.06);
-  border-radius: 7px;
+  border-radius: 3px;
 `;
 const AiBookImgOverlay = styled.div`
-  // img 안에 따로 div을 넣어서 투명도를 관리
   height: 100%;
   display: flex;
   justify-content: center;

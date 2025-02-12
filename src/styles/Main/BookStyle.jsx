@@ -9,7 +9,8 @@ export const BookInfos = styled.div`
   height: 25rem;
   width: 100%;
   background-color: #ffffff;
-  border-radius: 7px;
+  border: 0.5px solid #6e6e6e;
+  border-radius: 3px;
 `;
 export const BookInfoTitle = styled.h3`
   margin: 1rem;
@@ -17,8 +18,8 @@ export const BookInfoTitle = styled.h3`
 `;
 // 책 이미지 크기
 export const BookInfoImg = styled.img`
-  width: 9rem;
-  height: 13rem;
+  width: 11rem;
+  height: 15rem;
   /* filter: drop-shadow(#6c6c6c 0 0.5px 2px); */
   border: 1.3px solid #331d1d;
 `;
@@ -45,18 +46,18 @@ export const TitleText = styled.h3`
   display: flex;
   align-items: center;
   margin: 1rem 2rem;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
 `;
 export const Img = styled.img`
-  width: 2rem;
-  height: 1.5rem;
+  width: 2.2rem;
+  height: 1.7rem;
 `;
 // 5권 책들 정렬 및 기본 마진
 export const AiBooks = styled.div`
   display: flex;
   justify-content: center;
   margin: 2rem 0;
-`
+`;
 export const SlickItem = styled.div`
   padding: 1.3rem;
 `;

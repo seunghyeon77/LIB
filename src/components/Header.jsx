@@ -58,20 +58,20 @@ export default function Header() {
           <Link to={"/"}>
             <HeaderLogo>
               <img
-                src="public\images\기록의 서재.png"
-                alt="logo"
+                src='public\images\기록의 서재.png'
+                alt='logo'
                 style={{ width: "90%", height: "90%" }}
               />
             </HeaderLogo>
           </Link>
           <Search style={{ margin: "0 2.3rem" }}>
             <Input
-              type="text"
-              placeholder="검색어를 입력하세요"
+              type='text'
+              placeholder='검색어를 입력하세요'
               value={searchInput}
               onChange={searchInputFun}
             />
-            <div style={{marginLeft: '-5rem'}}>
+            <div style={{ marginLeft: "-5rem" }}>
               {searchInput ? (
                 <TiDelete
                   style={{
@@ -95,7 +95,7 @@ export default function Header() {
               )}
               <SlMagnifier
                 style={{
-                  fontSize: "1.6rem",
+                  fontSize: "1.4rem",
                   cursor: "pointer",
                 }}
                 onClick={searchInputGet}
@@ -151,7 +151,7 @@ export default function Header() {
 const HeaderAll = styled.header`
   width: 100%;
   height: 6.6rem;
-  border-bottom: 0.06rem solid;
+  border-bottom: 0.07rem solid #4dac27;
   background-color: #ffffff;
 `;
 const HeaderNav = styled.nav`
@@ -182,11 +182,12 @@ const Input = styled.input`
   width: 27rem;
   height: 2.8rem;
   margin: 0;
-  border: 1.5px solid #48b11b;
+  border: 0.07rem solid #4dac27;
+  border-radius: 2px;
   padding: 0 1rem;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   &::placeholder {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
   }
 `;
 const HeaderUrls = styled.div`
