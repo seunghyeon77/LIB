@@ -40,12 +40,12 @@ export default function Record({ recordInfos, setRecordInfos }) {
       <RecordDiv>
         {currentItems.map((recordInfo) => (
           <div key={recordInfo.recordId}>
-            <div onClick={() => recordsApi(recordInfo.recordId)}>
+            <RecordInfo>
               <Link
                 to={`/records/detail/${recordInfo.recordId}`}
                 style={{ color: "#000000" }}
               >
-                <RecordInfo>
+                <div onClick={() => recordsApi(recordInfo.recordId)}>
                   <InfoTitle>
                     <BookTitlelimit
                       bookTitle={recordInfo.bookName}
@@ -59,14 +59,17 @@ export default function Record({ recordInfos, setRecordInfos }) {
                       TextLimitAccount={137}
                     />
                   </InfoContent>
-                </RecordInfo>
+                </div>
               </Link>
-            </div>
+            </RecordInfo>
             <RecordDateDiv>
               <span style={{ fontSize: "0.9rem" }}>
                 {recordInfo.createdDate}
               </span>
-              <Delbtn onClick={() => recordDel(recordInfo.recordId)}>
+              <Delbtn
+                onClick={() => recordDel(recordInfo.recordId)}
+                style={{ backgroundColor: "#f7f7f7" }}
+              >
                 삭제
               </Delbtn>
             </RecordDateDiv>
@@ -78,34 +81,41 @@ export default function Record({ recordInfos, setRecordInfos }) {
 
   return (
     <div>
-      <Pagination data={recordInfos} itemsPerPage={8} renderItems={renderItems} />
+      <Pagination
+        data={recordInfos}
+        itemsPerPage={8}
+        renderItems={renderItems}
+      />
     </div>
   );
 }
 
 const RecordDiv = styled.div`
+  min-height: 37rem;
+  min-width: 70rem;
   width: 100%;
   height: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 35px 25px;
   margin-top: 55px;
+  padding: 0 1rem;
 `;
 
 const RecordInfo = styled.div`
-  width: 13.1rem;
-  height: 15.6rem;
-  border: 1.3px solid #bfbfbf;
-  border-radius: 7px;
+  width: 18rem;
+  height: 20rem;
+  background-color: #ffffff;
 `;
 
 const InfoTitle = styled.h3`
   padding: 0.9rem 1rem 0;
-  font-size: 1rem;
+  font-size: 1.25rem;
 `;
 const RecordDateDiv = styled.div`
-  margin: 0.3rem;
+  margin: 0.5rem 0 2rem 0;
   display: flex;
+  justify-content: space-between;
+  width: 18rem;
 `;
 const Delbtn = styled.button`
   margin-left: 7px;
@@ -116,12 +126,13 @@ const Delbtn = styled.button`
   cursor: pointer;
 `;
 const InfoWriter = styled.span`
-  padding: 0 1rem;
-  font-size: 0.7rem;
+  padding: 1rem 1rem;
+  font-size: 0.8rem;
   opacity: 0.5;
 `;
 
 const InfoContent = styled.p`
   padding: 0.8rem 1rem;
   line-height: 1.1rem;
+  font-size: 1.2rem;
 `;

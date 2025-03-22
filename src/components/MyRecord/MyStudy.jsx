@@ -6,13 +6,14 @@ import { Link } from "react-router-dom";
 import Pagination from "../Pagination";
 
 export default function MyStudy({ studyLists }) {
+  console.log(studyLists);
   const renderItems = (currentItems) => {
     return (
       <MystudysDiv>
         {currentItems.map((studyList) => (
           <MyStudyDiv key={studyList.bookId}>
             <Link to={`/books/${studyList.bookId}`}>
-              <BookInfoImg src={studyList.bookCover} alt="BookImg" />
+              <BookInfoImg src={studyList.bookCover} alt='BookImg' />
             </Link>
             <BookInfoText>
               <BookTitle>
@@ -54,4 +55,4 @@ const MystudysDiv = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px 25px;
-`
+`;

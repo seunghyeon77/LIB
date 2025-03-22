@@ -5,24 +5,37 @@ import BookTitlelimit from "./BookTitlelimit";
 import Pagination from "./Pagination";
 
 export default function SearchPageBook({ searchBooks, searchInput }) {
-  console.log(searchBooks);
   const renderItems = (currentItems) => {
     return (
       <div>
         {searchBooks.length != 0 ? (
           <>
-            <SearchBookTitle>{searchInput.input}에 대한 검색 기록입니다.</SearchBookTitle>
+            <SearchBookTitle>
+              {searchInput.input}에 대한 검색 기록입니다.
+            </SearchBookTitle>
             <SearchBookDiv>
               {currentItems.map((searchBook) => (
-                <BookInfos key={searchBook.bookId}>
-                  <Link to={`books/${searchBook.bookId}`}>
+                <BookInfos
+                  key={searchBook.bookId}
+                  style={{ backgroundColor: "rgba(255, 255, 255, 0.6)" }}
+                >
+                  <Link
+                    to={`books/${searchBook.bookId}`}
+                    style={{ margin: "0 0 0 1.5rem" }}
+                  >
                     <BookInfoImg src={searchBook.bookCover} />
                     <div>
                       <BookInfoTitle>
-                        <BookTitlelimit bookTitle={searchBook.bookName} TextLimitAccount={9}/>
+                        <BookTitlelimit
+                          bookTitle={searchBook.bookName}
+                          TextLimitAccount={9}
+                        />
                       </BookInfoTitle>
                       <BookInfoWriter>
-                        <BookTitlelimit bookTitle={searchBook.authorPub} TextLimitAccount={9}/>
+                        <BookTitlelimit
+                          bookTitle={searchBook.authorPub}
+                          TextLimitAccount={9}
+                        />
                       </BookInfoWriter>
                     </div>
                   </Link>
@@ -31,7 +44,9 @@ export default function SearchPageBook({ searchBooks, searchInput }) {
             </SearchBookDiv>
           </>
         ) : (
-          <SearchBookTitle>찾으시는 {searchInput.input}은 기록의 서재에 없습니다.</SearchBookTitle>
+          <SearchBookTitle>
+            찾으시는 {searchInput.input}은 기록의 서재에 없습니다.
+          </SearchBookTitle>
         )}
       </div>
     );
@@ -46,7 +61,6 @@ export default function SearchPageBook({ searchBooks, searchInput }) {
     </div>
   );
 }
-
 
 const BookInfoTitle = styled.h3`
   color: #000000;
@@ -65,4 +79,4 @@ const SearchBookDiv = styled.div`
 `;
 const SearchBookTitle = styled.h3`
   font-size: 20px;
-`
+`;

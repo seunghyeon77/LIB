@@ -40,7 +40,7 @@ export default function RecordPageForm() {
       recordContent,
       rating,
     };
-    console.log(data)
+    console.log(data);
     try {
       const response = await axiosInstance.post("/records", data);
       console.log("Success:", response.data);
@@ -65,37 +65,45 @@ export default function RecordPageForm() {
     <form onSubmit={handleSubmit}>
       <InputForms>
         <Bookimg
-          name="bookCover"
+          name='bookCover'
           setBookCover={setBookCover}
           bookCover={bookCover}
         />
         <InputTexts>
           <InputText
-            name="bookName"
-            type="text"
-            placeholder="제목을 입력하세요"
+            name='bookName'
+            type='text'
+            placeholder='제목을 입력하세요'
             onChange={bookNameInput}
           />
           <InputText
-            name="author"
-            type="text"
-            placeholder="지은이를 입력하세요"
+            name='author'
+            type='text'
+            placeholder='지은이를 입력하세요'
             onChange={authorInput}
+            style={{ margin: "1.2rem 0" }}
           />
-          <InputTextGenre as="select" onChange={genreInput}>
-            <option value="select">카테고리 선택</option>
-            <option value="경제 경영">경제 경영</option>
-            <option value="IT 모바일">IT 모바일</option>
-            <option value="가정 살림">가정 살림</option>
-            <option value="건강 취미">건강 취미</option>
-            <option value="사회 정치">사회 정치</option>
-            <option value="인문">인문</option>
+          <InputTextGenre as='select' onChange={genreInput}>
+            <option value='select'>카테고리 선택</option>
+            <option value='경제 경영'>경제 경영</option>
+            <option value='IT 모바일'>IT 모바일</option>
+            <option value='가정 살림'>가정 살림</option>
+            <option value='건강 취미'>건강 취미</option>
+            <option value='사회 정치'>사회 정치</option>
+            <option value='인문'>인문</option>
           </InputTextGenre>
-          <StarNumber name="rating" rating={rating} setRating={setRating} />
+          <div style={{ margin: "1rem 0 0 0" }}>
+            <StarNumber
+              name='rating'
+              rating={rating}
+              setRating={setRating}
+              style={{ margin: "2rem 0 0 0" }}
+            />
+          </div>
         </InputTexts>
       </InputForms>
       <Textareas>
-        <Textarea name="recordContent" onChange={inputTextArea} />
+        <Textarea name='recordContent' onChange={inputTextArea} />
         <Buttons>
           <Button
             style={{ border: "1px solid #888888", backgroundColor: "#ffffff" }}
@@ -106,10 +114,10 @@ export default function RecordPageForm() {
           <Button
             style={{
               border: "1px solid",
-              backgroundColor: "#539165",
+              backgroundColor: "#4dac27",
               color: "#ffffff",
             }}
-            type="submit"
+            type='submit'
           >
             기록하기
           </Button>
@@ -120,20 +128,19 @@ export default function RecordPageForm() {
 }
 
 const InputForms = styled.div`
-  margin: 4rem 2rem;
+  margin: 4rem 0;
   display: flex;
-  align-items: center;
 `;
 const InputTexts = styled.div`
   display: flex;
-  align-items: center;
-  flex-flow: wrap column;
+  flex-direction: column;
+  margin: 0 2rem;
 `;
 const InputText = styled.input`
-  margin: 0.5rem 1rem;
-  padding: 0.6rem;
+  width: 15rem;
+  padding: 0.7rem;
   border: 1px solid #888888;
-  border-radius: 7px;
+  border-radius: 2px;
 `;
 const Textareas = styled.div`
   display: flex;
@@ -146,19 +153,21 @@ const Textarea = styled.textarea`
   font-size: 1.3rem;
   resize: none;
   border: 1px solid;
-  border-radius: 7px;
+  border-radius: 2px;
   padding: 1.2rem;
 `;
 const Buttons = styled.div`
   display: flex;
   justify-content: flex-end;
+  margin: 1rem 0;
 `;
 const Button = styled.button`
-  margin: 1.2rem 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 7px;
+  width: 100px;
+  height: 45px;
+  padding: 0 24px;
+  border-radius: 2px;
   cursor: pointer;
 `;
 const InputTextGenre = styled(InputText)`
-  width: 12.2rem;
+  width: 100%;
 `;

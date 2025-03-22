@@ -58,9 +58,12 @@ export default function BookDetailinfo({ bookInfos, bookId }) {
   return (
     <BookDetailinfoDiv>
       <BookInfos>
-        <BookInfoImg src={bookInfos.bookCover} alt="bookImg" />
+        <BookInfoImg src={bookInfos.bookCover} alt='bookImg' />
         <BookDetailInfos>
-          <BookInfoTitle> {bookInfos.bookName} </BookInfoTitle>
+          <BookInfoTitle style={{ margin: "0 0 0 0" }}>
+            {" "}
+            {bookInfos.bookName}{" "}
+          </BookInfoTitle>
           <BookInfoGenre> {bookInfos.authorCate} </BookInfoGenre>
           <StarNumbers />
           <Buttons>
@@ -80,7 +83,7 @@ export default function BookDetailinfo({ bookInfos, bookId }) {
                 <Button
                   style={{
                     border: "none",
-                    backgroundColor: "#539165",
+                    backgroundColor: "#4dac27",
                   }}
                   onClick={MoveRecord}
                 >
@@ -114,15 +117,16 @@ const BookInfoImg = styled.img`
 export const BookDetailInfos = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 0 0 0 2rem;
 `;
 const Buttons = styled.div`
-  margin: 5rem 1rem 1rem;
+  margin: 5rem 0;
 `;
 const Button = styled.button`
   margin-right: 1rem;
   padding: 0.8rem 1.7rem;
   font-size: 1rem;
-  border-radius: 7px;
+  border-radius: 2px;
   cursor: pointer;
 `;
 const StarNumbers = styled(StarNumber)`

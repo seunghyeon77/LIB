@@ -17,7 +17,7 @@ export default function StarNumber() {
             starClick(number);
           }}
           style={{ color: number < rating ? "#539165" : "gray" }}
-          size="25px"
+          size='25px'
         />
       ))}
       <StarNumberText> {rating} / 5 </StarNumberText>
@@ -25,8 +25,10 @@ export default function StarNumber() {
   );
 }
 const FlexCenterStar = styled.div`
-  margin: 0.7rem 1rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
 `;
 const StarNumberText = styled.span`
-  margin: 0 0.8rem;
+  margin: 0 0 0 0.5rem;
 `;

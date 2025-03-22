@@ -19,14 +19,13 @@ export default function MyStudyWrapper() {
   useEffect(() => {
     studysApi();
   }, []);
-  console.log(studysLists)
   return (
     <div style={{ margin: "1.7rem 0" }}>
       <MyStudysWrapper>
         <RecordTitle>나의 서재</RecordTitle>
-          <MyStudys>
-            <MyStudy studyLists={studysLists} />
-          </MyStudys>
+        <MyStudys>
+          <MyStudy studyLists={studysLists} />
+        </MyStudys>
       </MyStudysWrapper>
     </div>
   );

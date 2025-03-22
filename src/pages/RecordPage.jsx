@@ -1,19 +1,23 @@
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
-import { useRef } from "react";
 
 import RecordPageForm from "../components/Record/RecordPageForm";
 import RecordPageToDetail from "../components/Record/RecordPageToDetail";
 
 export default function RecordPage() {
   const location = useLocation();
-  const bookToRecordInfos = location.state ? location.state.bookRecordInfos : null;
+  const bookToRecordInfos = location.state
+    ? location.state.bookRecordInfos
+    : null;
   const bookDetailId = bookToRecordInfos ? bookToRecordInfos.bookId : null;
   return (
     <Page>
       <Body>
         {bookDetailId ? (
-          <RecordPageToDetail bookRecordInfos={location.state} bookId={bookDetailId} />
+          <RecordPageToDetail
+            bookRecordInfos={location.state}
+            bookId={bookDetailId}
+          />
         ) : (
           <RecordPageForm />
         )}
@@ -27,5 +31,5 @@ const Page = styled.div`
   height: 95vh;
 `;
 const Body = styled.div`
-  margin: 4rem 30rem;
+  margin: 2rem 20rem;
 `;

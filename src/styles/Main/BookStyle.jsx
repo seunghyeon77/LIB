@@ -13,15 +13,14 @@ export const BookInfos = styled.div`
   border-radius: 3px;
 `;
 export const BookInfoTitle = styled.h3`
-  margin: 1rem;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+  margin: 0 0 1rem 0;
 `;
 // 책 이미지 크기
 export const BookInfoImg = styled.img`
   width: 11rem;
   height: 15rem;
-  /* filter: drop-shadow(#6c6c6c 0 0.5px 2px); */
-  border: 1.3px solid #331d1d;
+  border: 0.5px solid #6e6e6e;
 `;
 export const BookInfoText = styled.div`
   display: flex;
@@ -33,8 +32,8 @@ export const BookTitle = styled.span`
   margin: 0.7rem 0;
 `;
 export const BookInfoGenre = styled.span`
-  margin: 0 1rem 1rem;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  margin: 1.5rem 0;
   color: #969696;
 `;
 export const BookWriter = styled.span`

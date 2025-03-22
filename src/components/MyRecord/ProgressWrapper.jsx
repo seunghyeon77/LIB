@@ -4,7 +4,7 @@ import { RecordTitle } from "./RecordWrapper";
 
 export default function ProgressWrapper() {
   return (
-    <div style={{margin: '3rem 0'}}>
+    <div style={{ margin: "3rem 0" }}>
       <ProgressWrapperDiv>
         <RecordTitle>목표 게이지</RecordTitle>
         <Progress />
@@ -17,5 +17,5 @@ const ProgressWrapperDiv = styled.div`
   width: 100%; // 100%
   height: 23.75rem; // 46rem
   background-color: #ffffff;
-  border-radius: 7px;
+  margin: 10rem 0;
 `;

@@ -26,7 +26,7 @@ export default function BookDetailPage() {
 
   return (
     <Page style={{ backgroundColor: "#ffffff" }}>
-      <Body>
+      <Body style={{ margin: "2rem 0 0 0" }}>
         <BookDetailinfo bookInfos={bookInfos} bookId={bookId.bookId} />
         <BookDetailContent bookInfos={bookInfos} />
         <BookDetailAi bookId={bookId} />

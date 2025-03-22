@@ -42,7 +42,7 @@ export default function RecordHistory() {
           </RecordHistoryBooks>
           <ToMyRecord>
             <Link
-              to="my-record"
+              to='my-record'
               style={{ color: "#000000", borderBottom: "1px solid #000000" }}
             >
               더 많은 기록을 보고 싶다면
@@ -66,14 +66,16 @@ const ToMyRecord = styled.span`
 `;
 const RecordHistoryBooks = styled(BookInfos)`
   height: 20rem;
-  justify-content: flex-start;
+  display: flex;
+  justify-content: center;
   background: none;
+  margin: 2rem 0;
 `;
 const BookContainer = styled.div`
   position: relative;
   width: 11.5rem;
   height: 15.5rem;
-  margin: 0 13px;
+  margin: 0 1rem;
 
   &:hover p {
     opacity: 1;

@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import styled from "styled-components";
 
-export default function Pagination ({ data, itemsPerPage, renderItems }) {
-  const [currentItems, setCurrentItems] = useState([]); 
-  const [pageCount, setPageCount] = useState(0); 
-  const [itemOffset, setItemOffset] = useState(0); 
+export default function Pagination({ data, itemsPerPage, renderItems }) {
+  const [currentItems, setCurrentItems] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
 
   // 페이지 변경 시 데이터 업데이트
   useEffect(() => {
@@ -22,32 +22,31 @@ export default function Pagination ({ data, itemsPerPage, renderItems }) {
 
   return (
     <div>
-      {renderItems(currentItems)} 
+      {renderItems(currentItems)}
       <div>
         <Paginate
-          breakLabel="..."
-          nextLabel=">"
+          breakLabel='...'
+          nextLabel='>'
           onPageChange={handlePageClick}
           pageRangeDisplayed={5}
           pageCount={pageCount}
-          previousLabel="<"
+          previousLabel='<'
           renderOnZeroPageCount={null}
-          className="paginateUi"
+          className='paginateUi'
         />
       </div>
     </div>
   );
-};
+}
 
 const Paginate = styled(ReactPaginate).attrs({
-  className: "paginateUi"
+  className: "paginateUi",
 })`
   display: flex;
   justify-content: center;
   gap: 30px;
   font-size: 18px;
-  margin: 30px;
+  margin: 3rem 2rem;
   cursor: pointer;
-
-`
-
+  // padding: 1rem 0;
+`;

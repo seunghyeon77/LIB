@@ -57,7 +57,7 @@ export default function BookDetailCommu({ bookId }) {
   const buttonDel = async (commentId) => {
     try {
       await axiosInstance.delete(`/comments/${commentId}`);
-      alert('기록이 삭제되었습니다 :)')
+      alert("기록이 삭제되었습니다 :)");
       setCommuInputs((prevInputs) =>
         prevInputs.filter((comment) => comment.commentId !== commentId)
       );
@@ -67,7 +67,7 @@ export default function BookDetailCommu({ bookId }) {
   };
 
   const displayInputs = !isShowbutton ? commuInputs.slice(0, 3) : commuInputs;
-  console.log(displayInputs)
+  console.log(displayInputs);
   return (
     <div>
       <div>
@@ -81,16 +81,28 @@ export default function BookDetailCommu({ bookId }) {
                   {displayInput.commentContent}
                 </p>
                 <CommuNickname>
-                  <CommuContentDate>{displayInput.createdDate}</CommuContentDate>
-                    {displayInput.isOwner === true ? (
-                    <button onClick={() => buttonDel(displayInput.commentId)} style={{background: 'none', border: 'none', cursor: 'pointer'}}>
-                      <FaRegTrashAlt
+                  <CommuContentDate>
+                    {displayInput.createdDate}
+                  </CommuContentDate>
+                  {displayInput.isOwner === true ? (
+                    <button
+                      onClick={() => buttonDel(displayInput.commentId)}
+                      style={{
+                        background: "none",
+                        border: "none",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {/* <FaRegTrashAlt
                         style={{ fontSize: "1.1rem", marginLeft: "10px" }}
-                      />
+                      /> */}
+                      <span style={{ color: "#e86a33", marginLeft: "1rem" }}>
+                        삭제
+                      </span>
                     </button>
-                    ) : (
-                      <></>
-                    )}
+                  ) : (
+                    <></>
+                  )}
                 </CommuNickname>
               </CommuContent>
             </CommuDiv>
@@ -110,8 +122,8 @@ export default function BookDetailCommu({ bookId }) {
           </FlexCenter>
           <CommuForm onClick={buttonValueOnclick}>
             <CommuInput
-              type="text"
-              placeholder="다양한 생각을 남겨보세요"
+              type='text'
+              placeholder='다양한 생각을 남겨보세요'
               onChange={inputValueOnchange}
               value={commentContent} // input 값을 state와 동기화
             />
@@ -161,15 +173,15 @@ const CommuForm = styled.form`
 
 const CommuInput = styled(LoginFormInput)`
   width: 85%;
+  border-radius: 2px;
 `;
 
 const CommuButton = styled.button`
-  margin-left: 0.6rem;
   padding: 1rem;
-  background-color: #539165;
+  background-color: #4dac27;
   font-size: 1rem;
   color: #ffffff;
   border: none;
-  border-radius: 7px;
+  border-radius: 2px;
   cursor: pointer;
 `;

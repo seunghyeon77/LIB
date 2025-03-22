@@ -54,22 +54,31 @@ export default function RecordPageToDetail({ bookRecordInfos, bookId }) {
     <form onSubmit={handleSubmit}>
       {bookRecordArrayInfos.map((bookRecordInfo) => (
         <BookDetailInfo key={bookRecordInfo.bookId}>
-          <BookRecordimg name="bookCover" src={bookRecordInfo.bookCover} />
-          <BookDetailInfos style={{ margin: "0 0 4rem 1.4rem" }}>
-            <BookInfoTitle name="bookName">
-              {" "}
-              {bookRecordInfo.bookName}{" "}
-            </BookInfoTitle>
-            <BookInfoGenre name="authorCatePub">
-              {" "}
-              {bookRecordInfo.authorCatePub}{" "}
-            </BookInfoGenre>
-            <StarNumber name="rating" rating={rating} setRating={setRating} />
+          <BookRecordimg name='bookCover' src={bookRecordInfo.bookCover} />
+          <BookDetailInfos
+            style={{
+              height: "12rem",
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            <div>
+              <BookInfoTitle name='bookName'>
+                {" "}
+                {bookRecordInfo.bookName}{" "}
+              </BookInfoTitle>
+              <BookInfoGenre name='authorCatePub'>
+                {" "}
+                {bookRecordInfo.authorCatePub}{" "}
+              </BookInfoGenre>
+            </div>
+
+            <StarNumber name='rating' rating={rating} setRating={setRating} />
           </BookDetailInfos>
         </BookDetailInfo>
       ))}
       <Textareas>
-        <Textarea name="recordContent" onChange={inputTextArea} />
+        <Textarea name='recordContent' onChange={inputTextArea} />
         <Buttons>
           <Button
             style={{ border: "1px solid #888888", backgroundColor: "#ffffff" }}
@@ -80,10 +89,10 @@ export default function RecordPageToDetail({ bookRecordInfos, bookId }) {
           <Button
             style={{
               border: "1px solid",
-              backgroundColor: "#539165",
+              backgroundColor: "#4dac27",
               color: "#ffffff",
             }}
-            type="submit"
+            type='submit'
           >
             기록하기
           </Button>
@@ -94,7 +103,9 @@ export default function RecordPageToDetail({ bookRecordInfos, bookId }) {
 }
 const BookDetailInfo = styled(BookInfos)`
   height: 11rem;
-  margin: 6rem 2rem;
+  margin: 4rem 0;
+  border: none;
+  display: flex;
 `;
 const BookRecordimg = styled.img`
   width: 10.5rem;
@@ -112,16 +123,18 @@ const Textarea = styled.textarea`
   font-size: 1.3rem;
   resize: none;
   border: 1px solid;
-  border-radius: 7px;
+  border-radius: 2px;
   padding: 1.2rem;
 `;
 const Buttons = styled.div`
   display: flex;
   justify-content: flex-end;
+  margin: 1rem 0;
 `;
 const Button = styled.button`
-  margin: 1.2rem 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 7px;
+  width: 100px;
+  height: 45px;
+  padding: 0 24px;
+  border-radius: 2px;
   cursor: pointer;
 `;
